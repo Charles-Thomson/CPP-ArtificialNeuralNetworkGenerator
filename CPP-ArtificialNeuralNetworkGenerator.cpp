@@ -3,10 +3,22 @@
 
 #include "CPP-ArtificialNeuralNetworkGenerator.h"
 
-using namespace std;
+#include "CPP-JSONParser.h"
 
-int main()
-{
-	cout << "Hello CMake." << endl;
-	return 0;
+#include <iostream>
+#include <string>
+
+using std::string;
+using std::cout;
+using std::endl;
+
+
+
+int main() {
+	string holder = "Test";
+
+	string test = TestReturn();
+	
+	cout << "Resutl " << test << endl;
+
 }
