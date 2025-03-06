@@ -10,12 +10,20 @@ endif()
 project (CPP-ArtificialNeuralNetworkGenerator)
 
 # Add source to this project's executable.
-add_executable(CPP-ArtificialNeuralNetworkGenerator 
+add_executable(
+    CPP-ArtificialNeuralNetworkGenerator 
+    CPP-ArtificialNeuralNetworkGenerator.cpp 
+    CPP-ArtificialNeuralNetworkGenerator.h  )
+
+ add_library(CPP-CPP-ArtificialNeuralNetworkGenerator SHARED
     CPP-ArtificialNeuralNetworkGenerator.cpp 
     CPP-ArtificialNeuralNetworkGenerator.h 
-    
-)
-
+    ANNConfigObject/ANNConfigObject.cpp
+    ANNConfigObject/ANNConfigObject.h
+    PreProcessing/ConfigUnpacking/ConfigUnpacking.cpp
+    PreProcessing/ConfigUnpacking/ConfigUnpacking.h
+ )
+ 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
 endif()
@@ -29,7 +37,15 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(CPP-JSONParser)
 
 # Include the CPP-JSONParser headers in the project
-target_include_directories(CPP-ArtificialNeuralNetworkGenerator PRIVATE ${CPP-JSONParser_SOURCE_DIR})
+target_include_directories(
+    CPP-ArtificialNeuralNetworkGenerator PRIVATE 
+    ${CPP-JSONParser_SOURCE_DIR}
+    ${CPP-JSONParser_SOURCE_DIR}/Structs
+    ${CPP-JSONParser_SOURCE_DIR}/FileReader
+    ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
+
+
+)
 
 # Link the CPP-JSONParser library (shared/static depending on what was built)
 # target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE CPP-JSONParser)
