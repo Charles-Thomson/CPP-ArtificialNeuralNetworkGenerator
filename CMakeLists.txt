@@ -9,21 +9,25 @@ endif()
 
 project (CPP-ArtificialNeuralNetworkGenerator)
 
-# Add source to this project's executable.
-add_executable(
-    CPP-ArtificialNeuralNetworkGenerator 
-    CPP-ArtificialNeuralNetworkGenerator.cpp 
-    CPP-ArtificialNeuralNetworkGenerator.h  )
 
- add_library(CPP-CPP-ArtificialNeuralNetworkGenerator SHARED
+
+ add_library(CPP-ArtificialNeuralNetworkGenerator SHARED
     CPP-ArtificialNeuralNetworkGenerator.cpp 
     CPP-ArtificialNeuralNetworkGenerator.h 
-    ANNConfigObject/ANNConfigObject.cpp
-    ANNConfigObject/ANNConfigObject.h
-    PreProcessing/ConfigUnpacking/ConfigUnpacking.cpp
-    PreProcessing/ConfigUnpacking/ConfigUnpacking.h
- )
- 
+    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.cpp
+    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h
+    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.cpp
+    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h
+    PreProcessing/InstanceConfigObject/EnvironemntConfigurationObject/EnvironmentConfigObject.cpp 
+    PreProcessing/InstanceConfigObject/EnvironemntConfigurationObject/EnvironmentConfigObject.h 
+    PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.cpp
+    PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.h
+    PreProcessing/InstanceConfigObject/InstanceConfigurationObject/InstanceConfigObject.cpp
+    PreProcessing/InstanceConfigObject/InstanceConfigurationObject/InstanceConfigObject.h
+ 
+  )
+
+ 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
 endif()
