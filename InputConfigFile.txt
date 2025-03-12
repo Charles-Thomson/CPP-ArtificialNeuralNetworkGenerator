@@ -1,1 +1,40 @@
-{"name":"John Doe","age":30,"address":{"street":"123 Elm Street"}}
+{
+
+"instanceID":"Instance Example",
+"environemntConfig": {
+		"environmentMap" : [1,2,3,4],
+		"environmentDimensions": 2,
+		"environmentStartCoordinates": [1,1],
+		"environmentMaxActionCount": 10
+	},
+
+"instanceConfig": {
+	"maxNumberOfGenerations": 10,
+	"maxGenerationSize": 1,
+	"startingFitnessThreshold": 1.2,
+	"startNewGenerationThreshold": 10,
+	"generationFailureThreshold": 1
+	},
+
+
+"ANNConfig": {
+	"newGenerationCreationFunction": "merge",
+	"numberOfLayers": 2,
+	"ANNLayers": {
+		"layer1": {
+			"layerID": "testLayerID1",
+			"weightInitHuristic": "he",
+			"activationFunction": "relu",
+			"layerInputs": 20,
+			"layerOutputs": 20
+		},
+		"layer2": {
+			"layerID": "testLayerID2",
+			"weightInitHuristic": "he",
+			"activationFunction": "relu",
+			"layerInputs": 20,
+			"layerOutputs": 20
+   }
+  }
+ }
+}

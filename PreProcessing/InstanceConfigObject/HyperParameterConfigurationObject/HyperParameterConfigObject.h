@@ -16,12 +16,12 @@ public:
 private:
 
 	HyperParamterConfigObject(
-	double _maxNumberOfGenerations,
-	double _maxGenerationSize,
-	double _startingFitnessThreshold,
-	double _startNewGenerationThreshold,
-	double _generationFailureThreshold
-	)
+		double _maxNumberOfGenerations,
+		double _maxGenerationSize,
+		double _startingFitnessThreshold,
+		double _startNewGenerationThreshold,
+		double _generationFailureThreshold
+	);
 	
 
 	
