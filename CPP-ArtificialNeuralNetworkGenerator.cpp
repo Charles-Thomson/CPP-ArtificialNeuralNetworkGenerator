@@ -31,85 +31,54 @@ using std::variant;
 
 using JSON = shared_ptr<JSONValue>;
 
-bool readAndParseCheck() {
-
-	string inputConfigFilePath = "C:\\Users\\Charl\\source\\repos\\C++\\CPP-ArtificialNeuralNetworkGenerator\\InputConfigFile.txt";
-	ifstream inputConfigFile(inputConfigFilePath);
-
-	string contentLine;
-	string line;
-
-	if (getline(inputConfigFile, line)) {
-		contentLine = line;
-		cout << "File content : " << contentLine << endl;
-	};
-
-	JSON TestPointer = ParseToJSON(contentLine);
-
-	if (TestPointer == nullptr) {
-		cout << "Returned a null pointer" << endl;
-	}
-
-	// Contains key check
-	string testKey = "age";
-
-	bool keyTest = checkIfContainsKeyExposed(TestPointer, testKey);
-
-	cout << "CheckIfContainsKey  Result :  " << keyTest << endl;
-
-	// Get value check
-	auto holder = GetValueByKey(TestPointer, testKey);
-
-	if (auto val = holder->get<string>()) {
-		cout << "GetValueByKey -> Result " << *val << endl;
-	}
-
-	string typeHolder = holder->getType();
 
 
-	cout << "The return type is : " << typeHolder << endl;
 
-	return true;
-}
 
-//*
-// @ brief Read Input file
-// */
-string readInputFile() {
+//bool readAndParseCheck() {
+//
+//	string inputConfigFilePath = "C:\\Users\\Charl\\source\\repos\\C++\\CPP-ArtificialNeuralNetworkGenerator\\InputConfigFile.txt";
+//	ifstream inputConfigFile(inputConfigFilePath);
+//
+//	string contentLine;
+//	string line;
+//
+//	if (getline(inputConfigFile, line)) {
+//		contentLine = line;
+//		cout << "File content : " << contentLine << endl;
+//	};
+//
+//	JSON TestPointer = ParseToJSON(contentLine);
+//
+//	if (TestPointer == nullptr) {
+//		cout << "Returned a null pointer" << endl;
+//	}
+//
+//	// Contains key check
+//	string testKey = "age";
+//
+//	bool keyTest = checkIfContainsKeyExposed(TestPointer, testKey);
+//
+//	cout << "CheckIfContainsKey  Result :  " << keyTest << endl;
+//
+//	// Get value check
+//	auto holder = GetValueByKey(TestPointer, testKey);
+//
+//	if (auto val = holder->get<string>()) {
+//		cout << "GetValueByKey -> Result " << *val << endl;
+//	}
+//
+//	string typeHolder = holder->getType();
+//
+//
+//	cout << "The return type is : " << typeHolder << endl;
+//
+//	return true;
+//}
 
-	string inputConfigFilePath = "C:\\Users\\Charl\\source\\repos\\C++\\CPP-ArtificialNeuralNetworkGenerator\\InputConfigFile.txt";
-	ifstream inputConfigFile(inputConfigFilePath);
 
-	string contentLine;
-	string line;
 
-	if (getline(inputConfigFile, line)) {
-		contentLine = line;
-		cout << "File content : " << contentLine << endl;
-	};
-	
-	return contentLine;
-}
 
-//*
-// @ brife parse a input string to JSON 
-// */
-JSON pareseToJSON(string& inputConfigString) {
-	JSON parsedData = ParseToJSON(inputConfigString);
 
-	if (parsedData == nullptr) {
-		cout << "Returned a null pointer while parsing" << endl;
-	}
-	return parsedData;
-}
 
-int main() {
-	string inputConfig = readInputFile();
-
-	JSON parsedJSON = pareseToJSON(inputConfig);
-
-	cout << "Parse Succeded" << endl;
-
-	// NEXT: Unpack the jsonInto a struct/object that can then be pre processed
-}
 

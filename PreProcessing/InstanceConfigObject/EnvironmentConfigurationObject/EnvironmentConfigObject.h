@@ -9,7 +9,7 @@ using std::string;
 using std::vector;
 using std::tuple;
 
-class EnvironemntConfigObject {
+class EnvironmentConfigObject {
 private:
 	vector<vector<double>> environmentMap;
 	tuple<double, double> environmentMapDimensions;
@@ -17,7 +17,13 @@ private:
 	double maxActionsInEnvironment;
 		 
 public:
-	EnvironemntConfigObject(
+	// Default Constructor 
+	EnvironmentConfigObject()
+		: environmentMap({ {} }), environmentMapDimensions({ 0,0 }), environmentMapStartLocation{0,0}, maxActionsInEnvironment(0){
+	}
+
+
+	EnvironmentConfigObject(
 		vector<vector<double>> environmentMap,
 		tuple<double, double> environmentMapDimensions,
 		tuple<double, double> environmentMapStartLocation,

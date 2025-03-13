@@ -20,6 +20,11 @@ class ANNConfigObject {
 		string GenerationFunction;
 
 	public:
+
+		ANNConfigObject()
+			: numOfLayers(0), GenerationFunction("default") {
+		}
+
 		//Constructor
 		ANNConfigObject(
 			vector<ANNLayer> _ANNLayersConfigs,

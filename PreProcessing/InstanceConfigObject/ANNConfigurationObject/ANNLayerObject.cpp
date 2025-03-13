@@ -7,6 +7,8 @@
 using std::string;
 using std::vector;
 
+ANNLayer::ANNLayer() {}
+
 ANNLayer::ANNLayer(
 	string _weightInitFunction, 
 	string _activationFunction, 

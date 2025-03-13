@@ -16,6 +16,7 @@ private:
 	double layerOutputs;
 
 public:
+	ANNLayer();
 	ANNLayer(string _weightInitFunction, string _activationFunction, double _layerInputs, double _layerOutputs);
 
 };

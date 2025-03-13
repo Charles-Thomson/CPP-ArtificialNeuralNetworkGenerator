@@ -1,3 +1,6 @@
+#ifndef HYPER_PARAMETER_CONFIG_OBJECT_H
+#define HYPER_PARAMETER_CONFIG_OBJECT_H
+
 #include <string>
 #include <vector>
 
@@ -5,7 +8,8 @@ using std::string;
 using std::vector;
 
 
-class HyperParamterConfigObject {
+class HyperParameterConfigObject {
+
 public:
 	double maxNumberOfGenerations;
 	double maxGenerationSize;
@@ -13,17 +17,24 @@ public:
 	double startNewGenerationThreshold;
 	double generationFailureThreshold;
 
-private:
+	// Default Constructor
+	HyperParameterConfigObject() : maxNumberOfGenerations(0), 
+								   maxGenerationSize(0), 
+		                           startingFitnessThreshold(0), 
+		                           startNewGenerationThreshold(0),
+		                           generationFailureThreshold(0){}
 
-	HyperParamterConfigObject(
+	HyperParameterConfigObject(
 		double _maxNumberOfGenerations,
 		double _maxGenerationSize,
 		double _startingFitnessThreshold,
 		double _startNewGenerationThreshold,
 		double _generationFailureThreshold
 	);
-	
+
+private:
 
 	
-
 };
+
+#endif //HYPER_PARAMETER_CONFIG_OBJECT_H

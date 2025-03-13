@@ -9,8 +9,7 @@ using std::vector;
 using std::tuple;
 
 
-
-EnvironemntConfigObject::EnvironemntConfigObject(
+EnvironmentConfigObject::EnvironmentConfigObject(
 	vector<vector<double>> _environmentMap,
 	tuple<double, double> _environmentMapDimensions,
 	tuple<double, double> _environmentMapStartLocation,

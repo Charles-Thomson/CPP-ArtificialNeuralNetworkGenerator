@@ -5,8 +5,8 @@
 #include <vector>
 
 #include "../ANNConfigurationObject/ANNConfigObject.h"
-#include "../EnvironemntConfigurationObject/EnvironmentConfigObject.h "
-#include "../HyperParameterConfigurationObject/HyperParameterConfigObject.h "
+#include "../EnvironmentConfigurationObject/EnvironmentConfigObject.h"  // Fixed typo: no extra space
+#include "../HyperParameterConfigurationObject/HyperParameterConfigObject.h"  // Fixed typo: no extra space
 
 using std::string;
 using std::vector;
@@ -15,33 +15,28 @@ using std::vector;
 
 
 
-class InstanceConfigObject{
+class InstanceConfigObject {
 private:
 	ANNConfigObject ANNConfig;
-	EnvironemntConfigObject EnvConfig;
-	HyperParamterConfigObject HyperParameterConfig;
+	EnvironmentConfigObject EnvConfig;
+	HyperParameterConfigObject HyperParameterConfig;
 
 public:
 	InstanceConfigObject();
 
-	
 	void setANNConfig(ANNConfigObject obj);
 
 	ANNConfigObject getANNConfig();
 
-	void setEnvConfig(EnvironemntConfigObject obj);
+	void setEnvConfig(EnvironmentConfigObject obj);
 
-	EnvironemntConfigObject getEnvConfig();
+	EnvironmentConfigObject getEnvConfig();
 
-	void setHyperParameterConfig(HyperParamterConfigObject obj);
+	void setHyperParameterConfig(HyperParameterConfigObject obj);
 
-	HyperParamterConfigObject getHyperParameterConfig();
+	HyperParameterConfigObject getHyperParameterConfig();
 
-
-
-
-
-}
+};
 
 
 
@@ -49,7 +44,7 @@ public:
 
 
 
-#endif INSTANCE_OBJECT_H
+#endif // INSTANCE_OBJECT_H
 
 
 

@@ -3,8 +3,8 @@
 
 #include "InstanceConfigObject.h"
 #include "../ANNConfigurationObject/ANNConfigObject.h"
-#include "../EnvironemntConfigurationObject/EnvironmentConfigObject.h "
-#include "../HyperParameterConfigurationObject/HyperParameterConfigObject.h "
+#include "../EnvironmentConfigurationObject/EnvironmentConfigObject.h"
+#include "../HyperParameterConfigurationObject/HyperParameterConfigObject.h"
 
 using std::string;
 using std::vector;
@@ -15,22 +15,27 @@ void InstanceConfigObject::setANNConfig(ANNConfigObject obj) {
 	ANNConfig = obj;
 };
 
-void InstanceConfigObject::setEnvConfig(EnvironemntConfigObject obj) {
-	EnvConfig = obj;
-};
 
-void InstanceConfigObject::setHyperParameterConfig(HyperParamterConfigObject obj) {
+void InstanceConfigObject::setHyperParameterConfig(HyperParameterConfigObject obj)
+{
 	HyperParameterConfig = obj;
 };
 
 ANNConfigObject InstanceConfigObject::getANNConfig() {
 	return ANNConfig;
-};
+}
 
-EnvironemntConfigObject InstanceConfigObject::getEnvConfig() {
+void InstanceConfigObject::setEnvConfig(EnvironmentConfigObject obj)
+{
+	EnvConfig = obj;
+}
+;
+
+EnvironmentConfigObject InstanceConfigObject::getEnvConfig() {
 	return EnvConfig;
 };
 
-HyperParamterConfigObject InstanceConfigObject::getHyperParameterConfig() {
+
+HyperParameterConfigObject InstanceConfigObject::getHyperParameterConfig() {
 	return HyperParameterConfig;
 };

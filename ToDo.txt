@@ -1,0 +1,8 @@
+12/03/25
+
+- Add google testing
+.. Resolve erros from the import of the Parser - links to google testing
+
+- Test the passing of the input file to the parser
+
+- Unpack the returned parsedJSON into the correct objects
