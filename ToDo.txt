@@ -1,8 +1,7 @@
-12/03/25
+18/03/25
 
-- Add google testing
-.. Resolve erros from the import of the Parser - links to google testing
+- Resolve errors with the importing of the JSONParser Lib
 
-- Test the passing of the input file to the parser
+- Test reading of the inputFile 
 
-- Unpack the returned parsedJSON into the correct objects
+- Outline Framework for unpacking of the JSON once parsed to the staging class structure

@@ -39,6 +39,7 @@ FetchContent_Declare(
     CPP-JSONParser
     GIT_REPOSITORY https://github.com/Charles-Thomson/CPP-JSONParser.git
 )
+set(CPP_JSONPARSER_BUILD_TESTS OFF CACHE BOOL "" FORCE)  
 FetchContent_MakeAvailable(CPP-JSONParser)
 
 # Fetch Google Test
@@ -50,6 +51,8 @@ FetchContent_MakeAvailable(googletest)
 
 include(GoogleTest)
 
+target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE CPP-JSONParserStatic)
+
 # Include the CPP-JSONParser headers in the project
 target_include_directories(
     CPP-ArtificialNeuralNetworkGenerator PRIVATE 
@@ -58,6 +61,10 @@ target_include_directories(
     ${CPP-JSONParser_SOURCE_DIR}/FileReader
     ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
 )
+
+message(STATUS "CPP-JSONParser source directory: ${CPP-JSONParser_SOURCE_DIR}")
+message(STATUS "FileReader header path: ${CPP-JSONParser_SOURCE_DIR}/FileReader/FileReader.h")
+
 
 # Pass the string as a preprocessor macro definition
 set(INPUT_FILE_PATH "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/InputConfigFile.txt")
