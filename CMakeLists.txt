@@ -48,8 +48,9 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/google/googletest.git
 )
 FetchContent_MakeAvailable(googletest)
-
 include(GoogleTest)
+
+
 
 target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE CPP-JSONParserStatic)
 
@@ -61,9 +62,6 @@ target_include_directories(
     ${CPP-JSONParser_SOURCE_DIR}/FileReader
     ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
 )
-
-message(STATUS "CPP-JSONParser source directory: ${CPP-JSONParser_SOURCE_DIR}")
-message(STATUS "FileReader header path: ${CPP-JSONParser_SOURCE_DIR}/FileReader/FileReader.h")
 
 
 # Pass the string as a preprocessor macro definition
@@ -77,10 +75,15 @@ enable_testing()
 
 # Test executable for read_and_parse_testing
 add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp)
+
+
 target_include_directories(read_and_parse_testing PRIVATE
     "${CMAKE_SOURCE_DIR}"
     "${CMAKE_SOURCE_DIR}/PreProcessing"
     "${CMAKE_SOURCE_DIR}/Testing"
+    "${CPP-JSONParser_SOURCE_DIR}/Structs"
+    "${CPP-JSONParser_SOURCE_DIR}/FileReader"
+    "${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions"
     "${googletest_SOURCE_DIR}/googletest/include"  # Correct GTest include directory
 )
 target_compile_options(read_and_parse_testing PRIVATE /MDd)

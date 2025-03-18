@@ -1,7 +1,7 @@
 #ifndef INPUT_FILE_READ
 #define INPUT_FILE_READ
 
-#include "FileReader/FileReader.h"
+#include "FileReader.h"
 #include "JSONValueStruct.h"
 #include <string>
 
