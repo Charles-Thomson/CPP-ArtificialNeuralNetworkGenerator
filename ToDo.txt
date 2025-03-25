@@ -1,7 +1,5 @@
-18/03/25
+25/03/25
 
-- Resolve errors with the importing of the JSONParser Lib
-
-- Test reading of the inputFile 
+- Implment tests for read and parse
 
 - Outline Framework for unpacking of the JSON once parsed to the staging class structure

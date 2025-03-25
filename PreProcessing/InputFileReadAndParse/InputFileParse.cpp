@@ -12,5 +12,6 @@ using JSON = shared_ptr<JSONValue>;
 // 
 // */
 JSON parserInputToJSON(string& inputString) {
-	JSON test_pointer = ParseToJSON(inputString);
+	JSON pointer = ParseToJSON(inputString);
+	return pointer;
 }
