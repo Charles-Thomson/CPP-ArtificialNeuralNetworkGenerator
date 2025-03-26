@@ -12,9 +12,19 @@ using std::string;
 
 
 bool UnpackJSONToConfigObjects(JSON& JSONData) {
+
+	ANNConfigObject ANNConfig; 
+	EnvironmentConfigObject EnvironmentConfig;
+	HyperParameterConfigObject HyperParameterConfig;
+
+
+
+
+
+
+
 	return true;
 
 
 
 }
-

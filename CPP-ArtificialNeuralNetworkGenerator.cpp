@@ -3,6 +3,10 @@
 
 #include "CPP-ArtificialNeuralNetworkGenerator.h"
 
+#include "PreProcessing/InputFileReadAndParse/InputFileRead.h"
+#include "PreProcessing/InputFileReadAndParse/InputFileParse.h"
+
+
 #include "CPP-JSONParser.h"
 #include "JSONValueStruct.h"
 #include "FileReader.h"
@@ -34,47 +38,22 @@ using JSON = shared_ptr<JSONValue>;
 
 
 
+//*
+// @ Brief PreProcess input data
+// 
+// Apply pre processing and to input config file
+// 
+// *//
+bool PreProcessing() {
+	string InputFileString = readInputFile();
+	JSON InputFileJSON = parserInputToJSON(InputFileString);
 
-//bool readAndParseCheck() {
-//
-//	string inputConfigFilePath = "C:\\Users\\Charl\\source\\repos\\C++\\CPP-ArtificialNeuralNetworkGenerator\\InputConfigFile.txt";
-//	ifstream inputConfigFile(inputConfigFilePath);
-//
-//	string contentLine;
-//	string line;
-//
-//	if (getline(inputConfigFile, line)) {
-//		contentLine = line;
-//		cout << "File content : " << contentLine << endl;
-//	};
-//
-//	JSON TestPointer = ParseToJSON(contentLine);
-//
-//	if (TestPointer == nullptr) {
-//		cout << "Returned a null pointer" << endl;
-//	}
-//
-//	// Contains key check
-//	string testKey = "age";
-//
-//	bool keyTest = checkIfContainsKeyExposed(TestPointer, testKey);
-//
-//	cout << "CheckIfContainsKey  Result :  " << keyTest << endl;
-//
-//	// Get value check
-//	auto holder = GetValueByKey(TestPointer, testKey);
-//
-//	if (auto val = holder->get<string>()) {
-//		cout << "GetValueByKey -> Result " << *val << endl;
-//	}
-//
-//	string typeHolder = holder->getType();
-//
-//
-//	cout << "The return type is : " << typeHolder << endl;
-//
-//	return true;
-//}
+
+	// parse out to objects
+
+
+	return false;
+}
 
 
 
