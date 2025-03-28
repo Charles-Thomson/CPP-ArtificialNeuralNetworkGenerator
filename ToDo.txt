@@ -1,5 +1,5 @@
-25/03/25
+28/03/25
 
-- Implment tests for read and parse
+- Test structure for Unpacking From JSON to COnfig objects 
 
-- Outline Framework for unpacking of the JSON once parsed to the staging class structure
+- Unpack to config objects

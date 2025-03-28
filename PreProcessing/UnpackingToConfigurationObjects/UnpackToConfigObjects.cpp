@@ -8,23 +8,34 @@
 using JSON = shared_ptr<JSONValue>;
 
 using std::string;
+using std::cout;
+using std::endl;
 
 
 
-bool UnpackJSONToConfigObjects(JSON& JSONData) {
+void UnpackJSONToConfigObjects(JSON& JSONData) {
 
 	ANNConfigObject ANNConfig; 
 	EnvironmentConfigObject EnvironmentConfig;
 	HyperParameterConfigObject HyperParameterConfig;
 
+	cout << "UnpackJSONToConfigObjects - > In the function" << endl;
 
 
 
 
 
-
-	return true;
+	
 
 
 
 }
+
+//ANNConfigObject UnpackJSONToANNConfigObject() {
+//
+//
+//
+//
+//
+//
+//}

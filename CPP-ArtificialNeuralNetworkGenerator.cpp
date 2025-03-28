@@ -31,8 +31,6 @@ using std::stringstream;
 using std::pair;
 using std::list;
 using std::variant;
-
-
 using JSON = shared_ptr<JSONValue>;
 
 

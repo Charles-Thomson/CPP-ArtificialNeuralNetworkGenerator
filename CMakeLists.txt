@@ -27,7 +27,8 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     PreProcessing/InputFileReadAndParse/InputFileRead.cpp 
     PreProcessing/InputFileReadAndParse/InputFileParse.h 
     PreProcessing/InputFileReadAndParse/InputFileRead.h
-    PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp)
+    PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
+)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
@@ -39,7 +40,7 @@ FetchContent_Declare(
     CPP-JSONParser
     GIT_REPOSITORY https://github.com/Charles-Thomson/CPP-JSONParser.git
 )
-set(CPP_JSONPARSER_BUILD_TESTS OFF CACHE BOOL "" FORCE)  
+set(CPP_JSONPARSER_BUILD_TESTS ON CACHE BOOL "" FORCE)  
 FetchContent_MakeAvailable(CPP-JSONParser)
 
 # Fetch Google Test
@@ -49,6 +50,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
+
+message(STATUS "GoogleTest source directory: ${googletest_SOURCE_DIR}")
 
 
 
@@ -66,6 +69,7 @@ target_include_directories(
     ${CPP-JSONParser_SOURCE_DIR}/Structs
     ${CPP-JSONParser_SOURCE_DIR}/FileReader
     ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
+    
 )
 
 
@@ -79,7 +83,24 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp")
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp )
+
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp )
+
+# Target Libs 
+target_link_libraries(JSON_Unpacking_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+target_link_libraries(read_and_parse_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+
+target_include_directories(JSON_Unpacking_testing PRIVATE
+     ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/PreProcessing
+    ${CMAKE_SOURCE_DIR}/Testing
+    ${CPP-JSONParser_SOURCE_DIR}/Structs
+    ${CPP-JSONParser_SOURCE_DIR}/FileReader
+    ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
+    ${googletest_SOURCE_DIR}/googletest/include  # Correct GTest include directory
+    "${gtest_SOURCE_DIR}/include"
+)
 
 
 target_include_directories(read_and_parse_testing PRIVATE
@@ -90,12 +111,19 @@ target_include_directories(read_and_parse_testing PRIVATE
     ${CPP-JSONParser_SOURCE_DIR}/FileReader
     ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
     ${googletest_SOURCE_DIR}/googletest/include  # Correct GTest include directory
+    "${gtest_SOURCE_DIR}/include"
 )
+
+
 target_compile_options(read_and_parse_testing PRIVATE /MDd)
-target_link_libraries(read_and_parse_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+target_compile_options(JSON_Unpacking_testing PRIVATE /MDd)
 
 # Register the test
 add_test(NAME InputFileReadAndParse COMMAND read_and_parse_testing)
 gtest_discover_tests(read_and_parse_testing)
+
+# Register the test
+add_test(NAME JSONUnpacking COMMAND JSON_Unpacking_testing)
+gtest_discover_tests(JSON_Unpacking_testing)
 
 
