@@ -17,14 +17,14 @@
     "newGenerationCreationFunction": "merge",
     "numberOfLayers": 2,
     "ANNLayers": {
-      "layer1": {
+      "layer0": {
         "layerID": "testLayerID1",
         "weightInitHeuristic": "he",
         "activationFunction": "relu",
         "layerInputs": 20,
         "layerOutputs": 20
       },
-      "layer2": {
+      "layer1": {
         "layerID": "testLayerID2",
         "weightInitHeuristic": "he",
         "activationFunction": "relu",
