@@ -32,7 +32,9 @@ public:
 		double _generationFailureThreshold
 	);
 
-private:
+	void PrintObjectAttributes();
+
+
 
 	
 };

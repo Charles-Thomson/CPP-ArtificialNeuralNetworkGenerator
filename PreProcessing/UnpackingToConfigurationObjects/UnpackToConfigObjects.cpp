@@ -28,14 +28,11 @@ using std::format;
 // */
 // Need to write tests for this function
 vector<ANNLayer> unpackANNLayerConfigs(JSON& ANNLayerDataJSON, double& numberOfANNLayers) {
-
-	cout << "Number of layers in the ANN : " << numberOfANNLayers << endl;
 	vector<ANNLayer> ANNLayerConfigs; 
 
 	for (double i = 0; numberOfANNLayers > i; i++) {
 		string layerKey = format("layer{}", i);
-		cout << "Layer key : " << layerKey << endl;
-
+		
 		JSON layerJSON = GetValueByKey(ANNLayerDataJSON, layerKey);
 
 		string layerID = GetValueByKeyWithType<string>(layerJSON, "layerID");
@@ -46,10 +43,7 @@ vector<ANNLayer> unpackANNLayerConfigs(JSON& ANNLayerDataJSON, double& numberOfA
 		double layerInputs = GetValueByKeyWithType<double>(layerJSON, "layerInputs");
 		double layerOutputs = GetValueByKeyWithType<double>(layerJSON, "layerOutputs");
 
-
 		ANNLayer newLayer = ANNLayer(layerID, weightInitHeuristic, activationFunction, layerInputs, layerOutputs);
-
-		newLayer.PrintLayerData();
 
 		ANNLayerConfigs.push_back(newLayer);
 	}
@@ -66,7 +60,7 @@ vector<ANNLayer> unpackANNLayerConfigs(JSON& ANNLayerDataJSON, double& numberOfA
 // @return ANNConfigObject of the troed JSON
 // 
 // */
-void UnpackToANNCongifObj(JSON& JSONANNConfigData) {
+ANNConfigObject UnpackToANNCongifObj(JSON& JSONANNConfigData) {
 
 	double numberOfANNLayers = GetValueByKeyWithType<double>(JSONANNConfigData, "numberOfLayers");
 
@@ -74,8 +68,30 @@ void UnpackToANNCongifObj(JSON& JSONANNConfigData) {
 
 	vector<ANNLayer> ANNLLayersConfigs = unpackANNLayerConfigs(layerData, numberOfANNLayers);
 
-	// Working on unpackign from here
+	string GenerationFunction = GetValueByKeyWithType<string>(JSONANNConfigData, "newGenerationCreationFunction");
+	
+	ANNConfigObject newANNConfigObj = ANNConfigObject(ANNLLayersConfigs, numberOfANNLayers, GenerationFunction);
 
+	return newANNConfigObj;
+}
+
+
+HyperParameterConfigObject UnpackToHyperParameterConfigObj(JSON& JSONHyperParameterConfigData) {
+	double maxNumberOfGenerations = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "maxNumberOfGenerations");
+	double maxGenerationSize = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "maxGenerationSize");
+	double startingFitnessThreshold = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "startingFitnessThreshold");
+	double startNewGenerationThreshold = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "startNewGenerationThreshold");
+	double generationFailureThreshold = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "generationFailureThreshold");
+
+	HyperParameterConfigObject newHyperParameterConfigObj = HyperParameterConfigObject(
+		maxNumberOfGenerations,
+		maxGenerationSize,
+		startingFitnessThreshold,
+		startNewGenerationThreshold,
+		generationFailureThreshold
+	);
+
+	return newHyperParameterConfigObj;
 }
 
 
@@ -94,15 +110,17 @@ void UnpackJSONToConfigObjects(JSON& JSONData) {
 	EnvironmentConfigObject EnvironmentConfig;
 	HyperParameterConfigObject HyperParameterConfig;
 
-	cout << "UnpackJSONToConfigObjects - > In the function" << endl;
-
 	string searchKey = "instanceID";
 
 	string InstanceID = GetValueByKeyWithType<string>(JSONData, searchKey);
 
 	JSON ANNConfigData = GetValueByKey(JSONData, "ANNConfig");
 
-	UnpackToANNCongifObj(ANNConfigData);
+	JSON HyperParameterData = GetValueByKey(JSONData, "HyperParameterConfig");
+
+	ANNConfig = UnpackToANNCongifObj(ANNConfigData);
+
+	HyperParameterConfig = UnpackToHyperParameterConfigObj(HyperParameterData);
 
 
 }

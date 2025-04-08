@@ -28,7 +28,7 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     PreProcessing/InputFileReadAndParse/InputFileParse.h 
     PreProcessing/InputFileReadAndParse/InputFileRead.h
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
-)
+ "InputSanitizationChecks/InputTypeChecking.cpp" "InputSanitizationChecks/InputTypeChecking.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
@@ -83,9 +83,9 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp )
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp  "InputSanitizationChecks/InputTypeChecking.cpp" "InputSanitizationChecks/InputTypeChecking.h")
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp )
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp  "InputSanitizationChecks/InputTypeChecking.cpp" "InputSanitizationChecks/InputTypeChecking.h")
 
 # Target Libs 
 target_link_libraries(JSON_Unpacking_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)

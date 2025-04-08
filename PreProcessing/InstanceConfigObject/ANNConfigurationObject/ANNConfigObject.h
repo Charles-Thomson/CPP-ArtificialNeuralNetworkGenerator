@@ -15,11 +15,12 @@ using std::vector;
 
 class ANNConfigObject {
 	private:
+		
+
+	public:
 		vector<ANNLayer> ANNLayersConfigs;
 		double numOfLayers;
 		string GenerationFunction;
-
-	public:
 
 		ANNConfigObject()
 			: numOfLayers(0), GenerationFunction("default") {
@@ -34,6 +35,8 @@ class ANNConfigObject {
 
 		// Destructor (if needed)
 		~ANNConfigObject() = default;
+
+		void PrintObjectAttributes() ;
 };
 
 #endif //ANN_CONFIG_OBJECT_H

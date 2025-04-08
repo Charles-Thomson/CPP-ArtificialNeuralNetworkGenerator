@@ -6,7 +6,7 @@
     "environmentStartCoordinates": [1, 1],
     "environmentMaxActionCount": 10
   },
-  "instanceConfig": {
+  "HyperParameterConfig": {
     "maxNumberOfGenerations": 10,
     "maxGenerationSize": 1,
     "startingFitnessThreshold": 1.2,

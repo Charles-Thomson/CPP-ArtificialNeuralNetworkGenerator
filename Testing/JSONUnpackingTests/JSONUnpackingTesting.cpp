@@ -12,16 +12,56 @@ using std::endl;
 
 using JSON = shared_ptr<JSONValue>;
 
-TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
-	cout << "Test running" << endl;
+
+//*
+// @ brief Compare two given string for equality
+// 
+// Compare two string representations of types. If the comparison fails, 
+// provide given SCOPED_TRACE message
+// 
+// @param scopedTraceMesasge message provided to SCOPED_TRACE, displayed of comparison failure
+// @param expected expected type - string representation
+// @param actual actual type - string representation
+// */
+//void typeComparisonHelper(const string& scopedTraceMesasge, const string& expected, const string& actual) {
+//	SCOPED_TRACE(scopedTraceMesasge);
+//	EXPECT_EQ(expected, actual);
+//}
+
+
+JSON ReadAndParseTestDataHelper() {
 	string TestData = readInputFile();
 	JSON TestJSON = ParseToJSON(TestData);
-	UnpackJSONToConfigObjects(TestJSON);
+
+	return TestJSON;
+}
 
 
 
-	ASSERT_EQ(1, 2);
+TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
+	
+	JSON TestJSON = ReadAndParseTestDataHelper();
 
+	JSON ANNConfigData = GetValueByKey(TestJSON, "ANNConfig");
+	ANNConfigObject testConfigObject = UnpackToANNCongifObj(ANNConfigData);
 
+	testConfigObject.PrintObjectAttributes();
+
+	// Test point 
+	ASSERT_TRUE(false);
+}
+
+TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
+	JSON TestJSON = ReadAndParseTestDataHelper();
+	JSON HyperParameterConfigData = GetValueByKey(TestJSON, "HyperParameterConfig");
+
+	HyperParameterConfigObject testConfigObject = UnpackToHyperParameterConfigObj(HyperParameterConfigData);
+
+	testConfigObject.PrintObjectAttributes();
+
+	//Test point 
+	ASSERT_TRUE(false);
 
 }
+
+
