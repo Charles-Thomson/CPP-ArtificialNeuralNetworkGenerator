@@ -65,3 +65,17 @@ TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
 }
 
 
+TEST(JSONUnpackingTesting, UnpackToEnvironmentConfigObj) {
+	JSON TestJSON = ReadAndParseTestDataHelper();
+	JSON EnvironmentJSONData = GetValueByKey(TestJSON, "environmentConfig");
+
+	EnvironmentConfigObject testConfigObject = UnpackToEnvironmentConfigObj(EnvironmentJSONData);
+
+	testConfigObject.PrintObjectAttributes();
+
+	//Test point 
+	ASSERT_TRUE(false);
+
+}
+
+

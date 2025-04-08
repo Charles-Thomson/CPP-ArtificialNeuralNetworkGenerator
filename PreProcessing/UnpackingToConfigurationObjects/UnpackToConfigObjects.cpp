@@ -60,15 +60,15 @@ vector<ANNLayer> unpackANNLayerConfigs(JSON& ANNLayerDataJSON, double& numberOfA
 // @return ANNConfigObject of the troed JSON
 // 
 // */
-ANNConfigObject UnpackToANNCongifObj(JSON& JSONANNConfigData) {
+ANNConfigObject UnpackToANNCongifObj(JSON& ANNConfigJSONData) {
 
-	double numberOfANNLayers = GetValueByKeyWithType<double>(JSONANNConfigData, "numberOfLayers");
+	double numberOfANNLayers = GetValueByKeyWithType<double>(ANNConfigJSONData, "numberOfLayers");
 
-	JSON layerData = GetValueByKey(JSONANNConfigData, "ANNLayers");
+	JSON layerData = GetValueByKey(ANNConfigJSONData, "ANNLayers");
 
 	vector<ANNLayer> ANNLLayersConfigs = unpackANNLayerConfigs(layerData, numberOfANNLayers);
 
-	string GenerationFunction = GetValueByKeyWithType<string>(JSONANNConfigData, "newGenerationCreationFunction");
+	string GenerationFunction = GetValueByKeyWithType<string>(ANNConfigJSONData, "newGenerationCreationFunction");
 	
 	ANNConfigObject newANNConfigObj = ANNConfigObject(ANNLLayersConfigs, numberOfANNLayers, GenerationFunction);
 
@@ -76,12 +76,12 @@ ANNConfigObject UnpackToANNCongifObj(JSON& JSONANNConfigData) {
 }
 
 
-HyperParameterConfigObject UnpackToHyperParameterConfigObj(JSON& JSONHyperParameterConfigData) {
-	double maxNumberOfGenerations = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "maxNumberOfGenerations");
-	double maxGenerationSize = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "maxGenerationSize");
-	double startingFitnessThreshold = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "startingFitnessThreshold");
-	double startNewGenerationThreshold = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "startNewGenerationThreshold");
-	double generationFailureThreshold = GetValueByKeyWithType<double>(JSONHyperParameterConfigData, "generationFailureThreshold");
+HyperParameterConfigObject UnpackToHyperParameterConfigObj(JSON& HyperParameterJSONData) {
+	double maxNumberOfGenerations = GetValueByKeyWithType<double>(HyperParameterJSONData, "maxNumberOfGenerations");
+	double maxGenerationSize = GetValueByKeyWithType<double>(HyperParameterJSONData, "maxGenerationSize");
+	double startingFitnessThreshold = GetValueByKeyWithType<double>(HyperParameterJSONData, "startingFitnessThreshold");
+	double startNewGenerationThreshold = GetValueByKeyWithType<double>(HyperParameterJSONData, "startNewGenerationThreshold");
+	double generationFailureThreshold = GetValueByKeyWithType<double>(HyperParameterJSONData, "generationFailureThreshold");
 
 	HyperParameterConfigObject newHyperParameterConfigObj = HyperParameterConfigObject(
 		maxNumberOfGenerations,
@@ -93,6 +93,32 @@ HyperParameterConfigObject UnpackToHyperParameterConfigObj(JSON& JSONHyperParame
 
 	return newHyperParameterConfigObj;
 }
+
+EnvironmentConfigObject UnpackToEnvironmentConfigObj(JSON& JSONEnvironmentConfigData) {
+
+	vector<vector<double>> environmentMap = GetValueByKeyWithType<vector<vector<double>>>(JSONEnvironmentConfigData, "environmentMap");
+
+	vector<double> environmentDimensions = GetValueByKeyWithType<vector<double>>(JSONEnvironmentConfigData, "environmentDimensions");
+
+
+	vector<double> environmentStartCoordinates = GetValueByKeyWithType<vector<double>>(JSONEnvironmentConfigData, "environmentStartCoordinates");
+
+	double environmentMaxActionCount = GetValueByKeyWithType<double>(JSONEnvironmentConfigData, "environmentMaxActionCount");
+
+
+	EnvironmentConfigObject mewEnvironmentConfigObj = EnvironmentConfigObject(
+		environmentMap,
+		environmentDimensions,
+		environmentStartCoordinates,
+		environmentMaxActionCount
+	);
+
+	return mewEnvironmentConfigObj; 
+
+}
+
+
+
 
 
 //*
@@ -114,14 +140,13 @@ void UnpackJSONToConfigObjects(JSON& JSONData) {
 
 	string InstanceID = GetValueByKeyWithType<string>(JSONData, searchKey);
 
-	JSON ANNConfigData = GetValueByKey(JSONData, "ANNConfig");
+	JSON ANNConfigJSONData = GetValueByKey(JSONData, "ANNConfig");
+	JSON HyperParameterJSONData = GetValueByKey(JSONData, "HyperParameterConfig");
+	JSON EnvironmentJSONData = GetValueByKey(JSONData, "environmentConfig");
 
-	JSON HyperParameterData = GetValueByKey(JSONData, "HyperParameterConfig");
-
-	ANNConfig = UnpackToANNCongifObj(ANNConfigData);
-
-	HyperParameterConfig = UnpackToHyperParameterConfigObj(HyperParameterData);
-
+	ANNConfig = UnpackToANNCongifObj(ANNConfigJSONData);
+	HyperParameterConfig = UnpackToHyperParameterConfigObj(HyperParameterJSONData);
+	EnvironmentConfig = UnpackToEnvironmentConfigObj(EnvironmentJSONData);
 
 }
 

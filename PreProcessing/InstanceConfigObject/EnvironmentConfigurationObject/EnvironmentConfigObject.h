@@ -12,8 +12,8 @@ using std::tuple;
 class EnvironmentConfigObject {
 private:
 	vector<vector<double>> environmentMap;
-	tuple<double, double> environmentMapDimensions;
-	tuple<double, double> environmentMapStartLocation;
+	vector<double> environmentMapDimensions;
+	vector<double> environmentMapStartLocation;
 	double maxActionsInEnvironment;
 		 
 public:
@@ -25,11 +25,11 @@ public:
 
 	EnvironmentConfigObject(
 		vector<vector<double>> environmentMap,
-		tuple<double, double> environmentMapDimensions,
-		tuple<double, double> environmentMapStartLocation,
+		vector<double> environmentMapDimensions,
+		vector<double> environmentMapStartLocation,
 		double maxActionsInEnvironment);
 
-
+	void PrintObjectAttributes();
 };
 
 

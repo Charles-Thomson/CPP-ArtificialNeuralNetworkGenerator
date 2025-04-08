@@ -2,7 +2,7 @@
   "instanceID": "Instance Example",
   "environmentConfig": {
     "environmentMap": [1, 2, 3, 4],
-    "environmentDimensions": 2,
+    "environmentDimensions": [2,2],
     "environmentStartCoordinates": [1, 1],
     "environmentMaxActionCount": 10
   },
