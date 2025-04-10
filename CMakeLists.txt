@@ -28,7 +28,11 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     PreProcessing/InputFileReadAndParse/InputFileParse.h 
     PreProcessing/InputFileReadAndParse/InputFileRead.h
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
- "InputSanitizationChecks/InputTypeChecking.cpp" "InputSanitizationChecks/InputTypeChecking.h")
+    PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h
+    TypeFormatting/VectorFormatting.cpp
+  )
+
+  
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
@@ -83,13 +87,18 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp  "InputSanitizationChecks/InputTypeChecking.cpp" "InputSanitizationChecks/InputTypeChecking.h")
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp   "InputSanitizationChecks/InputTypeChecking.h" "PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h")
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp  "InputSanitizationChecks/InputTypeChecking.cpp" "InputSanitizationChecks/InputTypeChecking.h")
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp   "InputSanitizationChecks/InputTypeChecking.h" "PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h" )
+
+add_executable(type_formatting_testing "Testing/TypeFormattingTesting/VectorFormattingTests.cpp")
+
+
 
 # Target Libs 
 target_link_libraries(JSON_Unpacking_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
 target_link_libraries(read_and_parse_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+target_link_libraries(type_formatting_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
 
 target_include_directories(JSON_Unpacking_testing PRIVATE
      ${CMAKE_SOURCE_DIR}
@@ -114,9 +123,22 @@ target_include_directories(read_and_parse_testing PRIVATE
     "${gtest_SOURCE_DIR}/include"
 )
 
+target_include_directories(type_formatting_testing PRIVATE
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/PreProcessing
+    ${CMAKE_SOURCE_DIR}/Testing
+    ${CMAKE_SOURCE_DIR}/TypeFormatting
+    ${CPP-JSONParser_SOURCE_DIR}/Structs
+    ${CPP-JSONParser_SOURCE_DIR}/FileReader
+    ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
+    ${googletest_SOURCE_DIR}/googletest/include  # Correct GTest include directory
+    "${gtest_SOURCE_DIR}/include"
+)
+
 
 target_compile_options(read_and_parse_testing PRIVATE /MDd)
 target_compile_options(JSON_Unpacking_testing PRIVATE /MDd)
+target_compile_options(type_formatting_testing PRIVATE /MDd)
 
 # Register the test
 add_test(NAME InputFileReadAndParse COMMAND read_and_parse_testing)
@@ -125,5 +147,9 @@ gtest_discover_tests(read_and_parse_testing)
 # Register the test
 add_test(NAME JSONUnpacking COMMAND JSON_Unpacking_testing)
 gtest_discover_tests(JSON_Unpacking_testing)
+
+# Register the test
+add_test(NAME TypeFormattingTesting COMMAND type_formatting_testing)
+gtest_discover_tests(type_formatting_testing)
 
 

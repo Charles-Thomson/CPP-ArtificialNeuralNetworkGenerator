@@ -6,6 +6,12 @@
 #include "Preprocessing/InputFileReadAndParse/InputFileRead.h"
 #include "Preprocessing/InputFileReadAndParse/InputFileParse.h"
 
+#include "../CPP-JSONParser.h"
+#include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h"
+#include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h"
+#include "../../PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.h"
+#include "../../PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.h"
+
 using std::cout;
 using std::string;
 using std::endl;
