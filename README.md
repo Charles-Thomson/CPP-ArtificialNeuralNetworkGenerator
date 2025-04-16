@@ -33,3 +33,12 @@ Introducing GPU acceleration
 Support for saving/loading trained models
 
 Enhancing the CPP-JSONParser to cover more complex use cases
+
+Currently implementing:
+
+Pre processing / staging of work items
+
+Next To be implemented:
+
+Work item Processing 
+
