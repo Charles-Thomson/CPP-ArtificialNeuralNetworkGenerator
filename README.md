@@ -26,13 +26,15 @@ Future improvements and features include:
 
 Implementing different activation functions
 
-Expanding training strategies (SGD, Adam, etc.)
-
-Introducing GPU acceleration
-
 Support for saving/loading trained models
 
-Enhancing the CPP-JSONParser to cover more complex use cases
+Current Bugs:
+
+- Parser Type passing
+  The passing of vector<> types to the parser does not correctly return.
+
+- Import of Parser - FIXED
+  Importing the single exposed .h file results in some file path related issues 
 
 Currently implementing:
 
