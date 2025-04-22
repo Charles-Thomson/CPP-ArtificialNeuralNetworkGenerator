@@ -1,46 +1,29 @@
 Neural Network Training Pipeline
-
 Overview
-
-This project is a C++ implementation of a pipeline for creating and training artificial neural networks. Built using CMake, the project aims to provide a structured workflow for defining, generating, and training neural networks efficiently.
+This project provides a C++ implementation of a modular pipeline for creating and training artificial neural networks (ANNs). Built using CMake, it offers a structured and extensible workflow to define architectures, configure parameters, and run training processes efficiently.
 
 Features
+JSON Configuration Parser
+Easily define neural network architectures and training parameters using JSON configuration files.
 
-JSON Parser: Parses configuration files for defining neural network architectures and training parameters.
+Network Generation Pipeline
+Automatically generates neural networks based on the user-defined configuration files.
 
-Generation Pipeline: Handles the structured creation of neural networks based on user-defined configurations.
-
-Training Pipeline: Implements the training mechanism for optimizing neural network performance.
+Training Pipeline
+Includes core training logic and optimization routines to improve neural network performance.
 
 Prerequisites
+Before building the project, ensure the following dependencies are installed:
 
-To build and run the project, ensure you have the following dependencies installed:
+A C++ compiler that supports C++17 or later
 
-C++ Compiler (C++17 or later recommended)
+CMake version 3.10 or higher
 
-CMake (version 3.10 or later)
 
-Roadmap
+Development Roadmap
 
-Future improvements and features include:
-
-Implementing different activation functions
-
-Support for saving/loading trained models
-
-Current Bugs:
-
-- Parser Type passing
-  The passing of vector<> types to the parser does not correctly return.
-
-- Import of Parser - FIXED
-  Importing the single exposed .h file results in some file path related issues 
-
-Currently implementing:
-
-Pre processing / staging of work items
-
-Next To be implemented:
-
-Work item Processing 
-
+Date	Milestone
+2025-04-30	Initial project setup, unpacking logic, and structure defined
+2025-05-07	Core pipeline implemented
+2025-05-14	Pipeline unit tests created
+2025-05-21	ANN test suite outlined; initial test components implemented
