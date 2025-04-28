@@ -19,8 +19,31 @@ private:
 	double layerOutputs;
 
 public:
+
+
 	ANNLayer();
 	ANNLayer(string _layerID, string _weightInitFunction, string _activationFunction, double _layerInputs, double _layerOutputs);
+
+	string getLayerID() const;
+	void setLayerID(string newLayerID);
+
+	string getWeightInitFunction() const;
+	void setWeightInitFunction(string newWeightInitFunction) ;
+
+	string getActivationFunction() const;
+	void setActivationFunction(string newActivationFunction);
+
+	double getLayerInputs() const;
+	void setLayerInputs(double newLayerInputs);
+
+	double getLayerOutputs() const;
+	void setLayerOutputs(double newLayerOutputs);
+
+
+
+
+
+
 
 
 	void PrintLayerData() {

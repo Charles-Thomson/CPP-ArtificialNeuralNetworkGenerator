@@ -1,11 +1,11 @@
-#include <string>
-#include "../CPP-JSONParser.h"
+#include "cppJSONParser.h"
 #include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h"
 #include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h"
 #include "../../PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.h"
 #include "../../PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.h"
 #include "UnpackToConfigObjects.h"
 #include <format>
+#include <string>
 
 using JSON = shared_ptr<JSONValue>;
 
@@ -13,10 +13,6 @@ using std::string;
 using std::cout;
 using std::endl;
 using std::format;
-
-
-
-
 
 
 //*
@@ -103,8 +99,9 @@ EnvironmentConfigObject UnpackToEnvironmentConfigObj(JSON& JSONEnvironmentConfig
 
 	vector<vector<double>> environmentMap = GetValueByKeyWithType<vector<vector<double>>>(JSONEnvironmentConfigData, "environmentMap");
 
-	vector<double> environmentDimensions = GetValueByKeyWithType<vector<double>>(JSONEnvironmentConfigData, "environmentDimensions");
+	cout << "UnpackToEnvironmentConfigObj -> Env map size : " << environmentMap.size() << endl;
 
+	vector<double> environmentDimensions = GetValueByKeyWithType<vector<double>>(JSONEnvironmentConfigData, "environmentDimensions");
 
 	vector<double> environmentStartCoordinates = GetValueByKeyWithType<vector<double>>(JSONEnvironmentConfigData, "environmentStartCoordinates");
 

@@ -4,8 +4,7 @@
 
 #include "../../PreProcessing/InputFileReadAndParse/InputFileRead.h"
 #include "../../PreProcessing/InputFileReadAndParse/InputFileParse.h"
-#include "../CPP-JSONParser.h"
-#include "JSONValueStruct.h"
+#include "cppJSONParser.h"
 
 using std::cout;
 using std::endl;

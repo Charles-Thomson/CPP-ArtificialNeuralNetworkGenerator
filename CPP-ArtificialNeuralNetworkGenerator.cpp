@@ -7,9 +7,7 @@
 #include "PreProcessing/InputFileReadAndParse/InputFileParse.h"
 
 
-#include "CPP-JSONParser.h"
-#include "JSONValueStruct.h"
-#include "FileReader.h"
+#include "cppJSONParser.h"
 #include "CheckIfContainsKey.h"
 
 #include <iostream>

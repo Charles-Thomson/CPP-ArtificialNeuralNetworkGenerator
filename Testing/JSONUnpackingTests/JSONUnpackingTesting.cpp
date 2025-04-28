@@ -53,12 +53,25 @@ TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
 
 	testConfigObject.PrintObjectAttributes();
 
+	ASSERT_FALSE(testConfigObject.GenerationFunction.empty()) << "Attribute can not be null/empty -> GenerationFunction" << endl;
+	ASSERT_FALSE(testConfigObject.numOfLayers < 1) << "Attribute can not be zero -> numOfLayers" << endl;
+	ASSERT_FALSE(testConfigObject.ANNLayersConfigs.size() < 1) << "Attribute can not be zero -> ANNLayersConfigs" << endl;
+	ASSERT_EQ(testConfigObject.ANNLayersConfigs.size(), testConfigObject.numOfLayers);
+
+	for (ANNLayer cofigLayer : testConfigObject.ANNLayersConfigs) {
+		ASSERT_FALSE(configLayer.layerID.empty()) << "Layer Attribute can not be empty -> LayerID" << endl;
+	
+	
+	}
+
+
 	// Test point 
-	ASSERT_TRUE(false);
+	ASSERT_FALSE(false);
 }
 
 TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
 	JSON TestJSON = ReadAndParseTestDataHelper();
+
 	JSON HyperParameterConfigData = GetValueByKey(TestJSON, "HyperParameterConfig");
 
 	HyperParameterConfigObject testConfigObject = UnpackToHyperParameterConfigObj(HyperParameterConfigData);

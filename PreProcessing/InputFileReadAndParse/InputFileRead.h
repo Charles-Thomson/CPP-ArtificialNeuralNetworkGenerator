@@ -1,8 +1,7 @@
 #ifndef INPUT_FILE_READ
 #define INPUT_FILE_READ
 
-#include "FileReader.h"
-#include "JSONValueStruct.h"
+#include "cppJSONParser.h"
 #include <string>
 
 using JSON = shared_ptr<JSONValue>;

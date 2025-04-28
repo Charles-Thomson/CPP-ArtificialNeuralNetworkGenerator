@@ -42,6 +42,7 @@ void EnvironmentConfigObject::PrintObjectAttributes() {
 	};
 	cout << " " << endl; // Formatting
 	cout << "environmentMap" << endl;
+	cout << "Environment Map Rows : " << environmentMap.size() << endl;
 	cout << " " << endl; // Formatting
 	for (vector<double>& row : environmentMap) {
 		for (auto& val : row) {

@@ -1,4 +1,6 @@
 #include "ANNLayerObject.h"
+#include "ANNLayerObject.h"
+#include "ANNLayerObject.h"
 
 
 #include <string>
@@ -26,5 +28,60 @@ ANNLayer::ANNLayer(
 	void PrintLayerData();
 
 }
+
+string ANNLayer::getLayerID() const 
+{
+	return layerID;
+}
+
+void ANNLayer::setLayerID(string newLayerID)
+{
+	layerID = newLayerID;
+}
+
+string ANNLayer::getWeightInitFunction() const 
+{
+	return weightInitFunction;
+}
+
+void ANNLayer::setWeightInitFunction(string newWeightInitFunction) 
+{
+	weightInitFunction = newWeightInitFunction;
+
+}
+
+string ANNLayer::getActivationFunction() const
+{
+	return weightInitFunction;
+}
+
+void ANNLayer::setActivationFunction(string newActivationFunction)
+{
+	activationFunction = newActivationFunction;
+
+}
+
+double ANNLayer::getLayerInputs() const 
+{
+	return layerInputs;
+}
+
+void ANNLayer::setLayerInputs(double newLayerInputs) 
+{
+	layerInputs = newLayerInputs;
+}
+
+double ANNLayer::getLayerOutputs() const
+{
+	return layerOutputs;
+}
+
+void ANNLayer::setLayerOutputs(double newLayerOutputs) {
+	layerOutputs = newLayerOutputs;
+
+
+}
+
+
 
 

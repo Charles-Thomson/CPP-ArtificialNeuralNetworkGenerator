@@ -1,8 +1,10 @@
-#include "FileReader.h"
-#include "JSONValueStruct.h"
+
+#include "cppJSONParser.h"
+
+//#include "FileReader.h"
+//#include "JSONValueStruct.h"
 #include <string>
 
-using JSON = shared_ptr<JSONValue>;
 using std::string;
 
 //*
