@@ -69,7 +69,12 @@ TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
 	testConfigObject.PrintObjectAttributes();
 }
 
+void TestEnvironmentMapLayers(vector<double> mapLayer, double expectedSize)  {
+	
+	ASSERT_EQ(mapLayer.size(), expectedSize) << " Map layer size is rgeater than declared Environment Dimension" << endl;
+}
 
+// NOTE ** Some of these tests also fall under saniation checking of the input file
 TEST(JSONUnpackingTesting, UnpackToEnvironmentConfigObj) {
 	JSON TestJSON = ReadAndParseTestDataHelper();
 	JSON EnvironmentJSONData = GetValueByKey(TestJSON, "environmentConfig");
@@ -78,9 +83,26 @@ TEST(JSONUnpackingTesting, UnpackToEnvironmentConfigObj) {
 
 	testConfigObject.PrintObjectAttributes();
 
-	//Test point 
-	ASSERT_TRUE(false);
+	ASSERT_GT(testConfigObject.getMaxActionsInEnvironment(), 0) << "Attribute must be greater than zero -> MaxActionsInEnvironment" << endl;
 
+	vector<double> envDimensions = testConfigObject.getEnvironmentMapStartLocation();
+	ASSERT_EQ(envDimensions.size(), 2) << "Atribute must be of size 2  -> environmentMapDimensions" << endl;
+	ASSERT_GT(envDimensions[0], 0) << "Attribute must be greater than zero -> environmentMapDimensions(x)" << endl;
+	ASSERT_GT(envDimensions[1], 0) << "Attribute must be greater than zero -> environmentMapDimensions(y)" << endl;
+
+	vector<double> envStartLocation = testConfigObject.getEnvironmentMapStartLocation();
+	ASSERT_EQ(envStartLocation.size(), 2) << "Atribute must be of size 2  -> environmentMapStartLocation" << endl;
+	ASSERT_LE(envStartLocation[0], envDimensions[0]) << "Start Location(x) must be less than the max environment dimension(x) -> environmentMapStartLocation" << endl;
+	ASSERT_LE(envStartLocation[1], envDimensions[1]) << "Start Location(y) must be less than the max environment dimension(y) -> environmentMapStartLocation" << endl;
+
+	vector<vector<double>> envMap = testConfigObject.getEnvironmentMap();
+
+	ASSERT_GT(envMap.size(), 0) << "Environment map must be gretaer than zero -> environmentMap" << endl;
+	ASSERT_EQ(envMap.size(), envDimensions[0]) << "Envionment Map and delclared Environment Map size are not equal -> environmentMap" << endl;
+	
+	for (vector<double> mapLayer : envMap) {
+		TestEnvironmentMapLayers(mapLayer, envDimensions[1]);
+	}
 }
 
 
