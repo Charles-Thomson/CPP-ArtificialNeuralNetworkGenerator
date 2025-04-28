@@ -6,7 +6,7 @@
 #include "Preprocessing/InputFileReadAndParse/InputFileRead.h"
 #include "Preprocessing/InputFileReadAndParse/InputFileParse.h"
 
-#include "../CPP-JSONParser.h"
+
 #include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h"
 #include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h"
 #include "../../PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.h"
@@ -18,23 +18,6 @@ using std::endl;
 
 using JSON = shared_ptr<JSONValue>;
 
-
-//*
-// @ brief Compare two given string for equality
-// 
-// Compare two string representations of types. If the comparison fails, 
-// provide given SCOPED_TRACE message
-// 
-// @param scopedTraceMesasge message provided to SCOPED_TRACE, displayed of comparison failure
-// @param expected expected type - string representation
-// @param actual actual type - string representation
-// */
-//void typeComparisonHelper(const string& scopedTraceMesasge, const string& expected, const string& actual) {
-//	SCOPED_TRACE(scopedTraceMesasge);
-//	EXPECT_EQ(expected, actual);
-//}
-
-
 JSON ReadAndParseTestDataHelper() {
 	string TestData = readInputFile();
 	JSON TestJSON = ParseToJSON(TestData);
@@ -42,7 +25,13 @@ JSON ReadAndParseTestDataHelper() {
 	return TestJSON;
 }
 
-
+void ValidateANNLayer(const ANNLayer& annLayer) {
+	ASSERT_FALSE(annLayer.getLayerID().empty()) << "Layer Attribute can not be empty -> LayerID" << endl;
+	ASSERT_FALSE(annLayer.getWeightInitFunction().empty()) << "Layer Attribute can not be empty -> weightInitFunction" << endl;
+	ASSERT_FALSE(annLayer.getActivationFunction().empty()) << "Layer Attribute can not be empty -> activationFunction" << endl;
+	ASSERT_GT(annLayer.getLayerInputs(), 0) << "Layer Attribute must be greater than zero -> layerInputs" << endl;
+	ASSERT_GT(annLayer.getLayerOutputs(), 0) << "Layer Attribute must be greater than zero -> layerOutputs" << endl;
+}
 
 TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
 	
@@ -54,19 +43,14 @@ TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
 	testConfigObject.PrintObjectAttributes();
 
 	ASSERT_FALSE(testConfigObject.GenerationFunction.empty()) << "Attribute can not be null/empty -> GenerationFunction" << endl;
-	ASSERT_FALSE(testConfigObject.numOfLayers < 1) << "Attribute can not be zero -> numOfLayers" << endl;
-	ASSERT_FALSE(testConfigObject.ANNLayersConfigs.size() < 1) << "Attribute can not be zero -> ANNLayersConfigs" << endl;
+
+	ASSERT_GT(testConfigObject.numOfLayers, 0) << "Attribute must be greater than zero -> numOfLayers" << endl;
+	ASSERT_GT(testConfigObject.ANNLayersConfigs.size(), 0) << "Attribute must be greater than zero -> ANNLayersConfigs" << endl;
 	ASSERT_EQ(testConfigObject.ANNLayersConfigs.size(), testConfigObject.numOfLayers);
 
-	for (ANNLayer cofigLayer : testConfigObject.ANNLayersConfigs) {
-		ASSERT_FALSE(configLayer.layerID.empty()) << "Layer Attribute can not be empty -> LayerID" << endl;
-	
-	
+	for (ANNLayer annLayer : testConfigObject.ANNLayersConfigs) {
+		ValidateANNLayer(annLayer);
 	}
-
-
-	// Test point 
-	ASSERT_FALSE(false);
 }
 
 TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
@@ -76,11 +60,13 @@ TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
 
 	HyperParameterConfigObject testConfigObject = UnpackToHyperParameterConfigObj(HyperParameterConfigData);
 
+	ASSERT_GT(testConfigObject.maxNumberOfGenerations, 0) << "Attribute must be greater than zero -> maxNumberOfGenerations" << endl;
+	ASSERT_GT(testConfigObject.maxGenerationSize, 0) << "Attribute must be greater than zero -> maxGenerationSize" << endl;
+	ASSERT_GT(testConfigObject.startingFitnessThreshold, 0) << "Attribute must be greater than zero -> startingFitnessThreshold" << endl;
+	ASSERT_GT(testConfigObject.startNewGenerationThreshold, 0) << "Attribute must be greater than zero -> startNewGenerationThreshold" << endl;
+	ASSERT_GT(testConfigObject.generationFailureThreshold, 0) << "Attribute must be greater than zero -> generationFailureThreshold" << endl;
+
 	testConfigObject.PrintObjectAttributes();
-
-	//Test point 
-	ASSERT_TRUE(false);
-
 }
 
 

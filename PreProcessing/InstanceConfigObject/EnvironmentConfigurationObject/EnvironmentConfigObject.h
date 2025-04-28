@@ -30,6 +30,23 @@ public:
 		double maxActionsInEnvironment);
 
 	void PrintObjectAttributes();
+
+
+
+	vector<vector<double>> getEnvironmentMap() const;
+	void setEnvironmentMap(vector<vector<double>> newEnvironmentMap);
+
+	vector<double> getEnvironmentMapDimensions() const;
+	void setEnvironmentMapDimensions(vector<double> newEnvironmentMapDimensions);
+
+	vector<double> getEnvironmentMapStartLocation() const;
+	void setEnvironmentMapStartLocation(vector<double> newEnvironmentMapStartLocation);
+
+	double getMaxActionsInEnvironment() const;
+	void setMaxActionsInEnvironment(double newMaxActionsInEnvironment);
+
+
+
 };
 
 

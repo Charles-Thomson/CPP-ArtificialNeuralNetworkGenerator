@@ -23,6 +23,55 @@ EnvironmentConfigObject::EnvironmentConfigObject(
 	environmentMapStartLocation(_environmentMapStartLocation),
 	maxActionsInEnvironment(_maxActionsInEnvironment) {}
 
+
+
+vector<vector<double>> EnvironmentConfigObject::getEnvironmentMap() const
+{
+	return environmentMap;
+}
+
+void EnvironmentConfigObject::setEnvironmentMap(vector<vector<double>> newEnvironmentMap)
+{
+	environmentMap = newEnvironmentMap;
+}
+
+vector<double> EnvironmentConfigObject::getEnvironmentMapDimensions() const
+{
+	return environmentMapDimensions;
+}
+
+void EnvironmentConfigObject::setEnvironmentMapDimensions(vector<double> newEnvironmentMapDimensions)
+{
+	environmentMapDimensions = newEnvironmentMapDimensions;
+}
+
+vector<double> EnvironmentConfigObject::getEnvironmentMapStartLocation() const
+{
+	return environmentMapStartLocation;
+}
+
+void EnvironmentConfigObject::setEnvironmentMapStartLocation(vector<double> newEnvironmentMapStartLocation)
+{
+	environmentMapStartLocation = newEnvironmentMapStartLocation;
+}
+
+double EnvironmentConfigObject::getMaxActionsInEnvironment() const
+{
+	return maxActionsInEnvironment;
+}
+
+void EnvironmentConfigObject::setMaxActionsInEnvironment(double newMaxActionsInEnvironment)
+{
+	maxActionsInEnvironment = newMaxActionsInEnvironment;
+
+}
+
+
+
+
+
+
+
 // Issue relating to the unpacking of the array 
 // I expect the issue is due to the cector storing pointers
 // May have to convert the vector<pointer> to vector<held type>
