@@ -17,6 +17,8 @@
 #include <list>
 #include <variant>
 #include <sstream>
+#include <InstanceConfigurationObject/InstanceConfigObject.h>
+#include <UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp>
 
 using std::tuple;
 using std::string;
@@ -42,11 +44,10 @@ using JSON = shared_ptr<JSONValue>;
 // *//
 bool PreProcessing() {
 	string InputFileString = readInputFile();
-	JSON InputFileJSON = parserInputToJSON(InputFileString);
+	JSON JSONConfigData = parserInputToJSON(InputFileString);
 
 
-	// parse out to objects
-
+	InstanceConfigObject newInstanceConfig = UnpackJSONToConfigObjects(JSONConfigData);
 
 	return false;
 }

@@ -22,7 +22,13 @@ private:
 	HyperParameterConfigObject HyperParameterConfig;
 
 public:
-	InstanceConfigObject();
+
+	InstanceConfigObject(
+		ANNConfigObject _ANNConfigObject,
+		EnvironmentConfigObject _EnvironmentConfigObject,
+		HyperParameterConfigObject _HyperParameterConfigObject
+		
+	);
 
 	void setANNConfig(ANNConfigObject obj);
 

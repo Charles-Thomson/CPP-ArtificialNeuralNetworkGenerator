@@ -18,6 +18,10 @@ using std::endl;
 
 using JSON = shared_ptr<JSONValue>;
 
+//*
+// @ brief Helper to Read and Parse input data
+// 
+// */
 JSON ReadAndParseTestDataHelper() {
 	string TestData = readInputFile();
 	JSON TestJSON = ParseToJSON(TestData);
@@ -25,6 +29,10 @@ JSON ReadAndParseTestDataHelper() {
 	return TestJSON;
 }
 
+//*
+// @ brief Helper to validate ANNLayers
+// 
+// */
 void ValidateANNLayer(const ANNLayer& annLayer) {
 	ASSERT_FALSE(annLayer.getLayerID().empty()) << "Layer Attribute can not be empty -> LayerID" << endl;
 	ASSERT_FALSE(annLayer.getWeightInitFunction().empty()) << "Layer Attribute can not be empty -> weightInitFunction" << endl;
@@ -33,6 +41,10 @@ void ValidateANNLayer(const ANNLayer& annLayer) {
 	ASSERT_GT(annLayer.getLayerOutputs(), 0) << "Layer Attribute must be greater than zero -> layerOutputs" << endl;
 }
 
+//*
+// @ brief Testing unpacking of JSON to ANNConfigObj
+// 
+// */
 TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
 	
 	JSON TestJSON = ReadAndParseTestDataHelper();
@@ -53,6 +65,10 @@ TEST(JSONUnpackingTesting, UnpackToANNConfigObj) {
 	}
 }
 
+//*
+// @ brief Testing unpacking of JSON to HyperParameterConfigObj
+// 
+// */
 TEST(JSONUnpackingTesting, UnpackToHyperParameterConfigObj) {
 	JSON TestJSON = ReadAndParseTestDataHelper();
 
@@ -74,7 +90,10 @@ void TestEnvironmentMapLayers(vector<double> mapLayer, double expectedSize)  {
 	ASSERT_EQ(mapLayer.size(), expectedSize) << " Map layer size is rgeater than declared Environment Dimension" << endl;
 }
 
-// NOTE ** Some of these tests also fall under saniation checking of the input file
+//*
+// @ brief Testing unpacking of JSON to EnvironmentConfigObj
+// 
+// */
 TEST(JSONUnpackingTesting, UnpackToEnvironmentConfigObj) {
 	JSON TestJSON = ReadAndParseTestDataHelper();
 	JSON EnvironmentJSONData = GetValueByKey(TestJSON, "environmentConfig");
@@ -85,7 +104,7 @@ TEST(JSONUnpackingTesting, UnpackToEnvironmentConfigObj) {
 
 	ASSERT_GT(testConfigObject.getMaxActionsInEnvironment(), 0) << "Attribute must be greater than zero -> MaxActionsInEnvironment" << endl;
 
-	vector<double> envDimensions = testConfigObject.getEnvironmentMapStartLocation();
+	vector<double> envDimensions = testConfigObject.getEnvironmentMapDimensions();
 	ASSERT_EQ(envDimensions.size(), 2) << "Atribute must be of size 2  -> environmentMapDimensions" << endl;
 	ASSERT_GT(envDimensions[0], 0) << "Attribute must be greater than zero -> environmentMapDimensions(x)" << endl;
 	ASSERT_GT(envDimensions[1], 0) << "Attribute must be greater than zero -> environmentMapDimensions(y)" << endl;

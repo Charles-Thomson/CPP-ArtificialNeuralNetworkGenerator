@@ -9,7 +9,13 @@
 using std::string;
 using std::vector;
 
-InstanceConfigObject::InstanceConfigObject() {}
+
+InstanceConfigObject::InstanceConfigObject(ANNConfigObject _ANNConfigObject, EnvironmentConfigObject _EnvironmentConfigObject, HyperParameterConfigObject _HyperParameterConfigObject) 
+	: ANNConfig(_ANNConfigObject), 
+	  EnvConfig(_EnvironmentConfigObject),
+	  HyperParameterConfig(_HyperParameterConfigObject)
+{
+}
 
 void InstanceConfigObject::setANNConfig(ANNConfigObject obj) {
 	ANNConfig = obj;
