@@ -23,10 +23,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionFactoryTest) {
 	auto hello = FunctionFactory::create<LinearActivation>();
 
 	hello(2.2);
-	cout << "In the test function" << endl;
 
-
-	ASSERT_EQ(1, 2);
 }
 
 
@@ -59,8 +56,109 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_LinearActivation) {
 	double resultB = activationFunction(testValueB);
 	double resultC = activationFunction(testValueC);
 
-	ValueEqualityTestHelper(resultA, testValueA);
-	ValueEqualityTestHelper(resultB, testValueB);
-	ValueEqualityTestHelper(resultC, testValueC);
-	
+	ValueEqualityTestHelper(testValueA, resultA);
+	ValueEqualityTestHelper(testValueB, resultB);
+	ValueEqualityTestHelper(testValueC, resultC);
+}
+
+//*
+// @ brief Test Rectified Linear Activation Function (ReLU)
+// Expected result: 
+// test value should return unchanged unless below 0.0 threshold
+// Below Threshold values should be returned as 0.0
+// */
+TEST(ActivationFunctionTesting, ActivationFunctionsTest_RectifiedLinearActivation) {
+	auto activationFunction = FunctionFactory::create<RectifiedLinearActivation>();
+
+	double testValueA = 2;
+	double testValueB = 2.2;
+	double testValueC = -2;
+
+	double resultA = activationFunction(testValueA);
+	double resultB = activationFunction(testValueB);
+	double resultC = activationFunction(testValueC);
+
+	ValueEqualityTestHelper(testValueA, resultA);
+	ValueEqualityTestHelper(testValueB, resultB);
+	ValueEqualityTestHelper(0.0, resultC);
+}
+
+//*
+// @ brief Test Leaky Rectified Linear Activation Function (LREL)
+// 
+// Expected result: 
+// test value should return unchanged unless below 0.0 threshold
+// Below Threshold values should be returned as value * 0.01
+// 
+// */
+TEST(ActivationFunctionTesting, ActivationFunctionsTest_LeakyRectifiedLinearActivation) {
+	auto activationFunction = FunctionFactory::create<LeakyRectifiedLinearActivation>();
+
+	double testValueA = 2;
+	double testValueB = 2.2;
+	double testValueC = -2;
+
+	double resultA = activationFunction(testValueA);
+	double resultB = activationFunction(testValueB);
+	double resultC = activationFunction(testValueC);
+
+	ValueEqualityTestHelper(testValueA, resultA);
+	ValueEqualityTestHelper(testValueB, resultB);
+	ValueEqualityTestHelper(-0.02, resultC);
+}
+
+
+//*
+// brief Test Sigmoid Activation Function
+// Expected result:
+// Test values normalized to between 0 and 1 
+// */
+TEST(ActivationFunctionTesting, ActivationFunctionsTest_SigmoidActivation) {
+	auto activationFunction = FunctionFactory::create<SigmoidActivation>();
+
+	double testValueA = 2;
+	double testValueB = 2.2;
+	double testValueC = -2;
+	double testValueD = 20;
+
+	double resultA = activationFunction(testValueA);
+	double resultB = activationFunction(testValueB);
+	double resultC = activationFunction(testValueC);
+	double resultD = activationFunction(testValueD);
+
+	ValueEqualityTestHelper(0.881, resultA);
+	ValueEqualityTestHelper(0.9, resultB);
+	ValueEqualityTestHelper(0.119 ,resultC);
+	ValueEqualityTestHelper(1, resultD);
+
+
+}
+//*
+// @ brief Test Hyperbolid Tangent Activation function
+// Expected result:
+// 
+// Test values normalized between -1 and 1
+
+// */
+TEST(ActivationFunctionTesting, ActivationFunctionsTest_HyperbolicTangentActivation) {
+	auto activationFunction = FunctionFactory::create<HyperbolicTangentActivation>();
+
+	double testValueA = 2;
+	double testValueB = 2.2;
+	double testValueC = -2;
+	double testValueD = 20;
+
+	double resultA = activationFunction(testValueA);
+	double resultB = activationFunction(testValueB);
+	double resultC = activationFunction(testValueC);
+	double resultD = activationFunction(testValueD);
+
+	ValueEqualityTestHelper(0.964, resultA);
+	ValueEqualityTestHelper(0.975, resultB);
+	ValueEqualityTestHelper(-0.9640, resultC);
+	ValueEqualityTestHelper(1.0, resultD);
+
+
+
+
 }

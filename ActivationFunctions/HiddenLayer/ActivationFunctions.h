@@ -20,6 +20,24 @@ public:
 
 };
 
+class LeakyRectifiedLinearActivation {
+public :
+    FunctionType operator()() const;
+
+
+};
+
+class SigmoidActivation {
+public:
+    FunctionType operator()() const;
+};
+
+class HyperbolicTangentActivation {
+public:
+    FunctionType operator()() const;
+
+};
+
 
 
 
