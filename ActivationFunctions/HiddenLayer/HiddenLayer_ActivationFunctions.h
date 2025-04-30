@@ -1,7 +1,7 @@
-#ifndef ACTIVATION_FUNCTION_H
-#define ACTIVATION_FUNCTION_H
+#ifndef HIDDEN_LAYER_ACTIVATION_FUNCTION_H
+#define HIDDEN_LAYER_ACTIVATION_FUNCTION_H
 
-#include "ActivationFunctionsFactory.h"
+#include "HiddenLayer_ActivationFunctionsFactory.h"
 
 #include <functional>
 
@@ -41,4 +41,4 @@ public:
 
 
 
-#endif // !ACTIVATION_FUNCTION_H
+#endif // !HIDDEN_LAYER_ACTIVATION_FUNCTION_H

@@ -3,7 +3,7 @@
 #include <string>
 #include <format>
 
-#include "ActivationFunctions/HiddenLayer/ActivationFunctionsFactory.h"
+#include "ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.h"
 
 using std::cout;
 using std::endl;
@@ -20,7 +20,7 @@ using std::format;
 // 
 // */
 TEST(ActivationFunctionTesting, ActivationFunctionFactoryTest) {
-	auto hello = FunctionFactory::create<LinearActivation>();
+	auto hello = HiddenLayerActivation_FunctionFactory::create<LinearActivation>();
 
 	hello(2.2);
 
@@ -46,7 +46,7 @@ void ValueEqualityTestHelper(double expectedValue, double actualValue) {
 // i.e testValueA == reusltValueA
 // */
 TEST(ActivationFunctionTesting, ActivationFunctionsTest_LinearActivation) {
-	auto activationFunction = FunctionFactory::create<LinearActivation>();
+	auto activationFunction = HiddenLayerActivation_FunctionFactory::create<LinearActivation>();
 
 	double testValueA = 2;
 	double testValueB = 2.2;
@@ -68,7 +68,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_LinearActivation) {
 // Below Threshold values should be returned as 0.0
 // */
 TEST(ActivationFunctionTesting, ActivationFunctionsTest_RectifiedLinearActivation) {
-	auto activationFunction = FunctionFactory::create<RectifiedLinearActivation>();
+	auto activationFunction = HiddenLayerActivation_FunctionFactory::create<RectifiedLinearActivation>();
 
 	double testValueA = 2;
 	double testValueB = 2.2;
@@ -92,7 +92,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_RectifiedLinearActivatio
 // 
 // */
 TEST(ActivationFunctionTesting, ActivationFunctionsTest_LeakyRectifiedLinearActivation) {
-	auto activationFunction = FunctionFactory::create<LeakyRectifiedLinearActivation>();
+	auto activationFunction = HiddenLayerActivation_FunctionFactory::create<LeakyRectifiedLinearActivation>();
 
 	double testValueA = 2;
 	double testValueB = 2.2;
@@ -114,7 +114,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_LeakyRectifiedLinearActi
 // Test values normalized to between 0 and 1 
 // */
 TEST(ActivationFunctionTesting, ActivationFunctionsTest_SigmoidActivation) {
-	auto activationFunction = FunctionFactory::create<SigmoidActivation>();
+	auto activationFunction = HiddenLayerActivation_FunctionFactory::create<SigmoidActivation>();
 
 	double testValueA = 2;
 	double testValueB = 2.2;
@@ -141,7 +141,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_SigmoidActivation) {
 
 // */
 TEST(ActivationFunctionTesting, ActivationFunctionsTest_HyperbolicTangentActivation) {
-	auto activationFunction = FunctionFactory::create<HyperbolicTangentActivation>();
+	auto activationFunction = HiddenLayerActivation_FunctionFactory::create<HyperbolicTangentActivation>();
 
 	double testValueA = 2;
 	double testValueB = 2.2;
@@ -154,7 +154,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_HyperbolicTangentActivat
 	double resultD = activationFunction(testValueD);
 
 	ValueEqualityTestHelper(0.964, resultA);
-	ValueEqualityTestHelper(0.975, resultB);
+	ValueEqualityTestHelper(0.976, resultB);
 	ValueEqualityTestHelper(-0.9640, resultC);
 	ValueEqualityTestHelper(1.0, resultD);
 

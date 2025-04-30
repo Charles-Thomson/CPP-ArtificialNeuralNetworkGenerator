@@ -1,4 +1,4 @@
-#include "ActivationFunctions.h"
+#include "HiddenLayer_ActivationFunctions.h"
 
 #include <iostream>
 #include <algorithm>
@@ -86,7 +86,7 @@ FunctionType SigmoidActivation::operator()() const {
 // */ 
 FunctionType HyperbolicTangentActivation::operator()()const {
 	return [](double value) -> double {
-		double sumResult = (exp(value) - exp(value)) / (exp(value) + exp(value));
+		double sumResult = tanh(value);
 		double roundedResult = round(sumResult * 1000) / 1000;
 		return roundedResult;
 		};

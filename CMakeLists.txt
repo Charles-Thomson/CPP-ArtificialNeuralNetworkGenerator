@@ -30,11 +30,14 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h
     
-    ActivationFunctions/HiddenLayer/ActivationFunctionsFactory.cpp 
-    ActivationFunctions/HiddenLayer/ActivationFunctions.h 
-    ActivationFunctions/HiddenLayer/ActivationFunctions.cpp
-    ActivationFunctions/HiddenLayer/ActivationFunctionsFactory.h
-   )
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.h
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.cpp
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.h
+
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp 
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h)
 
   
 
@@ -92,11 +95,11 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp)
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp" "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h" "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h")
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp )
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp  "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp" "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h" "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h")
 
-add_executable(activation_function_testing Testing/ActivationFunctionTests/ActivationFunctionFactoryTests.cpp )
+add_executable(activation_function_testing Testing/ActivationFunctionTests/ActivationFunctionFactoryTests.cpp  "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp" "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h" "ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h")
 
 
 
