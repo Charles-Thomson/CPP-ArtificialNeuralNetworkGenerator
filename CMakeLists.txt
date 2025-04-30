@@ -37,7 +37,9 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
 
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp 
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
-    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h)
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
+
+)
 
   
 

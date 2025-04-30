@@ -10,17 +10,15 @@
 using std::function;
 using std::vector;
 
-using FunctionType = function<vector<double>(double)>;
+//Takes vecotor<double> returns double
+using FunctionType = function<double(vector<double>)>;
 
 class OutputLayerActivation_FunctionFactory {
 public:
-	template<typename T>
+	template<typename Func>
 	static FunctionType create() {
 		return Func()();
 	}
-
-
-
 
 };
 

@@ -8,7 +8,7 @@ using std::vector;
 using std::distance;
 using std::max_element;
 
-using FunctionType = function<vector<double>(double)>;
+using FunctionType = function<double(vector<double>)>;
 
 //*
 // @ Brief ArgMax OutputLayer "activation"
@@ -24,6 +24,9 @@ FunctionType ArgMax::operator()() const {
 		};
 };
 
+
+// SOFTARGMAX is not currently implemented in a usable format due to the type of learning taking palce aka not 
+// using a backpropergating learning method
 //*
 // SoftMax Activation**
 // - Perfered for probabilistic action selection (stochastic policy)/back propergation  - 

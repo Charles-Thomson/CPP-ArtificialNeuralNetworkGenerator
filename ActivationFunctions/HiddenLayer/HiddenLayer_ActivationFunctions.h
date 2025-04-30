@@ -17,14 +17,11 @@ public:
 class RectifiedLinearActivation {
 public:
     FunctionType operator()() const;
-
 };
 
 class LeakyRectifiedLinearActivation {
 public :
     FunctionType operator()() const;
-
-
 };
 
 class SigmoidActivation {
