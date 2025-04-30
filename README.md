@@ -1,6 +1,10 @@
-Neural Network Training Pipeline
+Neuroevolution Project 
+Uses evolutionary algorithms to evolve neural netowrks on genetic principles, over gradient descent(back propagation)
+
+Being devloped as a egneration and trainning pipeline
+
 Overview
-This project provides a C++ implementation of a modular pipeline for creating and training artificial neural networks (ANNs). Built using CMake, it offers a structured and extensible workflow to define architectures, configure parameters, and run training processes efficiently.
+This project provides a C++ implementation of a modular pipeline for creating and training artificial neural networks (ANNs) with Neuroevolution algorithms. Built using CMake, it offers a structured and extensible workflow to define architectures, configure parameters, and run training processes efficiently.
 
 Features
 JSON Configuration Parser
