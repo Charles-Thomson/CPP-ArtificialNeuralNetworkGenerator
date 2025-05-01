@@ -10,9 +10,6 @@ using std::endl;
 using std::string;
 using std::format;
 
-
-
-
 //*
 // @ Brief Test the creation of ActivationFunctions
 // 
@@ -23,9 +20,7 @@ TEST(ActivationFunctionTesting, ActivationFunctionFactoryTest) {
 	auto hello = HiddenLayerActivation_FunctionFactory::create<LinearActivation>();
 
 	hello(2.2);
-
 }
-
 
 //*
 // @ brief Test Helper For Value Equality
@@ -37,7 +32,6 @@ void ValueEqualityTestHelper(double expectedValue, double actualValue) {
 	SCOPED_TRACE(format("Value Inequality -> Expected Value : {} Actual Value : {}", expectedValue, actualValue));
 	ASSERT_EQ(expectedValue, actualValue);
 }
-
 
 //*
 // @brief Test Linear Activation Function
@@ -157,8 +151,4 @@ TEST(ActivationFunctionTesting, ActivationFunctionsTest_HyperbolicTangentActivat
 	ValueEqualityTestHelper(0.976, resultB);
 	ValueEqualityTestHelper(-0.9640, resultC);
 	ValueEqualityTestHelper(1.0, resultD);
-
-
-
-
 }

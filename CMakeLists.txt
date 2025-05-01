@@ -39,6 +39,10 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
 
+    WeightHuristics/WeightHuristics_Factory.cpp
+    WeightHuristics/WeightHuristics_Factory.h 
+    WeightHuristics/WeightHuristics_Functions.h
+    WeightHuristics/WeightHuristics_Functions.cpp
 )
 
   
@@ -105,11 +109,15 @@ add_executable(hidden_layer_activation_function_testing Testing/ActivationFuncti
 
 add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp)
 
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp)
+
+
 # Target Libs 
 target_link_libraries(JSON_Unpacking_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
 target_link_libraries(read_and_parse_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
 target_link_libraries(hidden_layer_activation_function_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
 target_link_libraries(output_layer_activation_function_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+target_link_libraries(weight_huristics_function_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
 
 
 # List of Test targets
@@ -118,7 +126,13 @@ set(TEST_TARGETS
     read_and_parse_testing
     hidden_layer_activation_function_testing
     output_layer_activation_function_testing
+    weight_huristics_function_testing
 )
+
+#Target link libraries
+foreach(target IN LISTS TEST_TARGETS)
+    target_link_libraries(${target} PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+endforeach()
 
 #Include directories for test targets
 foreach(target IN LISTS TEST_TARGETS)
@@ -156,6 +170,10 @@ gtest_discover_tests(hidden_layer_activation_function_testing)
 # Register the test
 add_test(NAME OutputLayerActivationFunctionTesting COMMAND output_layer_activation_function_testing)
 gtest_discover_tests(output_layer_activation_function_testing)
+
+# Register the test
+add_test(NAME WeightHuristicsFunctionTesting COMMAND weight_huristics_function_testing)
+gtest_discover_tests(weight_huristics_function_testing)
 
 
 

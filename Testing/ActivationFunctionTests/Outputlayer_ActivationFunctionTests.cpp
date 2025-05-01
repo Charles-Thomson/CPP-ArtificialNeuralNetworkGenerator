@@ -30,7 +30,12 @@ TEST(OutputLayerActivationFunctionTesting, FactoryTesting) {
 
 }
 
-
+//*
+// @brief Testing Arg Max Output layer *activation
+// Expected result:
+// Value returned is the index of the largest value in the inputVector
+// 
+// */
 TEST(OutputLayerActivationFunctionTesting, ActivationFucntionTesting_ArgMax) {
 
 	auto activationFunction = OutputLayerActivation_FunctionFactory::create<ArgMax>();
@@ -52,7 +57,23 @@ TEST(OutputLayerActivationFunctionTesting, ActivationFucntionTesting_ArgMax) {
 
 
 
+// SOFTARGMAX is not currently implemented in a usable format due to the type of learning taking palce aka not 
+// using a backpropergating learning method
+//*
+// @brief Testing SoftArgMax
+// Expected Result:
+// Returned value indicates the most likely outcome
+// Will give a value that is an indication of the index of the mostlikely outcome(highest value in input), 
+// while being effected by other values in the inputVector
+// */
 TEST(OutputLayerActivationFunctionTesting, ActivationFucntionTesting_SoftMax) {
+	auto activationFunction = OutputLayerActivation_FunctionFactory::create<SoftArgMax>();
 
+	vector<double> testVectorA = { 1, 2, 3, 4 };
+	vector<double> testVectorB = { 2.3, 3.1, 4.6, 5.9 };
+	vector<double> testVectorC = { -1, -2.1, 4, 10 };
 
+	double resultA = activationFunction(testVectorA);
+	double resultB = activationFunction(testVectorB);
+	double resultC = activationFunction(testVectorC);
 }
