@@ -43,7 +43,7 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     WeightHuristics/WeightHuristics_Factory.h 
     WeightHuristics/WeightHuristics_Functions.h
     WeightHuristics/WeightHuristics_Functions.cpp
-)
+    GeneratorStruct/Generator.cpp)
 
   
 
@@ -101,24 +101,17 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp)
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "GeneratorStruct/Generator.cpp")
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp)
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "GeneratorStruct/Generator.cpp")
 
-add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp)
+add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp")
 
-add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp)
+add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp")
 
-add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp)
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "GeneratorStruct/Generator.cpp")
 
-
-# Target Libs 
-target_link_libraries(JSON_Unpacking_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
-target_link_libraries(read_and_parse_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
-target_link_libraries(hidden_layer_activation_function_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
-target_link_libraries(output_layer_activation_function_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
-target_link_libraries(weight_huristics_function_testing PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
-
+add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp)
 
 # List of Test targets
 set(TEST_TARGETS
@@ -127,6 +120,7 @@ set(TEST_TARGETS
     hidden_layer_activation_function_testing
     output_layer_activation_function_testing
     weight_huristics_function_testing
+    generator_struct_functional_testing
 )
 
 #Target link libraries
@@ -175,6 +169,9 @@ gtest_discover_tests(output_layer_activation_function_testing)
 add_test(NAME WeightHuristicsFunctionTesting COMMAND weight_huristics_function_testing)
 gtest_discover_tests(weight_huristics_function_testing)
 
+# Register the test
+add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_functional_testing)
+gtest_discover_tests(generator_struct_functional_testing)
 
 
 
