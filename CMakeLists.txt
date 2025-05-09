@@ -60,6 +60,17 @@ FetchContent_Declare(
 set(CPP_JSONPARSER_BUILD_TESTS ON CACHE BOOL "" FORCE)  
 FetchContent_MakeAvailable(CPP-JSONParser)
 
+
+# Fetch content for CPP-Generator from GitHub
+include(FetchContent)
+FetchContent_Declare(
+    CPP-Generator
+    GIT_REPOSITORY https://github.com/Charles-Thomson/CPP-Generator.git
+)
+set(CPP_JSONPARSER_BUILD_TESTS ON CACHE BOOL "" FORCE)  
+FetchContent_MakeAvailable(CPP-Generator)
+
+
 # Fetch Google Test
 FetchContent_Declare(
     googletest

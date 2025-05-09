@@ -3,6 +3,7 @@
 #include <iostream>
 #include <format>
 
+#include "../WeightHuristics/WeightHuristics_Functions.h"
 
 using std::cout;
 using std::endl;
