@@ -2,7 +2,7 @@
 #include "GeneratorStruct/Generator.cpp"
 #include <iostream>
 #include <string>
-#include <>
+
 
 using std::string;
 using std::cout;

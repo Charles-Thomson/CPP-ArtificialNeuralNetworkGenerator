@@ -7,7 +7,7 @@
 
 using std::function;
 
-
+// Takes a double return double
 using FunctionType = function<double(double)>;
 
 

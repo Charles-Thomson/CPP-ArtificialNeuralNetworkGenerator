@@ -11,6 +11,13 @@
 
 
 
+GeneratorType HeWeightHuristic::operator() const {
+	
+
+
+}
+
+
 
 void testFunction() { 
 	cout << "Test function " << endl;

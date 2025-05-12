@@ -39,8 +39,8 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
 
-    WeightHuristics/WeightHuristics_Factory.cpp
-    WeightHuristics/WeightHuristics_Factory.h 
+    "WeightHuristics/WeightHuristics_GeneratorFactory.cpp"
+    "WeightHuristics/WeightHuristics_GeneratorFactory.h" 
     WeightHuristics/WeightHuristics_Functions.h
     WeightHuristics/WeightHuristics_Functions.cpp
     GeneratorStruct/Generator.cpp)
@@ -141,7 +141,12 @@ foreach(target IN LISTS TEST_TARGETS)
         ${CMAKE_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/PreProcessing
         ${CMAKE_SOURCE_DIR}/Testing
-        ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions  
+        #CPP-JSONParser directories
+        ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions 
+        
+         #CPP-Generator directories
+        ${CPP-Generator_SOURCE_DIR}/ExposedFunctions
+
         ${googletest_SOURCE_DIR}/googletest/include  
         "${gtest_SOURCE_DIR}/include"
     )
