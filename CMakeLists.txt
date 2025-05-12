@@ -51,8 +51,9 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
 endif()
 
-# Fetch content for CPP-JSONParser from GitHub
 include(FetchContent)
+
+# Fetch content for CPP-JSONParser from GitHub
 FetchContent_Declare(
     CPP-JSONParser
     GIT_REPOSITORY https://github.com/Charles-Thomson/CPP-JSONParser.git
@@ -62,12 +63,10 @@ FetchContent_MakeAvailable(CPP-JSONParser)
 
 
 # Fetch content for CPP-Generator from GitHub
-include(FetchContent)
 FetchContent_Declare(
     CPP-Generator
     GIT_REPOSITORY https://github.com/Charles-Thomson/CPP-Generator.git
 )
-set(CPP_JSONPARSER_BUILD_TESTS ON CACHE BOOL "" FORCE)  
 FetchContent_MakeAvailable(CPP-Generator)
 
 
@@ -81,9 +80,7 @@ include(GoogleTest)
 
 message(STATUS "GoogleTest source directory: ${googletest_SOURCE_DIR}")
 
-
-
-target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE CPP-JSONParserStatic)
+target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE CPP-JSONParserStatic CPP_GENERATOR)
 
 # Include the CPP-JSONParser headers in the project
 target_include_directories(
@@ -94,12 +91,11 @@ target_include_directories(
     ${CMAKE_SOURCE_DIR}/PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject
     #CPP-JSONParser directories 
     ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions  
+    #CPP-Generator
+    ${CPP-Generator_SOURCE_DIR}/ExposedFunctions
 )
 
-#${CPP-JSONParser_SOURCE_DIR}
-    #${CPP-JSONParser_SOURCE_DIR}/Structs
-    #${CPP-JSONParser_SOURCE_DIR}/FileReader
-    #${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions
+
 
 
 # Pass the string as a preprocessor macro definition

@@ -13,5 +13,8 @@ using std::format;
 
 TEST(WeightHuristicsFunctionTesting, WeightHuristicsFunctions_Testing) {
 	cout << "in the working test call" << endl;
+	testFunction();
 	ASSERT_EQ(1, 2);
+	
+
 }

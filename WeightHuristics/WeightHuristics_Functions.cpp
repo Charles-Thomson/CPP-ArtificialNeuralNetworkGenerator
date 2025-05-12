@@ -1,4 +1,5 @@
 #include "WeightHuristics_Functions.h"
+#include "cppGenerator.h"
 
 #include <iostream>
 #include <string>
@@ -8,21 +9,16 @@
 #include <generator>
 
 
-std::generator<int> count_to(int max) {
-	for (int i = 0; i < max; ++i)
-		co_yield i;
-}
 
 
 
 void testFunction() { 
 	cout << "Test function " << endl;
-
-	double valueA = 20;
-
-	
-
-
-
+	Generator gen = count_to_test_func(5);
+	size_t upperLimit = 5;
+	while (gen.next()) {
+		cout << "Generator Value : " << gen.value() << endl; 
+	}
+	cout << "Test function " << endl;
 }
 
