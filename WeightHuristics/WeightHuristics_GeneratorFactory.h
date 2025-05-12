@@ -14,19 +14,12 @@ using std::function;
 using std::string;
 using std::vector;
 
-
-// Takes a vector<double> return double
-using GeneratorType = function<Generator(vector<double>)>;
-
-
-// This needs to return a generator
-// Build out to retiurn a generator instead of a function
-// May need to change approach
+using GeneratorA = std::function<void()>;
 class WeightHuristics_GeneratorFactory {
 public:
 	template<typename Func>
-	static GeneratorType create() {
-		return Func()();
+	static Generator create(vector<double>& layerConnections) {
+		return Func()(layerConnections);
 	}
 };
 

@@ -7,21 +7,45 @@
 #include <functional>
 #include <format>
 #include <iostream>
+#include <random>
 
 // Takes a vector<double> return double
-using GeneratorType = function<Generator(vector<double>)>;
+using GeneratorType = Generator;
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::function;
+using std::vector;
+using std::sqrt;
+using std::random_device;
 
+using Generator = Generator;
 
-void testFunction();
-
+// The HeWeightHuristic class (does not invoke the lambda immediately)
 class HeWeightHuristic {
 public:
-	GeneratorType operator()() const;
+    // The operator() function creates a generator (does not invoke it immediately)
+    Generator operator()(const vector<double>& layerConnections) {
+        double inputLayerSize = layerConnections[0];
+        double outputLayerSize = layerConnections[1];
+
+        size_t requiredWeights = inputLayerSize * outputLayerSize;
+        double stdDev = sqrt(2.0 / inputLayerSize);
+        random_device rd;
+        mt19937 gen(rd());
+        normal_distribution<> dist(0.0, stdDev);
+
+        // Return a generator function (lambda) that is invoked separately
+        return [requiredWeights, &dist, &gen]() -> Generator {
+            // This function will generate the weights when called
+            for (size_t i = 0; i < requiredWeights; ++i) {
+                double weight = dist(gen); // Generate a weight using the normal distribution
+                cout << "Generated weight: " << weight << endl; // Debug line
+                co_yield weight; // Yield the generated weight as a coroutine
+            }
+        };
+    }
 };
 
 

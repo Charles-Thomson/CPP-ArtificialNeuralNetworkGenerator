@@ -6,6 +6,7 @@
 
 #include "cppGenerator.h"
 #include "../WeightHuristics/WeightHuristics_Functions.h"
+#include "WeightHuristics/WeightHuristics_GeneratorFactory.h"
 
 using std::cout;
 using std::endl;
@@ -25,19 +26,20 @@ Generator TestGenerator(vector<double> layerConnections) {
 		co_yield val;
 	}
 }
+using GeneratorA = std::function<void()>;
 
 
+TEST(WeightHuristicsFunctionTesting, GetFunctionFromFactory) {
+	vector<double> layerConnections = { 10,20 };
+	Generator testGen = WeightHuristics_GeneratorFactory::create<HeWeightHuristic>(layerConnections);
+	
+	while (testGen.next()) {
+		cout << "GeneratedValue : " << testGen.value() << endl; 
+	
+	}
+	ASSERT_EQ(1, 2);
 
-//// This is the Generator constructor function
-//Generator GeneratorReturn(vector<double> (*TestAlg)(vector<double>), vector<double> layerConnections) {
-//	
-//	vector<double> returnVector = TestAlg(layerConnections);
-//
-//	for(double val : returnVector) {
-//		co_yield val;
-//	}
-//
-//}
+}
 
 TEST(WeightHuristicsFunctionTesting, WeightHuristicsFunctions_Testing) {
 	cout << "in the working test call" << endl;
