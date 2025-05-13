@@ -88,6 +88,42 @@ TEST(WeightHuristicsFunctionTesting, HeWeightHuristic) {
 	AssertCorrectNumberOfValuesProduced(collatedGeneratorValues, expectedNumebrOfValues);
 }
 
+// Next, test the mean of Xavier weights is close / within a range of 0.0 
+// sum weights / total weights == 0.0 +- 0.05
+
+//*
+// @ Brief Assert collated values are within a range of the expected mean
+// 
+// Assert that the collated values of a generator are within a tollerable variance of the expected mean
+// 
+// @parma collatedValues - The collated values of a Generator
+// @prama expectedMean - The expected mean
+// @param acceptableVariance - Limit of acceptable variance from the mean
+// */
+void AssertMeanIsWithinRange(vector<double> collatedValues, double expectedMean, double acceptableVariance) {
+	double actualMean; 
+	double valuesTotal = 0;
+	double elementsTotal = 0;
+
+	for (double value : collatedValues) {
+		cout << value << endl;
+		valuesTotal += value;
+		elementsTotal += 1;
+	}
+	if (valuesTotal > 0 && elementsTotal > 0) {
+		actualMean = valuesTotal / elementsTotal;
+	}
+	
+	double meanUpperBounds = expectedMean + acceptableVariance;
+	double meanLowerBounds = expectedMean - acceptableVariance;
+	
+	SCOPED_TRACE("Mean subceeds accptable variance");
+	ASSERT_GT(actualMean, meanLowerBounds);
+	SCOPED_TRACE("Mean exceeds accptable variance");
+	ASSERT_LT(actualMean, meanUpperBounds);
+}
+
+
 //*
 // @ Brief Testing the Xavier Weight Huristic
 // Expected Result: 
@@ -101,6 +137,7 @@ TEST(WeightHuristicsFunctionTesting, XavierHuristic) {
 	Generator testGen = RetrieveGeneratorOfHuristicsType<XavierWeightHuristic>(layerConnections);
 	vector<double> collatedGeneratorValues = CollateGeneratorValuesToVector(testGen);
 	AssertCorrectNumberOfValuesProduced(collatedGeneratorValues, expectedNumebrOfValues);
+	AssertMeanIsWithinRange(collatedGeneratorValues, 0.0, 0.25);
 }
 
 //*
@@ -122,6 +159,7 @@ void textXavierUniformWeights(vector<double> collatedWeights, double inputLayerC
 		SCOPED_TRACE("Weight falls subceeds lower limit");
 		ASSERT_LT(-limit, weight);
 	};
+	
 }
 
 //*
@@ -138,7 +176,7 @@ TEST(WeightHuristicsFunctionTesting, XavierUniformHuristic) {
 	vector<double> collatedGeneratorValues = CollateGeneratorValuesToVector(testGen);
 	AssertCorrectNumberOfValuesProduced(collatedGeneratorValues, expectedNumebrOfValues);
 	textXavierUniformWeights(collatedGeneratorValues, layerConnections[0], layerConnections[1]);
-
+	
 
 }
 
