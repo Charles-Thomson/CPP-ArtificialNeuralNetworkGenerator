@@ -32,18 +32,10 @@ void AssertValueWithinBounds(double upperbounds, double lowerbounds, double valu
 // @param gen - The given generator 
 // @param expectedNumebrOfValues - the epxected number of values to be produced
 // */
-void AssertCorrectNumberOfValuesProduced(Generator& gen, double expectedNumebrOfValues) {
+void AssertCorrectNumberOfValuesProduced(vector<double> collatedGeneratorValues, double expectedNumebrOfValues) {
 	
-	double i = 0;
-	while (gen.next()) {
-		gen.value();
-		cout << i << endl;
-		i++;
-
-	};
-
 	SCOPED_TRACE("The numebr of expected values does not equal the numebr of produced values");
-	ASSERT_DOUBLE_EQ(i, expectedNumebrOfValues);
+	ASSERT_DOUBLE_EQ(collatedGeneratorValues.size(), expectedNumebrOfValues);
 }
 
 //*
@@ -62,6 +54,25 @@ Generator RetrieveGeneratorOfHuristicsType(vector<double> layerConnections ) {
 
 
 //*
+// @ Brief Collate all values from a generator
+// 
+// Collate all values from generator into a vector
+// 
+// @param gen - Generator
+// @return vector<double> - Collated Generator values
+// */
+vector<double> CollateGeneratorValuesToVector(Generator& gen) {
+	vector<double> collatedValues;
+	while (gen.next()) {
+		collatedValues.push_back(gen.value());
+	}
+	return collatedValues;
+}
+
+
+
+
+//*
 // @brief Testing the HeWeightHuristic weight generator
 // Expected Result: 
 // - Returns the requiered numebr of weights (layerconnections[0]*layerconnections[1])
@@ -72,7 +83,9 @@ TEST(WeightHuristicsFunctionTesting, HeWeightHuristic) {
 	double expectedNumebrOfValues = layerConnections[0] * layerConnections[1];
 	
 	Generator testGen = RetrieveGeneratorOfHuristicsType<HeWeightHuristic>(layerConnections);
-	AssertCorrectNumberOfValuesProduced(testGen, expectedNumebrOfValues);
+
+	vector<double> collatedGeneratorValues = CollateGeneratorValuesToVector(testGen);
+	AssertCorrectNumberOfValuesProduced(collatedGeneratorValues, expectedNumebrOfValues);
 }
 
 //*
@@ -83,10 +96,32 @@ TEST(WeightHuristicsFunctionTesting, HeWeightHuristic) {
 
 TEST(WeightHuristicsFunctionTesting, XavierHuristic) {
 	vector<double> layerConnections = { 10,20 };
-	double expectedNumberOfConnections = layerConnections[0] * layerConnections[1];
+	double expectedNumebrOfValues = layerConnections[0] * layerConnections[1];
 
 	Generator testGen = RetrieveGeneratorOfHuristicsType<XavierWeightHuristic>(layerConnections);
-	AssertCorrectNumberOfValuesProduced(testGen, expectedNumberOfConnections);
+	vector<double> collatedGeneratorValues = CollateGeneratorValuesToVector(testGen);
+	AssertCorrectNumberOfValuesProduced(collatedGeneratorValues, expectedNumebrOfValues);
+}
+
+//*
+// @ Brief Test if producecd generator values of Xavier Uniform Huristic are valid
+// 
+// Test if produced weights fall within the upper and lower bounds
+// 
+// @param collatedWeights - The collated weights form the generator
+// @param inputLayerConnections - number of inputs into the layer
+// @param outputLayerConnections - number of outputs from the layer
+// */
+void textXavierUniformWeights(vector<double> collatedWeights, double inputLayerConnections, double outputLayerConnections) {
+
+	double limit = sqrt(6.0) / sqrt(inputLayerConnections + outputLayerConnections);
+
+	for (double weight : collatedWeights) {
+		SCOPED_TRACE("Weight exceeds upper limit");
+		ASSERT_GT(limit, weight);
+		SCOPED_TRACE("Weight falls subceeds lower limit");
+		ASSERT_LT(-limit, weight);
+	};
 }
 
 //*
@@ -97,9 +132,13 @@ TEST(WeightHuristicsFunctionTesting, XavierHuristic) {
 
 TEST(WeightHuristicsFunctionTesting, XavierUniformHuristic) {
 	vector<double> layerConnections = { 10,20 };
-	double expectedNumberOfConnections = layerConnections[0] * layerConnections[1];
+	double expectedNumebrOfValues = layerConnections[0] * layerConnections[1];
 
 	Generator testGen = RetrieveGeneratorOfHuristicsType<XavierUniformWeightHuristic>(layerConnections);
-	AssertCorrectNumberOfValuesProduced(testGen, expectedNumberOfConnections);
+	vector<double> collatedGeneratorValues = CollateGeneratorValuesToVector(testGen);
+	AssertCorrectNumberOfValuesProduced(collatedGeneratorValues, expectedNumebrOfValues);
+	textXavierUniformWeights(collatedGeneratorValues, layerConnections[0], layerConnections[1]);
+
+
 }
 
