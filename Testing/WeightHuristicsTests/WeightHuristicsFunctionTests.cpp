@@ -30,9 +30,9 @@ void AssertValueWithinBounds(double upperbounds, double lowerbounds, double valu
 // @param gen - The given generator 
 // @param expectedNumebrOfValues - the epxected number of values to be produced
 // */
-void AssertCorrectNumberOfValuesProduced(Generator gen, double expectedNumebrOfValues) {
+void AssertCorrectNumberOfValuesProduced(Generator& gen, double expectedNumebrOfValues) {
 	
-	double i = 1;
+	double i = 0;
 	while (gen.next()) {
 		gen.value();
 		cout << i << endl;

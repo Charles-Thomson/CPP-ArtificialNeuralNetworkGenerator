@@ -20,13 +20,14 @@ using std::function;
 using std::vector;
 using std::sqrt;
 using std::random_device;
+using std::make_shared;
+using std::shared_ptr;
 
 using Generator = Generator;
 
-// The HeWeightHuristic class (does not invoke the lambda immediately)
 class HeWeightHuristic {
 public:
-    // The operator() function creates a generator (does not invoke it immediately)
+    // The operator() function creates a generator 
     Generator operator()(const vector<double>& layerConnections) {
         double inputLayerSize = layerConnections[0];
         double outputLayerSize = layerConnections[1];
@@ -34,17 +35,16 @@ public:
         size_t requiredWeights = inputLayerSize * outputLayerSize;
         double stdDev = sqrt(2.0 / inputLayerSize);
         random_device rd;
-        mt19937 gen(rd());
-        normal_distribution<> dist(0.0, stdDev);
+        auto gen = make_shared<mt19937>(random_device{}());
+        auto dist = make_shared<normal_distribution<>>(0.0, stdDev);
 
-        // Return a generator function (lambda) that is invoked separately
-        return ReturnGen(requiredWeights, dist, gen); // Call ReturnGen here
+        return ReturnGen(requiredWeights, dist, gen); 
     }
 
 private:
-    Generator ReturnGen(size_t requiredWeights, normal_distribution<> dist, mt19937 gen) {
+    Generator ReturnGen(size_t requiredWeights, shared_ptr<normal_distribution<>> dist, shared_ptr<mt19937> gen) {
         for (size_t i = 0; i < requiredWeights; ++i) {
-            double weight = dist(gen); // Generate a weight using the normal distribution
+            double weight = (*dist)(*gen); // Generate a weight using the normal distribution
             co_yield weight; // Yield the generated weight
         }
     }
