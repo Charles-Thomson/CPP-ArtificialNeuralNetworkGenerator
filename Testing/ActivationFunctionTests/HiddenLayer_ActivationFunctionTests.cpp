@@ -11,18 +11,6 @@ using std::string;
 using std::format;
 
 //*
-// @ Brief Test the creation of ActivationFunctions
-// 
-// Will be removed during development
-// 
-// */
-TEST(ActivationFunctionTesting, ActivationFunctionFactoryTest) {
-	auto hello = HiddenLayerActivation_FunctionFactory::create<LinearActivation>();
-
-	hello(2.2);
-}
-
-//*
 // @ brief Test Helper For Value Equality
 // 
 // @param expectedValue - The expected value

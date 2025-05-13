@@ -14,7 +14,7 @@ using std::function;
 using std::string;
 using std::vector;
 
-using GeneratorA = std::function<void()>;
+
 class WeightHuristics_GeneratorFactory {
 public:
 	template<typename Func>

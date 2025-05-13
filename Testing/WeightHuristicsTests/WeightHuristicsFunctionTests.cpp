@@ -15,6 +15,8 @@ using std::format;
 using std::vector;
 
 
+
+
 void AssertValueWithinBounds(double upperbounds, double lowerbounds, double value) {
 	SCOPED_TRACE("Given value falls outside the lower bounds");
 	ASSERT_GT(value, -1.0);
@@ -44,6 +46,20 @@ void AssertCorrectNumberOfValuesProduced(Generator& gen, double expectedNumebrOf
 	ASSERT_DOUBLE_EQ(i, expectedNumebrOfValues);
 }
 
+//*
+// @ Brief Helper function to create generator of type T 
+// 
+// Created a generator for weights following the given huristic of type T
+// 
+// @template T - The huristics type
+// @param layerConnections - Number of connections fot eh ANN layer (input & output)
+// @return Generator - Genrator to produce weigths of huristic T 
+// */
+template<typename T>
+Generator RetrieveGeneratorOfHuristicsType(vector<double> layerConnections ) {
+	return WeightHuristics_GeneratorFactory::create<T>(layerConnections);
+}
+
 
 //*
 // @brief Testing the HeWeightHuristic weight generator
@@ -53,13 +69,37 @@ void AssertCorrectNumberOfValuesProduced(Generator& gen, double expectedNumebrOf
 
 TEST(WeightHuristicsFunctionTesting, HeWeightHuristic) {
 	vector<double> layerConnections = { 10,20 };
-	
-	Generator testGen = WeightHuristics_GeneratorFactory::create<HeWeightHuristic>(layerConnections);
-
 	double expectedNumebrOfValues = layerConnections[0] * layerConnections[1];
-	cout << "Expected number of layers : " << expectedNumebrOfValues << endl;
-
+	
+	Generator testGen = RetrieveGeneratorOfHuristicsType<HeWeightHuristic>(layerConnections);
 	AssertCorrectNumberOfValuesProduced(testGen, expectedNumebrOfValues);
+}
 
+//*
+// @ Brief Testing the Xavier Weight Huristic
+// Expected Result: 
+// - The Returned Generator produces the requiere number of weights
+// */
+
+TEST(WeightHuristicsFunctionTesting, XavierHuristic) {
+	vector<double> layerConnections = { 10,20 };
+	double expectedNumberOfConnections = layerConnections[0] * layerConnections[1];
+
+	Generator testGen = RetrieveGeneratorOfHuristicsType<XavierWeightHuristic>(layerConnections);
+	AssertCorrectNumberOfValuesProduced(testGen, expectedNumberOfConnections);
+}
+
+//*
+// @ Brief Testing the Xavier Uniform Weight Huristic
+// Expected Result: 
+// - The Returned Generator produces the requiere number of weights
+// */
+
+TEST(WeightHuristicsFunctionTesting, XavierUniformHuristic) {
+	vector<double> layerConnections = { 10,20 };
+	double expectedNumberOfConnections = layerConnections[0] * layerConnections[1];
+
+	Generator testGen = RetrieveGeneratorOfHuristicsType<XavierUniformWeightHuristic>(layerConnections);
+	AssertCorrectNumberOfValuesProduced(testGen, expectedNumberOfConnections);
 }
 
