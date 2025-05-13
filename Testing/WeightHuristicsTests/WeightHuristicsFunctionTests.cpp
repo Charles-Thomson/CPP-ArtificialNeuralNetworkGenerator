@@ -14,48 +14,52 @@ using std::string;
 using std::format;
 using std::vector;
 
-// A test algorithm
-Generator TestGenerator(vector<double> layerConnections) {
 
-	vector<double> resultVector;
-	for (double val : layerConnections) {
-		double res = val * val;
-		resultVector.push_back(val);
-	};
-	for (double val : resultVector) {
-		co_yield val;
-	}
-}
-using GeneratorA = std::function<void()>;
-
-
-TEST(WeightHuristicsFunctionTesting, GetFunctionFromFactory) {
-	vector<double> layerConnections = { 10,20 };
-	Generator testGen = WeightHuristics_GeneratorFactory::create<HeWeightHuristic>(layerConnections);
-	
-	while (testGen.next()) {
-		cout << "GeneratedValue : " << testGen.value() << endl; 
-	
-	}
-	ASSERT_EQ(1, 2);
-
+void AssertValueWithinBounds(double upperbounds, double lowerbounds, double value) {
+	SCOPED_TRACE("Given value falls outside the lower bounds");
+	ASSERT_GT(value, -1.0);
+	SCOPED_TRACE("Given value falls outside the upper bounds");
+	ASSERT_LT(value, 1.0);
 }
 
-TEST(WeightHuristicsFunctionTesting, WeightHuristicsFunctions_Testing) {
-	cout << "in the working test call" << endl;
 
-
-	vector<double> layerConnections = { 4,6 };
-	Generator gen = TestGenerator(layerConnections);
+//*
+// @brief Check if a generator produces the expected number of values
+// 
+// 
+// @param gen - The given generator 
+// @param expectedNumebrOfValues - the epxected number of values to be produced
+// */
+void AssertCorrectNumberOfValuesProduced(Generator gen, double expectedNumebrOfValues) {
 	
-
+	double i = 1;
 	while (gen.next()) {
-		cout << "Gen value : " << gen.value() << endl;
-	
-	}
+		gen.value();
+		cout << i << endl;
+		i++;
+
+	};
+
+	SCOPED_TRACE("The numebr of expected values does not equal the numebr of produced values");
+	ASSERT_DOUBLE_EQ(i, expectedNumebrOfValues);
+}
 
 
-	ASSERT_EQ(1, 2);
+//*
+// @brief Testing the HeWeightHuristic weight generator
+// Expected Result: 
+// - Returns the requiered numebr of weights (layerconnections[0]*layerconnections[1])
+// */
+
+TEST(WeightHuristicsFunctionTesting, HeWeightHuristic) {
+	vector<double> layerConnections = { 10,20 };
 	
+	Generator testGen = WeightHuristics_GeneratorFactory::create<HeWeightHuristic>(layerConnections);
+
+	double expectedNumebrOfValues = layerConnections[0] * layerConnections[1];
+	cout << "Expected number of layers : " << expectedNumebrOfValues << endl;
+
+	AssertCorrectNumberOfValuesProduced(testGen, expectedNumebrOfValues);
 
 }
+

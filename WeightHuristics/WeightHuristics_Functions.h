@@ -45,7 +45,6 @@ private:
     Generator ReturnGen(size_t requiredWeights, normal_distribution<> dist, mt19937 gen) {
         for (size_t i = 0; i < requiredWeights; ++i) {
             double weight = dist(gen); // Generate a weight using the normal distribution
-            cout << "Generated weight: " << weight << endl; // Debug line
             co_yield weight; // Yield the generated weight
         }
     }
