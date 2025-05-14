@@ -50,7 +50,7 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     WeightHuristics/WeightHuristics_Functions.h
     WeightHuristics/WeightHuristics_Functions.cpp
     GeneratorStruct/Generator.cpp 
-    "Staging/WorkItemGeneration/WorkItem.h")
+    "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
   
 
@@ -115,17 +115,17 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
-add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
+add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
-add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
+add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
-add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
-add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp "Staging/WorkItemGeneration/WorkItem.h")
+add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
 
 # List of Test targets
 set(TEST_TARGETS
