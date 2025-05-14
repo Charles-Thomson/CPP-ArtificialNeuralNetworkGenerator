@@ -14,22 +14,28 @@ project (CPP-ArtificialNeuralNetworkGenerator)
 add_library(CPP-ArtificialNeuralNetworkGenerator 
     CPP-ArtificialNeuralNetworkGenerator.cpp 
     CPP-ArtificialNeuralNetworkGenerator.h 
-    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.cpp
-    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h
-    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.cpp
-    PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h
-    PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.cpp 
-    PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.h 
-    PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.cpp
-    PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.h
-    PreProcessing/InstanceConfigObject/InstanceConfigurationObject/InstanceConfigObject.cpp
-    PreProcessing/InstanceConfigObject/InstanceConfigurationObject/InstanceConfigObject.h
+
     PreProcessing/InputFileReadAndParse/InputFileRead.cpp 
     PreProcessing/InputFileReadAndParse/InputFileParse.h 
     PreProcessing/InputFileReadAndParse/InputFileRead.h
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h
-    
+
+    ConfigClasses/ANNConfigurationObject/ANNConfigObject.cpp
+    ConfigClasses/ANNConfigurationObject/ANNConfigObject.h
+
+    ConfigClasses/ANNConfigurationObject/ANNLayerObject.cpp
+    ConfigClasses/ANNConfigurationObject/ANNLayerObject.h
+
+    ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.cpp 
+    ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.h 
+
+    ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.cpp
+    ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.h
+
+    ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.cpp
+    ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h
+
     ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp
     ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.h
     ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.cpp
@@ -43,7 +49,8 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     "WeightHuristics/WeightHuristics_GeneratorFactory.h" 
     WeightHuristics/WeightHuristics_Functions.h
     WeightHuristics/WeightHuristics_Functions.cpp
-    GeneratorStruct/Generator.cpp)
+    GeneratorStruct/Generator.cpp 
+    "Staging/WorkItemGeneration/WorkItem.h")
 
   
 
@@ -108,17 +115,17 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "GeneratorStruct/Generator.cpp")
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "GeneratorStruct/Generator.cpp")
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
 
-add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp")
+add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
 
-add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp")
+add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
 
-add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "GeneratorStruct/Generator.cpp")
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h")
 
-add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp)
+add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp "Staging/WorkItemGeneration/WorkItem.h")
 
 # List of Test targets
 set(TEST_TARGETS

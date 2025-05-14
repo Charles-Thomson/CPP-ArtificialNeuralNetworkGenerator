@@ -5,6 +5,7 @@
 
 #include "PreProcessing/InputFileReadAndParse/InputFileRead.h"
 #include "PreProcessing/InputFileReadAndParse/InputFileParse.h"
+#include "ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h"
 
 
 #include "cppJSONParser.h"
@@ -17,7 +18,7 @@
 #include <list>
 #include <variant>
 #include <sstream>
-#include <InstanceConfigurationObject/InstanceConfigObject.h>
+
 #include <UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp>
 
 using std::tuple;

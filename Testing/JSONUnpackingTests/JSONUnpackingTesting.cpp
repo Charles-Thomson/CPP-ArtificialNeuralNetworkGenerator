@@ -7,10 +7,10 @@
 #include "Preprocessing/InputFileReadAndParse/InputFileParse.h"
 
 
-#include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h"
-#include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h"
-#include "../../PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.h"
-#include "../../PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.h"
+#include "../../ConfigClasses/ANNConfigurationObject/ANNConfigObject.h"
+#include "../../ConfigClasses/ANNConfigurationObject/ANNLayerObject.h"
+#include "../../ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.h"
+#include "../../ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.h"
 
 using std::cout;
 using std::string;

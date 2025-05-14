@@ -1,12 +1,15 @@
 #include "cppJSONParser.h"
-#include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNConfigObject.h"
-#include "../../PreProcessing/InstanceConfigObject/ANNConfigurationObject/ANNLayerObject.h"
-#include "../../PreProcessing/InstanceConfigObject/EnvironmentConfigurationObject/EnvironmentConfigObject.h"
-#include "../../PreProcessing/InstanceConfigObject/HyperParameterConfigurationObject/HyperParameterConfigObject.h"
+#include "../../ConfigClasses/ANNConfigurationObject/ANNConfigObject.h"
+#include "../../ConfigClasses/ANNConfigurationObject/ANNLayerObject.h"
+#include "../../ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.h "
+#include "../../ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.h"
+#include "../../ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h"
+
+
 #include "UnpackToConfigObjects.h"
 #include <format>
 #include <string>
-#include <InstanceConfigObject/InstanceConfigurationObject/InstanceConfigObject.h>
+
 
 using JSON = shared_ptr<JSONValue>;
 
