@@ -13,6 +13,21 @@ using std::cout;
 using std::endl;
 using fmt::format;
 
+vector<vector<int>> GenerateTest2DEnvironment(int dimensions) {
+	int start = 0;
+	int emptyValue = 1;
+	int obstical = 2;
+	int goal = 3; 
+
+	vector<vector<int>> testEnvironment;
+
+	vector<int> row(dimensions, emptyValue);
+	
+
+
+
+}
+
 
 
 TEST(ObservationTesting_StateBased_2D, TestFunctionCall) {
