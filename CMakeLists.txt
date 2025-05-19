@@ -45,12 +45,19 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
     ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
 
-    "WeightHuristics/WeightHuristics_GeneratorFactory.cpp"
-    "WeightHuristics/WeightHuristics_GeneratorFactory.h" 
+    WeightHuristics/WeightHuristics_GeneratorFactory.cpp
+    WeightHuristics/WeightHuristics_GeneratorFactory.h 
     WeightHuristics/WeightHuristics_Functions.h
     WeightHuristics/WeightHuristics_Functions.cpp
+
     GeneratorStruct/Generator.cpp 
-    "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+    Staging/WorkItemGeneration/WorkItem.h 
+
+    Environment/ANNEnvironemnt.cpp 
+    Environment/ANNEnvironment.h 
+
+    Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.cpp
+    Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.h)
 
   
 
@@ -85,9 +92,18 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
 
+
+#Fetch fmt
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+)
+FetchContent_MakeAvailable(fmt)
+
 message(STATUS "GoogleTest source directory: ${googletest_SOURCE_DIR}")
 
 target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE CPP-JSONParserStatic CPP_GENERATOR)
+target_link_libraries(CPP-ArtificialNeuralNetworkGenerator PRIVATE fmt::fmt)
 
 # Include the CPP-JSONParser headers in the project
 target_include_directories(
@@ -115,17 +131,21 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp)
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp)
 
-add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp)
 
-add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp)
 
-add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "GeneratorStruct/Generator.cpp" "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp)
 
-add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp "Staging/WorkItemGeneration/WorkItem.h" "Environment/ANNEnvironemnt.cpp" "Environment/ANNEnvironment.h")
+add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp  )
+
+add_executable(observation_tool_testing_state_based_2D Testing/EnvironmentObservationTools/StateBased2D/StateBased2DTesting.cpp)
+
+
 
 # List of Test targets
 set(TEST_TARGETS
@@ -135,11 +155,12 @@ set(TEST_TARGETS
     output_layer_activation_function_testing
     weight_huristics_function_testing
     generator_struct_functional_testing
+    observation_tool_testing_state_based_2D
 )
 
 #Target link libraries
 foreach(target IN LISTS TEST_TARGETS)
-    target_link_libraries(${target} PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator)
+    target_link_libraries(${target} PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator fmt::fmt)
 endforeach()
 
 #Include directories for test targets
@@ -191,6 +212,10 @@ gtest_discover_tests(weight_huristics_function_testing)
 # Register the test
 add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_functional_testing)
 gtest_discover_tests(generator_struct_functional_testing)
+
+# Register the test
+add_test(NAME ObservationToolTesting_StateBased_2D COMMAND observation_tool_testing_state_based_2D)
+gtest_discover_tests(observation_tool_testing_state_based_2D)
 
 
 

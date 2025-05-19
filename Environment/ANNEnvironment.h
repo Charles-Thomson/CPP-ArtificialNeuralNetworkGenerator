@@ -28,6 +28,19 @@ public:
 
 	bool terminationCheck(); 
 
+	tuple<int, int> processAction();
+
+	tuple<double, bool> getLocationValue();
+
+private:
+	int currentStep = 0;
+	vector<tuple<int, int>> path = {};
+	vector<vector<int>> enviromentMap = {};
+	size_t maxActoins = 1;
+	tuple<int, int> currentLocationInEnv;
+
+
+
 
 };
 

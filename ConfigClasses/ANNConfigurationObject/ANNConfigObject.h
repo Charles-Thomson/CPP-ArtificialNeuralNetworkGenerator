@@ -23,8 +23,7 @@ class ANNConfigObject {
 		string GenerationFunction;
 
 		ANNConfigObject()
-			: numOfLayers(0), GenerationFunction("default") {
-		}
+			: numOfLayers(0), GenerationFunction("default") {}
 
 		//Constructor
 		ANNConfigObject(
