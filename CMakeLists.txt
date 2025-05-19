@@ -62,7 +62,7 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     Environment/EnvironmentNodes/StateBased/StateBasedNode.h
 
 
-)
+ )
 
   
 
@@ -136,19 +136,19 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp )
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp)
 
-add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp )
 
-add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp )
 
-add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp )
 
-add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp   "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp)
 
-add_executable(observation_tool_testing_state_based_2D Testing/EnvironmentObservationTools/StateBased2D/StateBased2DTesting.cpp "Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp")
+add_executable(observation_tool_testing_state_based_2D Testing/EnvironmentObservationTools/StateBased2D/StateBased2DTesting.cpp)
 
 
 

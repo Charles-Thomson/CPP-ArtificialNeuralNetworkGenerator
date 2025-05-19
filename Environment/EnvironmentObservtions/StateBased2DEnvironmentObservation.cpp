@@ -1,5 +1,5 @@
 #include "StateBased2DEnvironmentObservation.h"
-
+#include "../EnvironmentNodes/StateBased/StateBasedNode.h"
 #include <string>
 #include <vector>
 #include <tuple>
@@ -20,6 +20,8 @@ using std::tuple;
 // @return vector<double> Values relating to objects found along sightlines
 // */
 vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint) {
+	
+
 	return {};
 }
 

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "../Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.h"
-
+#include "../Environment/EnvironmentNodes/StateBased/StateBasedNode.h"
 
 #include <string>
 #include <fmt/format.h>
@@ -13,20 +13,16 @@ using std::cout;
 using std::endl;
 using fmt::format;
 
-vector<vector<int>> GenerateTest2DEnvironment(int dimensions) {
-	int start = 0;
-	int emptyValue = 1;
-	int obstical = 2;
-	int goal = 3; 
-
-	vector<vector<int>> testEnvironment;
-
-	vector<int> row(dimensions, emptyValue);
-	
-
-
-
-}
+//vector<vector<StateBasedNode>> GenerateTest2DEnvironment(int dimensions) {
+//	vector<vector<StateBasedNode>> testEnvironment(dimensions, vector<StateBasedNode>(dimensions, StateBasedNode::OPEN));
+//
+//
+//
+//	
+//
+//
+//
+//}
 
 
 
