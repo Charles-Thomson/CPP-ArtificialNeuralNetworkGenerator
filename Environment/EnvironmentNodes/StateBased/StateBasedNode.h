@@ -17,6 +17,12 @@ struct StateBasedNode {
 		GOAL = 3
 	};
 
+
+	// Stored state of the node
+	State state;
+
+	StateBasedNode(State s) : state(s) {}
+
 	static State from_int(int value) {
 		switch (value) {
 		case 0: return State::OPEN;

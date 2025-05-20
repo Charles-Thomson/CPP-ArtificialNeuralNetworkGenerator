@@ -22,6 +22,7 @@ using std::tuple;
 vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint) {
 	
 
+
 	return {};
 }
 
