@@ -56,9 +56,9 @@ void EnvironmentPrintHelper(vector<vector<StateBasedNode>> env) {
 // */
 vector<vector<StateBasedNode>> Populate2DTestEnvironment_Dimesnions5(vector<vector<StateBasedNode>> blankEnv) {
 
-	tuple<int, int> startLocation = { 0, 0 };
+	tuple<int, int> startLocation = { 1, 1 };
 
-	vector<tuple<int, int>> obsticalLocations = { {0,1},{1,1},{2,1},{3,3} };
+	vector<tuple<int, int>> obsticalLocations = { {0,1},{2,1},{3,3} };
 	vector<tuple<int, int>> goalLocations = { {4,0},{4,4},{0,4}};
 
 	// Set the start node
@@ -82,16 +82,16 @@ vector<vector<StateBasedNode>> Populate2DTestEnvironment_Dimesnions5(vector<vect
 }
 
 TEST(ObservationTesting_StateBased_2D, TestFunctionCall) {
-	string testResponse = testFunctionCall();
-	string printString = format("ObservationTesting_StateBased_2D -> Retrun from test function call {}", testResponse);
-	cout << printString << endl;
+	
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
-	EnvironmentPrintHelper(testEnvironment);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
-
 	EnvironmentPrintHelper(testEnvironment);
+
+
+
+	vector<double> placeHolder = PerformObservationFromLocation({1,1}, testEnvironment);
 	
 	ASSERT_EQ(1, 2);
 

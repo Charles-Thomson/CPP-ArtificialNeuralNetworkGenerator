@@ -10,7 +10,7 @@ using std::string;
 using std::vector;
 using std::tuple;
 
-vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint);
+vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, vector<vector<StateBasedNode>> Environment);
 
 string testFunctionCall();
 
