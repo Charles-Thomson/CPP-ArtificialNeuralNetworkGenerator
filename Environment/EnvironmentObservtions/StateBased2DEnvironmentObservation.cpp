@@ -59,9 +59,51 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 
 
 	// Collate values "upRight" diagonal from observation point
-	for (int i = observationPointY; i < environmentDimension; ++i) {
-		StateBasedNode value = Environment[i][observationPointY];
-		upRightSightLine.push_back(value);
+	for (int i = 1; i < environmentDimension; ++i) {
+
+		if (observationPointX + i < environmentDimension && observationPointY - i > -1) {
+			StateBasedNode value = Environment[observationPointX + i][observationPointY - i];
+			upRightSightLine.push_back(value);
+		}
+		else {
+			break;
+		}
+	}
+
+	// Collate values "upLeft" diagonal from observation point
+	for (int i = 1; i < environmentDimension; ++i) {
+
+		if (observationPointX - i > -1 && observationPointY - i > -1) {
+			StateBasedNode value = Environment[observationPointX - i][observationPointY - i];
+			upLeftSightLine.push_back(value);
+		}
+		else {
+			break;
+		}
+	}
+
+	// Collate values "downRightSightLine" diagonal from observation point
+	for (int i = 1; i < environmentDimension; ++i) {
+
+		if (observationPointX + i < environmentDimension && observationPointY + i < environmentDimension) {
+			StateBasedNode value = Environment[observationPointX + i][observationPointY + i];
+			downRightSightLine.push_back(value);
+		}
+		else {
+			break;
+		}
+	}
+
+	// Collate values "downLeftSightLine" diagonal from observation point
+	for (int i = 1; i < environmentDimension; ++i) {
+
+		if (observationPointX - i > -1 && observationPointY + i < environmentDimension) {
+			StateBasedNode value = Environment[observationPointX - i][observationPointY + i];
+			downLeftSightLine.push_back(value);
+		}
+		else {
+			break;
+		}
 	}
 
 
@@ -77,14 +119,8 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 		upSightLine.push_back(value);
 	}
 
-
-
-
-	VectorPrintHelper(horizontalSlice);
-	VectorPrintHelper(leftSightLine);
-	VectorPrintHelper(rightSightLine);
-	VectorPrintHelper(downSightLine);
-	VectorPrintHelper(upSightLine);
+	VectorPrintHelper(downRightSightLine);
+	VectorPrintHelper(downLeftSightLine);
 
 
 	return {};
