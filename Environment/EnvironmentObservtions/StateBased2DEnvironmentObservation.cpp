@@ -11,7 +11,14 @@ using std::endl;
 using std::copy;
 using std::back_inserter;
 
-
+//*
+// @brife Print helper for vector<StateBasedNode>
+// 
+// Prints the conent of vector of type StateBasedNode
+// Converts the stored data to int before printing
+// 
+// @param inputVector The vector to be printed
+// */
 void VectorPrintHelper(vector<StateBasedNode> inputVector) {
 	for (StateBasedNode node : inputVector) {
 		int nodeValue = StateBasedNode::state_to_int(node.state);
@@ -19,6 +26,45 @@ void VectorPrintHelper(vector<StateBasedNode> inputVector) {
 
 	}
 	cout << endl;
+}
+
+
+//*
+// @Brife Collate data along a 2D vector axis
+// 
+// Collate data along an axis of a 2D vector, including diagonals
+// 
+// @param Environment The given 2D vector
+// @param observationPointX X coods of observation/start point
+// @param observationPointY Y coods of observation/start point
+// @param gainX  provides direction of data collaction along x axis
+// @param gainY  provides direction of data collaction along y axis
+// @param environmentDimension  Dimension of the environment
+// @param sightLine Storage of the collated data - By ref so directly updated
+// */
+void CollateSightLineData(
+	const vector<vector<StateBasedNode>>& Environment,
+	int observationPointX,
+	int observationPointY, 
+	int gainX,
+	int gainY,
+	int environmentDimension,
+	vector<StateBasedNode>& sightLine
+) {
+	for (int i = 1; i < environmentDimension; ++i) {
+
+		int newX = observationPointX + gainX * i;
+		int newY = observationPointY + gainY * i;
+
+		if (newX < environmentDimension && newX >= 0) {
+			if (newY < environmentDimension && newY >= 0) {
+				sightLine.push_back(Environment[newX][newY]);
+
+			};
+
+		};
+
+	};
 }
 
 
@@ -39,17 +85,11 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 
 	int environmentDimension = Environment.size();
 
-
-
-	vector<StateBasedNode> horizontalSlice = Environment[observationPointX];
-	int leftSightLineOffSet = (environmentDimension - observationPointX);
-
-
-	vector<StateBasedNode> leftSightLine(horizontalSlice.begin(), horizontalSlice.end() - leftSightLineOffSet);
-	vector<StateBasedNode> rightSightLine(horizontalSlice.begin() + observationPointX, horizontalSlice.end());
-
 	vector<StateBasedNode> upSightLine;
 	vector<StateBasedNode> downSightLine;
+
+	vector<StateBasedNode> leftSightLine;
+	vector<StateBasedNode> rightSightLine;
 
 	vector<StateBasedNode> upRightSightLine;
 	vector<StateBasedNode> upLeftSightLine;
@@ -57,79 +97,24 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	vector<StateBasedNode>	downRightSightLine;
 	vector<StateBasedNode>  downLeftSightLine;
 
+	
+	CollateSightLineData(Environment, observationPointX, observationPointY, -1, 0, environmentDimension, upSightLine);
+	CollateSightLineData(Environment, observationPointX, observationPointY, 1, 0, environmentDimension, downSightLine);
+	
+	CollateSightLineData(Environment, observationPointX, observationPointY, 0, 1, environmentDimension, rightSightLine);
+	CollateSightLineData(Environment, observationPointX, observationPointY, 0, -1, environmentDimension, leftSightLine);
 
-	// Collate values "upRight" diagonal from observation point
-	for (int i = 1; i < environmentDimension; ++i) {
+	CollateSightLineData(Environment, observationPointX, observationPointY, 1, -1, environmentDimension, upRightSightLine);
+	CollateSightLineData(Environment, observationPointX, observationPointY, -1, -1, environmentDimension, upLeftSightLine);
 
-		if (observationPointX + i < environmentDimension && observationPointY - i > -1) {
-			StateBasedNode value = Environment[observationPointX + i][observationPointY - i];
-			upRightSightLine.push_back(value);
-		}
-		else {
-			break;
-		}
-	}
+	CollateSightLineData(Environment, observationPointX, observationPointY, 1, 1, environmentDimension, downRightSightLine);
+	CollateSightLineData(Environment, observationPointX, observationPointY, -1, 1, environmentDimension, downLeftSightLine);
 
-	// Collate values "upLeft" diagonal from observation point
-	for (int i = 1; i < environmentDimension; ++i) {
-
-		if (observationPointX - i > -1 && observationPointY - i > -1) {
-			StateBasedNode value = Environment[observationPointX - i][observationPointY - i];
-			upLeftSightLine.push_back(value);
-		}
-		else {
-			break;
-		}
-	}
-
-	// Collate values "downRightSightLine" diagonal from observation point
-	for (int i = 1; i < environmentDimension; ++i) {
-
-		if (observationPointX + i < environmentDimension && observationPointY + i < environmentDimension) {
-			StateBasedNode value = Environment[observationPointX + i][observationPointY + i];
-			downRightSightLine.push_back(value);
-		}
-		else {
-			break;
-		}
-	}
-
-	// Collate values "downLeftSightLine" diagonal from observation point
-	for (int i = 1; i < environmentDimension; ++i) {
-
-		if (observationPointX - i > -1 && observationPointY + i < environmentDimension) {
-			StateBasedNode value = Environment[observationPointX - i][observationPointY + i];
-			downLeftSightLine.push_back(value);
-		}
-		else {
-			break;
-		}
-	}
-
-
-
-	// Collate values "down" from observation point
-	for (int i = observationPointY; i < environmentDimension; ++i) {
-		StateBasedNode value = Environment[i][observationPointY];
-		downSightLine.push_back(value);
-	}
-	// Collate values "up" from observation point
-	for (int i = observationPointY - 1; i > -1; --i) {
-		StateBasedNode value = Environment[i][observationPointY];
-		upSightLine.push_back(value);
-	}
-
-	VectorPrintHelper(downRightSightLine);
-	VectorPrintHelper(downLeftSightLine);
-
+	
 
 	return {};
 }
 
 
-string testFunctionCall() {
-	return "Test Call Return";
-
-
-}
+\
 
