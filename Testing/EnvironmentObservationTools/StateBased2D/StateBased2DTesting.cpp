@@ -81,17 +81,21 @@ vector<vector<StateBasedNode>> Populate2DTestEnvironment_Dimesnions5(vector<vect
 	return blankEnv;
 }
 
-TEST(ObservationTesting_StateBased_2D, TestFunctionCall) {
+
+//*
+// Building out sight line data collation before test can be finalized 
+// */
+TEST(ObservationTesting_StateBased_2D, SightLineCollationTest) {
 	
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
-
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
-	EnvironmentPrintHelper(testEnvironment);
-
-
 
 	vector<double> placeHolder = PerformObservationFromLocation({1,1}, testEnvironment);
+
+
+	tuple<int, int> observationPointA;
+	vector<double> expectedResultA;
 	
 	ASSERT_EQ(1, 2);
 

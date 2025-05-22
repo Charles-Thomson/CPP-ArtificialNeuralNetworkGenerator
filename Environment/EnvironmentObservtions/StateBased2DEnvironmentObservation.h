@@ -12,7 +12,7 @@ using std::tuple;
 
 vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, vector<vector<StateBasedNode>> Environment);
 
-string testFunctionCall();
+
 
 
 #endif // !STATE_BASED_2D_OBSERVATION_H

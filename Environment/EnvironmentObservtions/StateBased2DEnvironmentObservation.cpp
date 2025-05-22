@@ -1,8 +1,12 @@
 #include "StateBased2DEnvironmentObservation.h"
 #include "../EnvironmentNodes/StateBased/StateBasedNode.h"
+#include "EnvironmentObservationStructs/StateBasedObservationData.h"
+
 #include <string>
 #include <vector>
 #include <tuple>
+
+
 
 using std::string;
 using std::tuple;
@@ -42,7 +46,7 @@ void VectorPrintHelper(vector<StateBasedNode> inputVector) {
 // @param environmentDimension  Dimension of the environment
 // @param sightLine Storage of the collated data - By ref so directly updated
 // */
-void CollateSightLineData(
+void CollateDataAlongSightLine(
 	const vector<vector<StateBasedNode>>& Environment,
 	int observationPointX,
 	int observationPointY, 
@@ -66,6 +70,27 @@ void CollateSightLineData(
 
 	};
 }
+
+//*
+// @ Brife Generate StateBasedObservationData Object
+// Generate a StateBasedObservationData object to store the collated sightline data
+// and environment node type dependent input data
+// 
+// @param sightLineData Raw data along a sightline
+// @param openNodeInputValue Value representing the quantity of OPEN nodes along the given sightline
+// @param obsticalNodeInputValue Value representing the quantity of OBSTICAL nodes along the given sightline
+// @param goalNodeInputValue Value representing the quantity of GOAL nodes along the given sightline
+// 
+// @return StateBasedObservationData New StateBasedObservationData object
+// */
+StateBasedObservationData GenerateStateBasedObservationDataObject(vector<int> sightLineData, double openNodeInputValue, double obsticalNodeInputValue , double goalNodeInputValue) {
+	StateBasedObservationData newObj = { .SightLineData_2D = sightLineData,
+										 .openNodeInput = openNodeInputValue,
+										 .obsticalNodeInput = obsticalNodeInputValue,
+										 .goalNodeInput = goalNodeInputValue };
+	return newObj;
+}
+
 
 
 
@@ -98,23 +123,39 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	vector<StateBasedNode>  downLeftSightLine;
 
 	
-	CollateSightLineData(Environment, observationPointX, observationPointY, -1, 0, environmentDimension, upSightLine);
-	CollateSightLineData(Environment, observationPointX, observationPointY, 1, 0, environmentDimension, downSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, -1, 0, environmentDimension, upSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 1, 0, environmentDimension, downSightLine);
 	
-	CollateSightLineData(Environment, observationPointX, observationPointY, 0, 1, environmentDimension, rightSightLine);
-	CollateSightLineData(Environment, observationPointX, observationPointY, 0, -1, environmentDimension, leftSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 0, 1, environmentDimension, rightSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 0, -1, environmentDimension, leftSightLine);
 
-	CollateSightLineData(Environment, observationPointX, observationPointY, 1, -1, environmentDimension, upRightSightLine);
-	CollateSightLineData(Environment, observationPointX, observationPointY, -1, -1, environmentDimension, upLeftSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 1, -1, environmentDimension, upRightSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, -1, -1, environmentDimension, upLeftSightLine);
 
-	CollateSightLineData(Environment, observationPointX, observationPointY, 1, 1, environmentDimension, downRightSightLine);
-	CollateSightLineData(Environment, observationPointX, observationPointY, -1, 1, environmentDimension, downLeftSightLine);
-
-	
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 1, 1, environmentDimension, downRightSightLine);
+	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, -1, 1, environmentDimension, downLeftSightLine);
 
 	return {};
 }
 
 
-\
+//*
+// @Brife Calculate input data from sightlines data 
+// 
+// Calculate the input data along a sightline. Producing a value for each of the 
+// types of object along a sightline. Higher value = shorter distance along sight line
+// 
+// 
+// */
+//vector<double> CalculateInputDataAlongSightline(StateBasedObservationData observattionData) {
+//
+//
+//
+//
+//
+//
+//}
+
+
+
 

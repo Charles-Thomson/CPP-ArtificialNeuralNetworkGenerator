@@ -8,6 +8,14 @@ using std::string;
 using std::cout;
 using std::invalid_argument;
 
+
+
+//*
+// @Brife Provides a enumearation of possible node states
+// 
+// Provides anumeration of possible nodes in an state baseed environment
+// 
+// */
 struct StateBasedNode {
 
 	enum class State {
