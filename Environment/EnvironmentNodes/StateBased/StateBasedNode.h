@@ -31,7 +31,7 @@ struct StateBasedNode {
 
 	StateBasedNode(State s) : state(s) {}
 
-	static State from_int(int value) {
+	static State state_from_int(int value) {
 		switch (value) {
 		case 0: return State::OPEN;
 		case 1: return State::START;

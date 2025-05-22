@@ -140,6 +140,19 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 
 
 //*
+// @ Brife Normalize values to between 0.0 and 1.0
+// 
+// @param inputValue Value to be normalized
+// @return Normalized value
+// */
+double NormalizeValue(int inputValue) {
+
+
+	return 0.0;
+}
+
+
+//*
 // @Brife Calculate input data from sightlines data 
 // 
 // Calculate the input data along a sightline. Producing a value for each of the 
@@ -147,14 +160,47 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 // 
 // 
 // */
-//vector<double> CalculateInputDataAlongSightline(StateBasedObservationData observattionData) {
-//
-//
-//
-//
-//
-//
-//}
+vector<double> CalculateInputDataAlongSightline(vector<int> observattionData, int environmentDimension) {
+
+	// Accumulated values = environmentDimension - distance from observation point 
+	int accumulativeOpenNodeInput = 0;
+	int accumulativeObsticalNodeInput = 0;
+	int accumulativeGoalNodeInput = 0;
+
+	int offSet = observattionData.size(); 
+	for (size_t i = 0; i < observattionData.size(); ++i) {
+		StateBasedNode nodeState(StateBasedNode::state_from_int(observattionData[i]));
+
+		switch (nodeState.state) {
+		case StateBasedNode::State::OPEN: 
+			accumulativeOpenNodeInput += offSet - i; 
+			return;
+
+		case StateBasedNode::State::OBSTICAL: 
+			accumulativeObsticalNodeInput += offSet - i;
+			return;
+
+		case StateBasedNode::State::GOAL: 
+			accumulativeGoalNodeInput += offSet - i;
+			return;
+		default: throw "Value not associated with a node state";
+		}
+	}
+
+
+	double openNodeInput = NormalizeValue(accumulativeOpenNodeInput);
+	double obsticalNodeInput = NormalizeValue(accumulativeObsticalNodeInput);
+	double goalNodeInput = NormalizeValue(accumulativeGoalNodeInput);
+
+
+	
+	// Need to adjust the values to between 0.0 < n < 1.0 
+	
+
+
+
+
+}
 
 
 
