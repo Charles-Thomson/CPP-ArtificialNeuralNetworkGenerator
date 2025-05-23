@@ -10,7 +10,7 @@
 #include <utility>
 #include <functional>
 
-
+import math.add;
 
 
 using std::string;
@@ -98,6 +98,8 @@ TEST(ObservationTesting_StateBased_2D, SightLineCollationTest) {
 
 	tuple<int, int> observationPointA;
 	vector<double> expectedResultA;
+
+	cout << "MODULE FUNCTION : " << add(5, 5) << endl;
 	
 	ASSERT_EQ(1, 2);
 

@@ -74,6 +74,16 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     ${SOURCES_WEIGHTHURISTICS}
     ${SOURCES_ACTIVATIONFUNCTIONS}
     ${SOURCES_CONFIGURATIONCLASSES}
+
+    
+    math/add.cpp
+)
+
+
+target_sources(CPP-ArtificialNeuralNetworkGenerator
+  PUBLIC 
+    FILE_SET cxx_modules TYPE CXX_MODULES FILES
+      math/add.ixx
 )
 
 
@@ -178,7 +188,11 @@ set(TEST_TARGETS
 #Target link libraries
 foreach(target IN LISTS TEST_TARGETS)
     target_link_libraries(${target} PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator fmt::fmt)
+    target_compile_features(${target} PUBLIC cxx_std_20)
 endforeach()
+
+
+
 
 #Include directories for test targets
 foreach(target IN LISTS TEST_TARGETS)
