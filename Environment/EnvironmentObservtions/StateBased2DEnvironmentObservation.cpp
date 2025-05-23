@@ -91,6 +91,46 @@ StateBasedObservationData GenerateStateBasedObservationDataObject(vector<int> si
 	return newObj;
 }
 
+//*
+// @Brife Calculate input data from sightlines data 
+// 
+// Calculate the input data along a sightline. Producing a value for each of the 
+// types of object along a sightline. Higher value = shorter distance along sight line
+// 
+// @param observattionData Nodes along the sighline
+// @param environmentDimension Dimension of the Environment
+// @return Raw values relating to distance from from the observation point fo each node type 
+// */
+vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBasedNode> observattionData, int environmentDimension) {
+
+	// Accumulated values = environmentDimension - distance from observation point 
+	int accumulativeOpenNodeInput = 0;
+	int accumulativeObsticalNodeInput = 0;
+	int accumulativeGoalNodeInput = 0;
+
+	int offSet = observattionData.size();
+	for (size_t i = 0; i < observattionData.size(); ++i) {
+
+		switch (observattionData[i].state) {
+		case StateBasedNode::State::OPEN:
+			accumulativeOpenNodeInput += offSet - i;
+			break;
+
+		case StateBasedNode::State::OBSTICAL:
+			accumulativeObsticalNodeInput += offSet - i;
+			break;
+
+		case StateBasedNode::State::GOAL:
+			accumulativeGoalNodeInput += offSet - i;
+			break;
+		default: throw "Value not associated with a node state";
+		}
+	}
+
+	return { accumulativeOpenNodeInput ,accumulativeObsticalNodeInput, accumulativeGoalNodeInput };
+
+}
+
 
 
 
@@ -107,6 +147,12 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	
 	int observationPointX = get<0>(observtionPoint);
 	int observationPointY = get<1>(observtionPoint);
+
+	// The highest and lowest accululative values collated from CalculateAccumulativeInputDataAlongSightline
+	double maxValue;
+	double minValue;
+
+
 
 	int environmentDimension = Environment.size();
 
@@ -135,6 +181,22 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 1, 1, environmentDimension, downRightSightLine);
 	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, -1, 1, environmentDimension, downLeftSightLine);
 
+	vector<int> upSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upSightLine, environmentDimension);
+	vector<int> downSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downSightLine, environmentDimension);
+
+	vector<int> leftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(leftSightLine, environmentDimension);
+	vector<int> rightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(rightSightLine, environmentDimension);
+
+	vector<int> upRightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upRightSightLine, environmentDimension);
+	vector<int> upLeftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upLeftSightLine, environmentDimension);
+
+	vector<int> downRightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downRightSightLine, environmentDimension);
+	vector<int> downLeftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downLeftSightLine, environmentDimension);
+
+
+	// Need to get the min and max values ** Headache
+
+
 	return {};
 }
 
@@ -152,55 +214,7 @@ double NormalizeValue(int inputValue) {
 }
 
 
-//*
-// @Brife Calculate input data from sightlines data 
-// 
-// Calculate the input data along a sightline. Producing a value for each of the 
-// types of object along a sightline. Higher value = shorter distance along sight line
-// 
-// 
-// */
-vector<double> CalculateInputDataAlongSightline(vector<int> observattionData, int environmentDimension) {
 
-	// Accumulated values = environmentDimension - distance from observation point 
-	int accumulativeOpenNodeInput = 0;
-	int accumulativeObsticalNodeInput = 0;
-	int accumulativeGoalNodeInput = 0;
-
-	int offSet = observattionData.size(); 
-	for (size_t i = 0; i < observattionData.size(); ++i) {
-		StateBasedNode nodeState(StateBasedNode::state_from_int(observattionData[i]));
-
-		switch (nodeState.state) {
-		case StateBasedNode::State::OPEN: 
-			accumulativeOpenNodeInput += offSet - i; 
-			return;
-
-		case StateBasedNode::State::OBSTICAL: 
-			accumulativeObsticalNodeInput += offSet - i;
-			return;
-
-		case StateBasedNode::State::GOAL: 
-			accumulativeGoalNodeInput += offSet - i;
-			return;
-		default: throw "Value not associated with a node state";
-		}
-	}
-
-
-	double openNodeInput = NormalizeValue(accumulativeOpenNodeInput);
-	double obsticalNodeInput = NormalizeValue(accumulativeObsticalNodeInput);
-	double goalNodeInput = NormalizeValue(accumulativeGoalNodeInput);
-
-
-	
-	// Need to adjust the values to between 0.0 < n < 1.0 
-	
-
-
-
-
-}
 
 
 

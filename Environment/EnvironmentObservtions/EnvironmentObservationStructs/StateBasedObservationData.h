@@ -14,6 +14,10 @@ struct StateBasedObservationData {
 	double obsticalNodeInput;
 	double goalNodeInput;
 
+	int openNodeAccumulativeData;
+	int obsticalNodeAccumulativeData;
+	int goalNodeAccumulativeData;
+
 };
 
 #endif // !STATE_BASED_OBSERVATION_DATA_H

@@ -25,7 +25,6 @@ struct StateBasedNode {
 		GOAL = 3
 	};
 
-
 	// Stored state of the node
 	State state;
 

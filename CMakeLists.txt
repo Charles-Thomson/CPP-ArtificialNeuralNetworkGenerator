@@ -1,7 +1,9 @@
-﻿cmake_minimum_required (VERSION 3.12)
+﻿cmake_minimum_required (VERSION 3.28)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_CXX_SCAN_FOR_MODULES ON)
 
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
@@ -10,65 +12,71 @@ endif()
 
 project (CPP-ArtificialNeuralNetworkGenerator)
 
-# Main library
-add_library(CPP-ArtificialNeuralNetworkGenerator 
-    CPP-ArtificialNeuralNetworkGenerator.cpp 
-    CPP-ArtificialNeuralNetworkGenerator.h 
-
+set(SOURCES_PREPROCESSING
     PreProcessing/InputFileReadAndParse/InputFileRead.cpp 
     PreProcessing/InputFileReadAndParse/InputFileParse.h 
     PreProcessing/InputFileReadAndParse/InputFileRead.h
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
     PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h
+)
 
-    ConfigClasses/ANNConfigurationObject/ANNConfigObject.cpp
-    ConfigClasses/ANNConfigurationObject/ANNConfigObject.h
+set(SOURCES_CONFIGURATIONCLASSES
+   ConfigClasses/ANNConfigurationObject/ANNConfigObject.cpp
+   ConfigClasses/ANNConfigurationObject/ANNConfigObject.h
+   ConfigClasses/ANNConfigurationObject/ANNLayerObject.cpp
+   ConfigClasses/ANNConfigurationObject/ANNLayerObject.h
+   ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.cpp 
+   ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.h 
+   ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.cpp
+   ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.h
+   ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.cpp
+   ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h
+)
 
-    ConfigClasses/ANNConfigurationObject/ANNLayerObject.cpp
-    ConfigClasses/ANNConfigurationObject/ANNLayerObject.h
+set(SOURCES_ACTIVATIONFUNCTIONS
+   ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp
+   ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.h
+   ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.cpp
+   ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.h
+   ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp 
+   ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
+   ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
+)
 
-    ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.cpp 
-    ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.h 
-
-    ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.cpp
-    ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.h
-
-    ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.cpp
-    ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h
-
-    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp
-    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.h
-    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.cpp
-    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.h
-
-    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp 
-    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
-    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
-
+set(SOURCES_WEIGHTHURISTICS
     WeightHuristics/WeightHuristics_GeneratorFactory.cpp
     WeightHuristics/WeightHuristics_GeneratorFactory.h 
     WeightHuristics/WeightHuristics_Functions.h
     WeightHuristics/WeightHuristics_Functions.cpp
+)
 
-    GeneratorStruct/Generator.cpp 
-    Staging/WorkItemGeneration/WorkItem.h 
-
+set(SOURCES_ENVIRONMENT
     Environment/ANNEnvironemnt.cpp 
     Environment/ANNEnvironment.h 
-
     Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.cpp
     Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.h 
     Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp
     Environment/EnvironmentNodes/StateBased/StateBasedNode.h
-
-
     Environment/EnvironmentObservtions/EnvironmentObservationStructs/StateBasedObservationData.h
-
     Environment/DirectionEnumeration/DirectionalEnum.h
+    Environment/DirectionEnumeration/DirectionalEnum.cpp
+)
 
-    Environment/DirectionEnumeration/DirectionalEnum.cpp)
+add_library(CPP-ArtificialNeuralNetworkGenerator 
+    
+    CPP-ArtificialNeuralNetworkGenerator.cpp 
+    CPP-ArtificialNeuralNetworkGenerator.h 
+    GeneratorStruct/Generator.cpp 
+    Staging/WorkItemGeneration/WorkItem.h 
 
-  
+    ${SOURCES_ENVIRONMENT}
+    ${SOURCES_PREPROCESSING}
+    ${SOURCES_WEIGHTHURISTICS}
+    ${SOURCES_ACTIVATIONFUNCTIONS}
+    ${SOURCES_CONFIGURATIONCLASSES}
+)
+
+
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CPP-ArtificialNeuralNetworkGenerator PROPERTY CXX_STANDARD 20)
@@ -140,19 +148,19 @@ target_compile_definitions(CPP-ArtificialNeuralNetworkGenerator PRIVATE INPUT_FI
 enable_testing()
 
 # Test executable for read_and_parse_testing
-add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp)
+add_executable(read_and_parse_testing Testing/InputParsingTests/ReadAndParseTesting.cpp )
 
-add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp )
+add_executable(JSON_Unpacking_testing Testing/JSONUnpackingTests/JSONUnpackingTesting.cpp  )
 
-add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp  )
+add_executable(hidden_layer_activation_function_testing Testing/ActivationFunctionTests/HiddenLayer_ActivationFunctionTests.cpp   )
 
-add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp)
+add_executable(output_layer_activation_function_testing Testing/ActivationFunctionTests/OutputLayer_ActivationFunctionTests.cpp )
 
-add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp)
+add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/WeightHuristicsFunctionTests.cpp )
 
-add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp)
+add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp )
 
-add_executable(observation_tool_testing_state_based_2D Testing/EnvironmentObservationTools/StateBased2D/StateBased2DTesting.cpp)
+add_executable(observation_tool_testing_state_based_2D Testing/EnvironmentObservationTools/StateBased2D/StateBased2DTesting.cpp )
 
 
 

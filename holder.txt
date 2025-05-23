@@ -1,0 +1,61 @@
+add_library(CPP-ArtificialNeuralNetworkGenerator 
+    CPP-ArtificialNeuralNetworkGenerator.cpp 
+    CPP-ArtificialNeuralNetworkGenerator.h 
+
+    PreProcessing/InputFileReadAndParse/InputFileRead.cpp 
+    PreProcessing/InputFileReadAndParse/InputFileParse.h 
+    PreProcessing/InputFileReadAndParse/InputFileRead.h
+    PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.cpp 
+    PreProcessing/UnpackingToConfigurationObjects/UnpackToConfigObjects.h
+
+    ConfigClasses/ANNConfigurationObject/ANNConfigObject.cpp
+    ConfigClasses/ANNConfigurationObject/ANNConfigObject.h
+
+    ConfigClasses/ANNConfigurationObject/ANNLayerObject.cpp
+    ConfigClasses/ANNConfigurationObject/ANNLayerObject.h
+
+    ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.cpp 
+    ConfigClasses/EnvironmentConfigurationObject/EnvironmentConfigObject.h 
+
+    ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.cpp
+    ConfigClasses/HyperParameterConfigurationObject/HyperParameterConfigObject.h
+
+    ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.cpp
+    ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h
+
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.h
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.cpp
+    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.h
+
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.cpp 
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctions.h
+    ActivationFunctions/OutputLayer/OutputLayer_ActivationFunctionsFactory.h
+
+    WeightHuristics/WeightHuristics_GeneratorFactory.cpp
+    WeightHuristics/WeightHuristics_GeneratorFactory.h 
+    WeightHuristics/WeightHuristics_Functions.h
+    WeightHuristics/WeightHuristics_Functions.cpp
+
+    GeneratorStruct/Generator.cpp 
+    Staging/WorkItemGeneration/WorkItem.h 
+
+    Environment/ANNEnvironemnt.cpp 
+    Environment/ANNEnvironment.h 
+
+    Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.cpp
+    Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.h 
+    Environment/EnvironmentNodes/StateBased/StateBasedNode.cpp
+    Environment/EnvironmentNodes/StateBased/StateBasedNode.h
+
+
+    Environment/EnvironmentObservtions/EnvironmentObservationStructs/StateBasedObservationData.h
+
+    Environment/DirectionEnumeration/DirectionalEnum.h
+
+    Environment/DirectionEnumeration/DirectionalEnum.cpp
+    
+    ModuleTest.cpp
+    FILE_SET cxx_modules TYPE CXX_MODULES FILES
+        ModuleTest.ixx
+)
