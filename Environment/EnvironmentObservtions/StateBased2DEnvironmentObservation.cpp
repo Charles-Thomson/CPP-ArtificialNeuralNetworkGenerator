@@ -75,11 +75,8 @@ vector<double> NormalizeDataSet(vector<int>& dataSet) {
 
 	vector<double> normalizedDataSet = {};
 
-	cout << "Min Max values : " << min << " : " << max << endl;
 	for (int& val : dataSet) {
 		double nomrlizedValue = ((val - min) / (max - min));
-		cout << "val : " << val << endl;
-		cout << "Normolized val : " << nomrlizedValue << endl;
 		normalizedDataSet.push_back(nomrlizedValue);
 
 	}
@@ -187,11 +184,6 @@ vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBasedNode> 
 
 }
 
-// ABOVE - VALUE COLLATION ISSUE ? 
-// Check the made and work out whats going on 
-
-
-
 
 //*
 // @ Brief Perform observation of environment from given location
@@ -234,50 +226,39 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 1, 1, environmentDimension, downRightSightLine);
 	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, -1, 1, environmentDimension, downLeftSightLine);
 
-	// Can all be stored in a single vector ?
-	vector<int> upSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upSightLine, environmentDimension);
-	vector<int> downSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downSightLine, environmentDimension);
-
-	vector<int> leftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(leftSightLine, environmentDimension);
-	vector<int> rightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(rightSightLine, environmentDimension);
-
-	vector<int> upRightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upRightSightLine, environmentDimension);
-	vector<int> upLeftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upLeftSightLine, environmentDimension);
-
-	vector<int> downRightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downRightSightLine, environmentDimension);
-	vector<int> downLeftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downLeftSightLine, environmentDimension);
-
 	vector<int> unprocessedSightLineData = {};
 
-	vector<vector<int>> sightLineVectors = {
-		upSightLineAccumulativeValues,
-		downSightLineAccumulativeValues,
-		leftSightLineAccumulativeValues,
-		rightSightLineAccumulativeValues,
-		upRightSightLineAccumulativeValues,
-		upLeftSightLineAccumulativeValues,
-		downRightSightLineAccumulativeValues,
-		downLeftSightLineAccumulativeValues
-	};
+	vector<vector<StateBasedNode>> rawSightLineData = {
+		upSightLine,
+		downSightLine,
+		leftSightLine,
+		rightSightLine,
+		upRightSightLine,
+		upLeftSightLine,
+		downRightSightLine,
+		downLeftSightLine
+	}; 
 
-	for (vector<int>& vec : sightLineVectors) {
-		unprocessedSightLineData.insert(unprocessedSightLineData.end(), vec.begin(), vec.end());
+	for (vector<StateBasedNode>& sightLineData : rawSightLineData) {
+		vector<int> accumulativeDataAlongSighLine = CalculateAccumulativeInputDataAlongSightline(sightLineData, environmentDimension);
+		unprocessedSightLineData.insert(unprocessedSightLineData.end(), accumulativeDataAlongSighLine.begin(), accumulativeDataAlongSighLine.end());
+	
+	}
 
-	};
 
-	// Take all the sight line data and normalize it.
-	// Order no longer matters 
+	
 
 	vector<double> normolizedSightLineData = NormalizeDataSet(unprocessedSightLineData);
 
-	/*for (double val : normolizedSightLineData) {
+
+	for (double val : normolizedSightLineData) {
+
 		cout << val << endl;
-	
-	}*/
 
 
+	}
 
-	return {};
+	return normolizedSightLineData;
 }
 
 

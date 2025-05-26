@@ -3,26 +3,43 @@
 #include "Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.cpp"
 
 
+
+//*
+// @Brife Test the fll process of sight line data collection
+// 
+// Test the full porcess of data observation and collerction from and env
+// 
+// Expected result:
+// - REturns a set of souble values normalized to: -0.1 < n < 1.1
+// 
+// */
 TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation) {
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
 
-	vector<double> placeHolder = PerformObservationFromLocation({ 1,1 }, testEnvironment);
+	vector<double> sightLineData = PerformObservationFromLocation({ 1,1 }, testEnvironment);
 
-
-	tuple<int, int> observationPointA;
-	vector<double> expectedResultA;
-
+	for (double& val : sightLineData) {
+		SCOPED_TRACE("Value not normalized within bounds - -0.1 < n < 1.1");
+		ASSERT_GT(val, -0.1);
+		ASSERT_LT(val, 1.1);
+	};
+	
+	ASSERT_EQ(sightLineData.size(),  24) << "Returned sightline data setis of an incorrect size" << endl;
 
 	
-
-	ASSERT_EQ(1, 2);
-
-
-
 }
 
+//*
+// @Brife Fucntion test : CalculateAccumulativeInputDataAlongSightline
+// Expected Result:
+// - returns int values based on the content of a sight line
+// 
+// Curently hard coded to work with the GenerateDummySightLineData function
+// 
+// 
+// */
 TEST_F(EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_FunctionTest) {
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
@@ -41,6 +58,13 @@ TEST_F(EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_Fun
 
 }
 
+
+//*
+// @ Brife Test if min and max valus can be found from a data set
+// 
+// - Test is somewhat overkill - may remove as dead code 
+// 
+// */
 TEST_F(EnvironmentTestFixtures, UpdateMinAndMaxValues_FunctionTest) {
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
