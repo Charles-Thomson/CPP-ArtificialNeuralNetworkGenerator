@@ -170,9 +170,9 @@ add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/We
 
 add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp )
 
-add_executable(observation_tool_testing_state_based_2D Testing/EnvironmentObservationTools/StateBased2D/StateBased2DTesting.cpp )
+add_executable(state_based_2D_Environment_testing Testing/EnvironmentTests/StateBased2D/StateBased2DTesting.cpp )
 
-
+add_executable(environment_observation_tools_testing Testing/EnvironmentTests/SightLineDataCollationTests/SightLineTests.cpp )
 
 # List of Test targets
 set(TEST_TARGETS
@@ -182,7 +182,8 @@ set(TEST_TARGETS
     output_layer_activation_function_testing
     weight_huristics_function_testing
     generator_struct_functional_testing
-    observation_tool_testing_state_based_2D
+    state_based_2D_Environment_testing
+    environment_observation_tools_testing
 )
 
 #Target link libraries
@@ -197,15 +198,19 @@ endforeach()
 #Include directories for test targets
 foreach(target IN LISTS TEST_TARGETS)
     target_include_directories(${target} PRIVATE
+        #Cmake source directories
         ${CMAKE_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/PreProcessing
         ${CMAKE_SOURCE_DIR}/Testing
+
         #CPP-JSONParser directories
         ${CPP-JSONParser_SOURCE_DIR}/ExposedFunctions 
         
          #CPP-Generator directories
         ${CPP-Generator_SOURCE_DIR}/ExposedFunctions
 
+
+        #Gtest support
         ${googletest_SOURCE_DIR}/googletest/include  
         "${gtest_SOURCE_DIR}/include"
     )
@@ -245,8 +250,13 @@ add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_function
 gtest_discover_tests(generator_struct_functional_testing)
 
 # Register the test
-add_test(NAME ObservationToolTesting_StateBased_2D COMMAND observation_tool_testing_state_based_2D)
-gtest_discover_tests(observation_tool_testing_state_based_2D)
+add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_2D_Environment_testing)
+gtest_discover_tests(state_based_2D_Environment_testing)
+
+# Register the test
+add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)
+gtest_discover_tests(environment_observation_tools_testing)
+
 
 
 
