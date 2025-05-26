@@ -46,7 +46,7 @@ void VectorPrintHelper(vector<StateBasedNode> inputVector) {
 // @param vector<int> inputVector - Vector assesed for new min and max values
 // @return tuple<int, int> - min and max values of vector
 // */
-tuple<int, int> DetermineMinAndMaxValues(vector<int>& inputVector) {
+tuple<double, double> DetermineMinAndMaxValues(vector<int>& inputVector) {
 
 	// Need the return in the guard for the use case of the function
 	if (inputVector.empty()) {
@@ -55,8 +55,8 @@ tuple<int, int> DetermineMinAndMaxValues(vector<int>& inputVector) {
 
 	auto [min_it, max_it] = minmax_element(inputVector.begin(), inputVector.end());
 
-	int min = *min_it;
-	int max = *max_it;
+	double min = *min_it;
+	double max = *max_it;
 
 	return { min , max };
 }
@@ -68,9 +68,9 @@ tuple<int, int> DetermineMinAndMaxValues(vector<int>& inputVector) {
 // @return Normalized value
 // */
 vector<double> NormalizeDataSet(vector<int>& dataSet) {
-	tuple<int, int> minMaxValues = DetermineMinAndMaxValues(dataSet);
-	int min;
-	int max;
+	tuple<double, double> minMaxValues = DetermineMinAndMaxValues(dataSet);
+	double min;
+	double max;
 	tie(min, max) = minMaxValues;
 
 	vector<double> normalizedDataSet = {};
@@ -78,6 +78,7 @@ vector<double> NormalizeDataSet(vector<int>& dataSet) {
 	cout << "Min Max values : " << min << " : " << max << endl;
 	for (int& val : dataSet) {
 		double nomrlizedValue = ((val - min) / (max - min));
+		cout << "val : " << val << endl;
 		cout << "Normolized val : " << nomrlizedValue << endl;
 		normalizedDataSet.push_back(nomrlizedValue);
 
@@ -186,7 +187,8 @@ vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBasedNode> 
 
 }
 
-
+// ABOVE - VALUE COLLATION ISSUE ? 
+// Check the made and work out whats going on 
 
 
 

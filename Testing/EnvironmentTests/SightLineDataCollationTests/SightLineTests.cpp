@@ -52,7 +52,7 @@ TEST_F(EnvironmentTestFixtures, UpdateMinAndMaxValues_FunctionTest) {
 
 	vector<int> processedSightLineData = CalculateAccumulativeInputDataAlongSightline(testData, envSize);
 
-	tuple<int,int> minMaxValues = DetermineMinAndMaxValues(processedSightLineData);
+	tuple<double, double> minMaxValues = DetermineMinAndMaxValues(processedSightLineData);
 
 	// Test values hard coded based on the GenerateDummySightLineData() function
 	SCOPED_TRACE("Value not as expected -> Value: minValue");
