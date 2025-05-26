@@ -34,7 +34,7 @@ set(SOURCES_CONFIGURATIONCLASSES
 )
 
 set(SOURCES_ACTIVATIONFUNCTIONS
-   ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp
+   ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.cpp 
    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.h
    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctions.cpp
    ActivationFunctions/HiddenLayer/HiddenLayer_ActivationFunctionsFactory.h
@@ -75,16 +75,16 @@ add_library(CPP-ArtificialNeuralNetworkGenerator
     ${SOURCES_ACTIVATIONFUNCTIONS}
     ${SOURCES_CONFIGURATIONCLASSES}
 
-    
-    math/add.cpp
+    # Module Testing 
+    #math/add.cpp
 )
 
-
-target_sources(CPP-ArtificialNeuralNetworkGenerator
-  PUBLIC 
-    FILE_SET cxx_modules TYPE CXX_MODULES FILES
-      math/add.ixx
-)
+# Module testing
+#target_sources(CPP-ArtificialNeuralNetworkGenerator
+#  PUBLIC 
+#    FILE_SET cxx_modules TYPE CXX_MODULES FILES
+#      math/add.ixx
+#)
 
 
 
