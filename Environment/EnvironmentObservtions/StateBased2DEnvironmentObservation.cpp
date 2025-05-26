@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include <algorithm>
+#include <fmt/core.h>
 
 
 
@@ -14,6 +16,10 @@ using std::cout;
 using std::endl;
 using std::copy;
 using std::back_inserter;
+using std::minmax_element;
+using fmt::format;
+using std::tie;
+
 
 //*
 // @brife Print helper for vector<StateBasedNode>
@@ -31,6 +37,55 @@ void VectorPrintHelper(vector<StateBasedNode> inputVector) {
 	}
 	cout << endl;
 }
+
+//*
+// @brife Find max and min values in vector<int>
+// 
+// Find the max and min values in a vector of type int. 
+// 
+// @param vector<int> inputVector - Vector assesed for new min and max values
+// @return tuple<int, int> - min and max values of vector
+// */
+tuple<int, int> DetermineMinAndMaxValues(vector<int>& inputVector) {
+
+	// Need the return in the guard for the use case of the function
+	if (inputVector.empty()) {
+		return {};
+	}
+
+	auto [min_it, max_it] = minmax_element(inputVector.begin(), inputVector.end());
+
+	int min = *min_it;
+	int max = *max_it;
+
+	return { min , max };
+}
+
+//*
+// @ Brife Normalize values to between 0.0 and 1.0
+// 
+// @param inputValue Value to be normalized
+// @return Normalized value
+// */
+vector<double> NormalizeDataSet(vector<int>& dataSet) {
+	tuple<int, int> minMaxValues = DetermineMinAndMaxValues(dataSet);
+	int min;
+	int max;
+	tie(min, max) = minMaxValues;
+
+	vector<double> normalizedDataSet = {};
+
+	cout << "Min Max values : " << min << " : " << max << endl;
+	for (int& val : dataSet) {
+		double nomrlizedValue = ((val - min) / (max - min));
+		cout << "Normolized val : " << nomrlizedValue << endl;
+		normalizedDataSet.push_back(nomrlizedValue);
+
+	}
+
+	return normalizedDataSet;
+}
+
 
 
 //*
@@ -134,6 +189,8 @@ vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBasedNode> 
 
 
 
+
+
 //*
 // @ Brief Perform observation of environment from given location
 // 
@@ -147,12 +204,6 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	
 	int observationPointX = get<0>(observtionPoint);
 	int observationPointY = get<1>(observtionPoint);
-
-	// The highest and lowest accululative values collated from CalculateAccumulativeInputDataAlongSightline
-	double maxValue;
-	double minValue;
-
-
 
 	int environmentDimension = Environment.size();
 
@@ -181,6 +232,7 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, 1, 1, environmentDimension, downRightSightLine);
 	CollateDataAlongSightLine(Environment, observationPointX, observationPointY, -1, 1, environmentDimension, downLeftSightLine);
 
+	// Can all be stored in a single vector ?
 	vector<int> upSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(upSightLine, environmentDimension);
 	vector<int> downSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downSightLine, environmentDimension);
 
@@ -193,25 +245,40 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 	vector<int> downRightSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downRightSightLine, environmentDimension);
 	vector<int> downLeftSightLineAccumulativeValues = CalculateAccumulativeInputDataAlongSightline(downLeftSightLine, environmentDimension);
 
+	vector<int> unprocessedSightLineData = {};
 
-	// Need to get the min and max values ** Headache
+	vector<vector<int>> sightLineVectors = {
+		upSightLineAccumulativeValues,
+		downSightLineAccumulativeValues,
+		leftSightLineAccumulativeValues,
+		rightSightLineAccumulativeValues,
+		upRightSightLineAccumulativeValues,
+		upLeftSightLineAccumulativeValues,
+		downRightSightLineAccumulativeValues,
+		downLeftSightLineAccumulativeValues
+	};
+
+	for (vector<int>& vec : sightLineVectors) {
+		unprocessedSightLineData.insert(unprocessedSightLineData.end(), vec.begin(), vec.end());
+
+	};
+
+	// Take all the sight line data and normalize it.
+	// Order no longer matters 
+
+	vector<double> normolizedSightLineData = NormalizeDataSet(unprocessedSightLineData);
+
+	/*for (double val : normolizedSightLineData) {
+		cout << val << endl;
+	
+	}*/
+
 
 
 	return {};
 }
 
 
-//*
-// @ Brife Normalize values to between 0.0 and 1.0
-// 
-// @param inputValue Value to be normalized
-// @return Normalized value
-// */
-double NormalizeValue(int inputValue) {
-
-
-	return 0.0;
-}
 
 
 

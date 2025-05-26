@@ -81,6 +81,25 @@ protected:
 
 		return blankEnv;
 	}
+
+	//*
+	// @ Brife Generate a dummy set of sight line data of StateBasedNodes
+	// 
+	// @return vector<StateBasedNode - Dummy sight line data
+	// */
+	vector<StateBasedNode> GenerateDummySightLineData() {
+	
+
+		vector<StateBasedNode> returnVector = {
+			StateBasedNode::State::OPEN,
+			StateBasedNode::State::OPEN,
+			StateBasedNode::State::GOAL,
+			StateBasedNode::State::OPEN,
+			StateBasedNode::State::OBSTICAL
+		};
+
+		return returnVector;
+	}
 	
 };
 
