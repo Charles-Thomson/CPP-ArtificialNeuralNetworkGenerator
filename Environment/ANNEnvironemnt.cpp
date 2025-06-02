@@ -80,7 +80,7 @@ tuple<int, int> Environment::processAction() {
 // Includes a termination condition ?
 // 
 // */
-tuple<double, bool> getLocationValue() {
+static tuple<double, bool> getLocationValue(){
 	return {};
 
 

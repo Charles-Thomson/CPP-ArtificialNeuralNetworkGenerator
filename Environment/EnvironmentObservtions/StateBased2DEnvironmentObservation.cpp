@@ -27,7 +27,7 @@ using std::tie;
 // 
 // @param inputVector The vector to be printed
 // */
-void VectorPrintHelper(vector<StateBasedNode> inputVector) {
+static void  VectorPrintHelper(vector<StateBasedNode> inputVector) {
 	for (StateBasedNode node : inputVector) {
 		int nodeValue = StateBasedNode::state_to_int(node.state);
 		cout << nodeValue << " , ";
@@ -44,7 +44,7 @@ void VectorPrintHelper(vector<StateBasedNode> inputVector) {
 // @param vector<int> inputVector - Vector assesed for new min and max values
 // @return tuple<int, int> - min and max values of vector
 // */
-tuple<double, double> DetermineMinAndMaxValues(vector<int>& inputVector) {
+static tuple<double, double>  DetermineMinAndMaxValues(vector<int>& inputVector) {
 
 	// Need the return in the guard for the use case of the function
 	if (inputVector.empty()) {
@@ -65,7 +65,7 @@ tuple<double, double> DetermineMinAndMaxValues(vector<int>& inputVector) {
 // @param inputValue Value to be normalized
 // @return Normalized value
 // */
-vector<double> NormalizeDataSet(vector<int>& dataSet) {
+static vector<double> NormalizeDataSet(vector<int>& dataSet) {
 	tuple<double, double> minMaxValues = DetermineMinAndMaxValues(dataSet);
 	double min;
 	double max;
@@ -97,7 +97,7 @@ vector<double> NormalizeDataSet(vector<int>& dataSet) {
 // @param environmentDimension  Dimension of the environment
 // @param sightLine Storage of the collated data - By ref so directly updated
 // */
-void CollateDataAlongSightLine(
+void static CollateDataAlongSightLine(
 	const vector<vector<StateBasedNode>>& Environment,
 	int observationPointX,
 	int observationPointY, 
@@ -134,7 +134,7 @@ void CollateDataAlongSightLine(
 // 
 // @return StateBasedObservationData New StateBasedObservationData object
 // */
-StateBasedObservationData GenerateStateBasedObservationDataObject(vector<int> sightLineData, double openNodeInputValue, double obsticalNodeInputValue , double goalNodeInputValue) {
+static StateBasedObservationData GenerateStateBasedObservationDataObject(vector<int> sightLineData, double openNodeInputValue, double obsticalNodeInputValue , double goalNodeInputValue){
 	StateBasedObservationData newObj = { .SightLineData_2D = sightLineData,
 										 .openNodeInput = openNodeInputValue,
 										 .obsticalNodeInput = obsticalNodeInputValue,
@@ -152,7 +152,7 @@ StateBasedObservationData GenerateStateBasedObservationDataObject(vector<int> si
 // @param environmentDimension Dimension of the Environment
 // @return Raw values relating to distance from from the observation point fo each node type 
 // */
-vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBasedNode> observattionData, int environmentDimension) {
+static vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBasedNode> observattionData, int environmentDimension) {
 
 	// Accumulated values = environmentDimension - distance from observation point 
 	int accumulativeOpenNodeInput = 0;

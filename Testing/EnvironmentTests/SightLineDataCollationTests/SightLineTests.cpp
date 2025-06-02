@@ -13,7 +13,7 @@
 // - REturns a set of souble values normalized to: -0.1 < n < 1.1
 // 
 // */
-TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation) {
+TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
@@ -40,7 +40,8 @@ TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation) {
 // 
 // 
 // */
-TEST_F(EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_FunctionTest) {
+TEST_F (EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_FunctionTest) {
+	
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
