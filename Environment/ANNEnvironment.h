@@ -32,6 +32,35 @@ public:
 
 	tuple<double, bool> getLocationValue();
 
+
+	tuple<int, int> getCurrentLocationInEnv() { 
+		return currentLocationInEnv; 
+	}
+
+	void setCurrentLocationInEnv(tuple<int, int> newLoc) { 
+		currentLocationInEnv = newLoc; 
+	}
+
+	int getCurrentStep() { 
+		return currentStep;  
+	}
+
+	void setCurrentStep(int newValue) { 
+		currentStep = newValue; 
+	}
+
+	void incrementStepCounter() {
+		++currentStep;  
+	}
+
+	size_t getMaxActions() {
+		return maxActoins;
+	}
+
+	void setMaxActions(int newValue) {
+		maxActoins = newValue;
+	}
+
 private:
 	int currentStep = 0;
 	vector<tuple<int, int>> path = {};

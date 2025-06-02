@@ -1,4 +1,5 @@
 #include "ANNEnvironment.h"
+#include "EnvironmentObservtions/StateBased2DEnvironmentObservation.h"
 
 
 #include <string>
@@ -10,16 +11,21 @@ using std::vector;
 using std::tuple;
 
 
+
+
+
+
 //*
 // @ Brief Collect observation data from Environment
 // 
 // Collected observation data from the environment based on the location of the agnet
 // @return vector<double> - Observation daat as numeric values
 // */
-vector<double> Environment::getObservationDataFromEnvironment() {
-	return {};
-
-}
+//vector<double> Environment::getObservationDataFromEnvironment() {
+//
+//	/*return PerformObservationFromLocation();*/
+//
+//}
 
 //* 
 // @ Brief Agent taks an action/step in the environment

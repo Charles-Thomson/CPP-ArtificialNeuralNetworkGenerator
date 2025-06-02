@@ -8,8 +8,6 @@
 #include <algorithm>
 #include <fmt/core.h>
 
-
-
 using std::string;
 using std::tuple;
 using std::cout;
@@ -239,24 +237,15 @@ vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, v
 		downLeftSightLine
 	}; 
 
+
+	// Calculate Input data and comppress into single vector
 	for (vector<StateBasedNode>& sightLineData : rawSightLineData) {
 		vector<int> accumulativeDataAlongSighLine = CalculateAccumulativeInputDataAlongSightline(sightLineData, environmentDimension);
 		unprocessedSightLineData.insert(unprocessedSightLineData.end(), accumulativeDataAlongSighLine.begin(), accumulativeDataAlongSighLine.end());
 	
 	}
 
-
-	
-
 	vector<double> normolizedSightLineData = NormalizeDataSet(unprocessedSightLineData);
-
-
-	for (double val : normolizedSightLineData) {
-
-		cout << val << endl;
-
-
-	}
 
 	return normolizedSightLineData;
 }

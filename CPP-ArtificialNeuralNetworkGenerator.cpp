@@ -7,7 +7,7 @@
 #include "PreProcessing/InputFileReadAndParse/InputFileParse.h"
 #include "ConfigClasses/InstanceConfigurationObject/InstanceConfigObject.h"
 
-import math.add;
+
 
 #include "cppJSONParser.h"
 #include "CheckIfContainsKey.h"
