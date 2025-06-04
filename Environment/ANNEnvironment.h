@@ -1,6 +1,7 @@
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 
+#include "DirectionEnumeration/DirectionalEnum.h"
 
 #include <string>
 #include <vector>
@@ -20,7 +21,7 @@ public:
 	vector<double> getObservationDataFromEnvironment();
 	
 	
-	tuple<int, double, bool> step();
+	tuple<int, double, bool> step(DirectionalEnum action);
 
 	void removeGoal();
 
@@ -30,11 +31,25 @@ public:
 
 	tuple<int, int> processAction();
 
-	tuple<double, bool> getLocationValue();
+	bool checkIfNodeInPath(StateBasedNode& node);
 
+	
+	StateBasedNode& getNodeAtEnvironmentLocation(int& coordX, int& coordY);
 
-	tuple<int, int> getCurrentLocationInEnv() { 
-		return currentLocationInEnv; 
+	//*
+	// @brife Helper returns current X coordinate
+	// */
+	int getCurrentXCoordinate() {
+		return get<0>(currentLocationInEnv);
+	
+	}
+
+	//*
+	// @brife Helper returns current Y coordinate
+	// */
+	int getCurrentYCoordinate() {
+		return get<1>(currentLocationInEnv);
+
 	}
 
 	void setCurrentLocationInEnv(tuple<int, int> newLoc) { 
@@ -72,7 +87,7 @@ public:
 
 private:
 	int currentStep = 0;
-	vector<tuple<int, int>> path = {};
+	vector<StateBasedNode> path = {};
 	vector<vector<StateBasedNode>> enviromentMap = {};
 	size_t maxActoins = 1;
 	tuple<int, int> currentLocationInEnv;

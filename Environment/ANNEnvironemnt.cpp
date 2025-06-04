@@ -1,7 +1,7 @@
 #include "ANNEnvironment.h"
 #include "EnvironmentObservtions/StateBased2DEnvironmentObservation.h"
 #include "EnvironmentNodes/StateBased/StateBasedNode.h"
-
+#include "DirectionEnumeration/DirectionalEnum.h"
 
 #include <string>
 #include <vector>
@@ -23,7 +23,7 @@ using std::tuple;
 // @return vector<double> - Observation daat as numeric values
 // */
 vector<double> Environment::getObservationDataFromEnvironment() {
-	return PerformObservationFromLocation(getCurrentLocationInEnv(), getEnvironmentMap());
+	return PerformObservationFromLocation(getValueAtEnvironmentLocation(), getEnvironmentMap());
 
 }
 
@@ -32,7 +32,14 @@ vector<double> Environment::getObservationDataFromEnvironment() {
 // 
 // @return tuple - currentCoords, terminationFlag, reward for action
 // */
-tuple<int, double, bool> Environment::step() {
+tuple<int, double, bool> Environment::step(DirectionalEnum action) {
+
+	double reward = calcualteReward();
+
+
+
+
+
 	return {};
 
 }
@@ -47,10 +54,28 @@ void Environment::removeGoal() {
 }
 
 //*
+// @ Brife Check if a given node is in the traversed path
+// 
+// @param node - Node to be checked
+// */
+bool Environment::checkIfNodeInPath(StateBasedNode& node) {
+
+
+}
+
+//*
 // @ Brief Calculate reward based on location in environment
 // 
 // */
 double Environment::calcualteReward() {
+	int coordX = getCurrentXCoordinate();
+	int coordY = getCurrentYCoordinate();
+
+	StateBasedNode stateValue = getNodeAtEnvironmentLocation(coordX, coordY);
+
+
+
+
 	return 0.0;
 }
 
@@ -74,14 +99,14 @@ tuple<int, int> Environment::processAction() {
 
 }
 
-
 //*
 // @ Brief Get the value at the curent location in the environment
 // Includes a termination condition ?
 // 
 // */
-static tuple<double, bool> getLocationValue(){
-	return {};
+StateBasedNode& Environment::getNodeAtEnvironmentLocation(int& coordX, int& coordY){
 
-
+	vector<vector<StateBasedNode>> env = getEnvironmentMap();
+	return env[coordX][coordY];
 }
+

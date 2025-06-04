@@ -28,7 +28,13 @@ struct StateBasedNode {
 	// Stored state of the node
 	State state;
 
-	StateBasedNode(State s) : state(s) {}
+	const int nodeCoordX; 
+	const int nodeCoordY;
+
+	const int environmentDimension;
+
+
+	StateBasedNode(State s, int nodeCoordX, int nodeCoordY, int environmentDimension) : state(s), nodeCoordX(nodeCoordX), nodeCoordY(nodeCoordY) ,environmentDimension (environmentDimension){}
 
 	static State state_from_int(int value) {
 		switch (value) {
