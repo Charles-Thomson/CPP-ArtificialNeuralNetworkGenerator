@@ -41,7 +41,7 @@ public:
 		currentLocationInEnv = newLoc; 
 	}
 
-	int getCurrentStep() { 
+	int getCurrentStep() const { 
 		return currentStep;  
 	}
 
@@ -53,7 +53,7 @@ public:
 		++currentStep;  
 	}
 
-	size_t getMaxActions() {
+	size_t getMaxActions() const {
 		return maxActoins;
 	}
 
@@ -61,10 +61,19 @@ public:
 		maxActoins = newValue;
 	}
 
+	vector<vector<StateBasedNode>> getEnvironmentMap() {
+		return enviromentMap;
+	}
+
+	void setEnvironmentMap(vector<vector<StateBasedNode>> envMap) {
+		enviromentMap = envMap;
+	}
+
+
 private:
 	int currentStep = 0;
 	vector<tuple<int, int>> path = {};
-	vector<vector<int>> enviromentMap = {};
+	vector<vector<StateBasedNode>> enviromentMap = {};
 	size_t maxActoins = 1;
 	tuple<int, int> currentLocationInEnv;
 

@@ -44,7 +44,7 @@ using JSON = shared_ptr<JSONValue>;
 // Apply pre processing and to input config file
 // 
 // *//
-bool PreProcessing() {
+bool static PreProcessing() {
 	string InputFileString = readInputFile();
 	JSON JSONConfigData = parserInputToJSON(InputFileString);
 
