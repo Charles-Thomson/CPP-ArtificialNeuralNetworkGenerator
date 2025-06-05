@@ -2,6 +2,7 @@
 #define ENVIRONMENT_H
 
 #include "DirectionEnumeration/DirectionalEnum.h"
+#include "EnvironmentNodes/StateBased/StateBasedNode.h"
 
 #include <string>
 #include <vector>
@@ -18,7 +19,7 @@ public:
 	Environment() {};
 	~Environment() {};
 
-	vector<double> getObservationDataFromEnvironment();
+	vector<double> getObservationDataFromEnvironment(StateBasedNode& obeservationPoint);
 	
 	
 	tuple<int, double, bool> step(DirectionalEnum action);

@@ -18,7 +18,9 @@ TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
 
-	vector<double> sightLineData = PerformObservationFromLocation({ 1,1 }, testEnvironment);
+	StateBasedNode observationNode = StateBasedNode(StateBasedNode::State::OPEN, 1, 1, 5);
+
+	vector<double> sightLineData = PerformObservationFromLocation(observationNode, testEnvironment);
 
 	for (double& val : sightLineData) {
 		SCOPED_TRACE("Value not normalized within bounds - -0.1 < n < 1.1");

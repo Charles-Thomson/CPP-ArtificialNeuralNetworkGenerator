@@ -13,6 +13,16 @@ using std::tuple;
 
 
 
+//*
+// @ Brief Get the value at the curent location in the environment
+// Includes a termination condition ?
+// 
+// */
+StateBasedNode& Environment::getNodeAtEnvironmentLocation(int& coordX, int& coordY) {
+
+	vector<vector<StateBasedNode>> env = getEnvironmentMap();
+	return env[coordX][coordY];
+}
 
 
 
@@ -22,8 +32,8 @@ using std::tuple;
 // Collected observation data from the environment based on the location of the agnet
 // @return vector<double> - Observation daat as numeric values
 // */
-vector<double> Environment::getObservationDataFromEnvironment() {
-	return PerformObservationFromLocation(getValueAtEnvironmentLocation(), getEnvironmentMap());
+vector<double> Environment::getObservationDataFromEnvironment(StateBasedNode& obeservationPoint) {
+	return PerformObservationFromLocation(obeservationPoint, getEnvironmentMap());
 
 }
 
@@ -60,7 +70,7 @@ void Environment::removeGoal() {
 // */
 bool Environment::checkIfNodeInPath(StateBasedNode& node) {
 
-
+	return false;
 }
 
 //*
@@ -99,14 +109,4 @@ tuple<int, int> Environment::processAction() {
 
 }
 
-//*
-// @ Brief Get the value at the curent location in the environment
-// Includes a termination condition ?
-// 
-// */
-StateBasedNode& Environment::getNodeAtEnvironmentLocation(int& coordX, int& coordY){
-
-	vector<vector<StateBasedNode>> env = getEnvironmentMap();
-	return env[coordX][coordY];
-}
 

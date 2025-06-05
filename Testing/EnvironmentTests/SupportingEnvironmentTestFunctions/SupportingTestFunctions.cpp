@@ -27,7 +27,19 @@ protected:
 	// @param dimensions Dimensions of the environment to be generated
 	// */
 	vector<vector<StateBasedNode>> GenerateBlankTest2DEnvironment(int dimensions) {
-		vector<vector<StateBasedNode>> testEnvironment(dimensions, vector<StateBasedNode>(dimensions, StateBasedNode::State::OPEN));
+		/*vector<vector<StateBasedNode>> testEnvironment(dimensions, vector<StateBasedNode>(dimensions, StateBasedNode::State::OPEN));*/
+
+		vector<vector<StateBasedNode>> testEnvironment;
+
+		for (size_t row = 0; row < dimensions < ++row;) {
+
+			vector<StateBasedNode> rowVec; // temp vector
+			for (size_t col = 0; col < dimensions; ++col) {
+				rowVec.emplace_back(StateBasedNode::State::OPEN, row, col, dimensions);
+			}
+			testEnvironment.emplace_back(move(rowVec));
+		}
+
 
 		return testEnvironment;
 	}
@@ -64,19 +76,19 @@ protected:
 
 		// Set the start node
 
-		blankEnv[get<0>(startLocation)][get<1>(startLocation)] = StateBasedNode::State::START;
+		blankEnv[get<0>(startLocation)][get<1>(startLocation)].state = StateBasedNode::State::START;
 
 
 		// Refactor to single loop
 
 		// Set obstical Nodes
 		for (tuple<int, int> coords : obsticalLocations) {
-			blankEnv[get<0>(coords)][get<1>(coords)] = StateBasedNode::State::OBSTICAL;
+			blankEnv[get<0>(coords)][get<1>(coords)].state = StateBasedNode::State::OBSTICAL;
 		};
 
 		//Set Goal Nodes
 		for (tuple<int, int> coords : goalLocations) {
-			blankEnv[get<0>(coords)][get<1>(coords)] = StateBasedNode::State::GOAL;
+			blankEnv[get<0>(coords)][get<1>(coords)].state = StateBasedNode::State::GOAL;
 		};
 
 		return blankEnv;
@@ -91,11 +103,12 @@ protected:
 	
 
 		vector<StateBasedNode> returnVector = {
-			StateBasedNode::State::OPEN,
-			StateBasedNode::State::OPEN,
-			StateBasedNode::State::GOAL,
-			StateBasedNode::State::OPEN,
-			StateBasedNode::State::OBSTICAL
+			StateBasedNode(StateBasedNode::State::OPEN, 0, 0, 5),
+			StateBasedNode(StateBasedNode::State::OPEN, 0, 1, 5),
+			StateBasedNode(StateBasedNode::State::GOAL, 0, 2, 5),
+			StateBasedNode(StateBasedNode::State::OPEN, 0, 3, 5),
+			StateBasedNode(StateBasedNode::State::OBSTICAL, 0, 4, 5)
+		
 		};
 
 		return returnVector;

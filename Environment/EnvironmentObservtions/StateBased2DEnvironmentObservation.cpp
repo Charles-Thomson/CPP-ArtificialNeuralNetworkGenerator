@@ -28,7 +28,7 @@ using std::tie;
 // @param inputVector The vector to be printed
 // */
 static void  VectorPrintHelper(vector<StateBasedNode> inputVector) {
-	for (StateBasedNode node : inputVector) {
+	for (const StateBasedNode node : inputVector) {
 		int nodeValue = StateBasedNode::state_to_int(node.state);
 		cout << nodeValue << " , ";
 
@@ -192,10 +192,10 @@ static vector<int> CalculateAccumulativeInputDataAlongSightline(vector<StateBase
 // @param observtionPoint Location the environemnt is to be observerd from
 // @return vector<double> Values relating to objects found along sightlines
 // */
-vector<double> PerformObservationFromLocation(tuple<int, int> observtionPoint, vector<vector<StateBasedNode>> Environment) {
+vector<double> PerformObservationFromLocation(StateBasedNode& observationNode, vector<vector<StateBasedNode>> Environment) {
 	
-	int observationPointX = get<0>(observtionPoint);
-	int observationPointY = get<1>(observtionPoint);
+	int observationPointX = observationNode.nodeCoordX;
+	int observationPointY = observationNode.nodeCoordY;
 
 	int environmentDimension = Environment.size();
 
