@@ -17,7 +17,7 @@ TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
-
+	
 	StateBasedNode observationNode = StateBasedNode(StateBasedNode::State::OPEN, 1, 1, 5);
 
 	vector<double> sightLineData = PerformObservationFromLocation(observationNode, testEnvironment);
@@ -45,9 +45,9 @@ TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
 TEST_F (EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_FunctionTest) {
 	
 	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
-
+	
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
-
+	
 	int envSize = testEnvironment.size();
 
 	vector<StateBasedNode> testData = GenerateDummySightLineData();

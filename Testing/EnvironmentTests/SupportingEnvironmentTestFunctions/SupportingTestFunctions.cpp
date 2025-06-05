@@ -31,16 +31,17 @@ protected:
 
 		vector<vector<StateBasedNode>> testEnvironment;
 
-		for (size_t row = 0; row < dimensions < ++row;) {
+		for (size_t row = 0; row < dimensions; ++row) {
 
 			vector<StateBasedNode> rowVec; // temp vector
 			for (size_t col = 0; col < dimensions; ++col) {
 				rowVec.emplace_back(StateBasedNode::State::OPEN, row, col, dimensions);
 			}
+			cout << "Row size : " << rowVec.size() << endl;
 			testEnvironment.emplace_back(move(rowVec));
 		}
 
-
+		
 		return testEnvironment;
 	}
 
@@ -68,16 +69,16 @@ protected:
 	// @return Populated environment
 	// */
 	vector<vector<StateBasedNode>> Populate2DTestEnvironment_Dimesnions5(vector<vector<StateBasedNode>> blankEnv) {
-
+		cout << "In populate function " << endl;
 		tuple<int, int> startLocation = { 1, 1 };
 
 		vector<tuple<int, int>> obsticalLocations = { {0,1},{2,1},{3,3} };
 		vector<tuple<int, int>> goalLocations = { {4,0},{4,4},{0,4} };
 
 		// Set the start node
-
+		cout << "pre Start set " << endl;
 		blankEnv[get<0>(startLocation)][get<1>(startLocation)].state = StateBasedNode::State::START;
-
+		cout << "Start set " << endl;
 
 		// Refactor to single loop
 
@@ -85,11 +86,14 @@ protected:
 		for (tuple<int, int> coords : obsticalLocations) {
 			blankEnv[get<0>(coords)][get<1>(coords)].state = StateBasedNode::State::OBSTICAL;
 		};
+		cout << "Obs  set " << endl;
 
 		//Set Goal Nodes
 		for (tuple<int, int> coords : goalLocations) {
 			blankEnv[get<0>(coords)][get<1>(coords)].state = StateBasedNode::State::GOAL;
 		};
+
+		cout << "Goal  set " << endl;
 
 		return blankEnv;
 	}
