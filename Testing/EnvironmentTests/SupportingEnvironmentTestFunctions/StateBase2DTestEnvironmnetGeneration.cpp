@@ -1,5 +1,6 @@
 #include "../Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.h"
 #include "../Environment/EnvironmentNodes/StateBased/StateBasedNode.h"
+#include "../Environment/ANNEnvironment.h"
 
 #include <string>
 #include <fmt/format.h>
@@ -7,6 +8,7 @@
 #include <tuple>;
 #include <utility>
 #include <functional>
+
 
 using std::string;
 using std::cout;
@@ -21,12 +23,34 @@ using std::find;
 class EnvironmentTestFixtures : public ::testing::Test {
 protected:
 
+
+	Environment generateDummyEnvironment() {
+
+		Environment newEnv = Environment();
+
+		vector<vector<StateBasedNode>> envMapEmpty = GenerateBlankTest2DEnvironmentMap(5);
+		vector<vector<StateBasedNode>> envMapPopulated = Populate2DTestEnvironment_Dimesnions5(envMapEmpty);
+
+		StateBasedNode startLocation = StateBasedNode(StateBasedNode::State::START, 1, 1, 5); // Hard coded in line with PopulationFunction
+
+		
+		newEnv.setEnvironmentMap(envMapPopulated);
+
+		newEnv.setCurrentNode(startLocation);
+
+		cout << "New Dummy Environment Generated" << endl;
+		EnvironmentPrintHelper(envMapPopulated);
+
+		return newEnv;
+
+	}
+
 	//*
 	// @ Brief Helper function to generate blank(all open state) 2d State based Envionments
 	// 
 	// @param dimensions Dimensions of the environment to be generated
 	// */
-	vector<vector<StateBasedNode>> GenerateBlankTest2DEnvironment(int dimensions) {
+	vector<vector<StateBasedNode>> GenerateBlankTest2DEnvironmentMap(int dimensions) {
 		/*vector<vector<StateBasedNode>> testEnvironment(dimensions, vector<StateBasedNode>(dimensions, StateBasedNode::State::OPEN));*/
 
 		vector<vector<StateBasedNode>> testEnvironment;

@@ -45,7 +45,7 @@ vector<double> Environment::getObservationDataFromEnvironment(StateBasedNode& ob
 // */
 tuple<int, double, bool> Environment::step(DirectionalEnum action) {
 
-	double reward = calcualteReward();
+	/*double reward = calcualteReward();*/
 
 
 	return {};
@@ -124,21 +124,19 @@ double Environment::calcualteReward(StateBasedNode& newNodeLocation) {
 			else {
 				reward = baseOpenNodeReward;
 			}
-			return;
+			break;
 
 
 		case StateBasedNode::State::GOAL:
 			newNodeLocation.updateNodeState(StateBasedNode::State::OPEN); // Remove the goal 
 			reward = goalNodeReward;
-			return;
+			break;
 
 		default:
-			return;
+			break;
 		}
 
 	addNodeToPath(newNodeLocation);
-
-	
 
 	return reward;
 }

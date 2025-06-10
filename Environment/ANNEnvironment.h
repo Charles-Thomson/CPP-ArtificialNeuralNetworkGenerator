@@ -58,11 +58,11 @@ public:
 	}
 
 	size_t getMaxActions() const {
-		return maxActoins;
+		return maxActions;
 	}
 
 	void setMaxActions(int newValue) {
-		maxActoins = newValue;
+		maxActions = newValue;
 	}
 
 	vector<vector<StateBasedNode>> getEnvironmentMap() {
@@ -90,7 +90,7 @@ private:
 	int currentStep = 0;
 	
 	vector<vector<StateBasedNode>> enviromentMap = {};
-	int maxActoins = 1;
+	int maxActions = 1;
 	int acctionCount = 0;
 	StateBasedNode currentNode;
 

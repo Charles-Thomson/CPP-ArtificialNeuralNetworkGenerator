@@ -32,7 +32,8 @@ struct StateBasedNode {
 	int nodeCoordY;
 
 	int environmentDimension;
-
+	// Default constructor
+	StateBasedNode() : state(State::OPEN), nodeCoordX(0), nodeCoordY(0), environmentDimension(0) {}
 
 	StateBasedNode(State s, size_t nodeCoordX, size_t nodeCoordY, size_t environmentDimension) : state(s), nodeCoordX(nodeCoordX), nodeCoordY(nodeCoordY) ,environmentDimension (environmentDimension){}
 
@@ -71,6 +72,14 @@ struct StateBasedNode {
 		state = newState;
 
 
+	};
+
+	// Outside the struct (recommended)
+	bool operator==(const StateBasedNode& other) const {
+		return state == other.state &&
+			nodeCoordX == other.nodeCoordX &&
+			nodeCoordY == other.nodeCoordY &&
+			environmentDimension == other.environmentDimension;
 	};
 
 };

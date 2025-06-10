@@ -14,7 +14,7 @@
 // 
 // */
 TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
-	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
+	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironmentMap(5);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
 	
@@ -44,7 +44,7 @@ TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
 // */
 TEST_F (EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_FunctionTest) {
 	
-	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
+	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironmentMap(5);
 	
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
 	
@@ -69,7 +69,7 @@ TEST_F (EnvironmentTestFixtures, CalculateAccumulativeInputDataAlongSightline_Fu
 // 
 // */
 TEST_F(EnvironmentTestFixtures, UpdateMinAndMaxValues_FunctionTest) {
-	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironment(5);
+	vector<vector<StateBasedNode>> testEnvironment = GenerateBlankTest2DEnvironmentMap(5);
 
 	testEnvironment = Populate2DTestEnvironment_Dimesnions5(testEnvironment);
 
