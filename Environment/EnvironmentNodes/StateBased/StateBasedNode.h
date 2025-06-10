@@ -28,10 +28,10 @@ struct StateBasedNode {
 	// Stored state of the node
 	State state;
 
-	size_t nodeCoordX;
-	size_t nodeCoordY;
+	int nodeCoordX;
+	int nodeCoordY;
 
-	size_t environmentDimension;
+	int environmentDimension;
 
 
 	StateBasedNode(State s, size_t nodeCoordX, size_t nodeCoordY, size_t environmentDimension) : state(s), nodeCoordX(nodeCoordX), nodeCoordY(nodeCoordY) ,environmentDimension (environmentDimension){}
@@ -46,7 +46,6 @@ struct StateBasedNode {
 		};
 	};
 
-
 	static int state_to_int(State state) {
 		return static_cast<int>(state);
 	};
@@ -60,6 +59,18 @@ struct StateBasedNode {
 		default: return "unknown";
 
 		};
+	};
+
+
+	//*
+	// @brife Update the current node state
+	// 
+	// @param newState - New node state
+	// */
+	void updateNodeState(StateBasedNode::State newState) {
+		state = newState;
+
+
 	};
 
 };

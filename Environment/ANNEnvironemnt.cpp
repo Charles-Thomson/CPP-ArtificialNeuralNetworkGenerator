@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include <cassert>
 
 using std::string;
 using std::vector;
@@ -47,9 +48,6 @@ tuple<int, double, bool> Environment::step(DirectionalEnum action) {
 	double reward = calcualteReward();
 
 
-
-
-
 	return {};
 
 }
@@ -70,23 +68,79 @@ void Environment::removeGoal() {
 // */
 bool Environment::checkIfNodeInPath(StateBasedNode& node) {
 
+	if (find(path.begin(), path.end(), node) != path.end()) {
+		return true;
+	}
+
 	return false;
 }
 
+
+//*
+// @brife Add node to traversed path
+// 
+// @parma node - node to be added to path
+// */
+void Environment::addNodeToPath(StateBasedNode& node){
+	path.push_back(node);
+}
+
+//*
+// @brife Calculate OpenNodeReward 
+// 
+// Calculate the reward bassed on the length of the path * openNodeReward
+// 
+// Higher reward given for more open nodes traversed *
+// 
+// @param baseOpenNodeReward - base reward given for open nodes
+// */
+double Environment::calculateOpenNodeReward(double& baseOpenNodeReward) {
+	int pathLength = path.size();
+	
+	
+
+	return pathLength * baseOpenNodeReward;
+}
 //*
 // @ Brief Calculate reward based on location in environment
 // 
+// @param newNodeLocation - Node reward is to be calculated based on
 // */
-double Environment::calcualteReward() {
-	int coordX = getCurrentXCoordinate();
-	int coordY = getCurrentYCoordinate();
+double Environment::calcualteReward(StateBasedNode& newNodeLocation) {
 
-	StateBasedNode stateValue = getNodeAtEnvironmentLocation(coordX, coordY);
+	double goalNodeReward = 2.5;
+	double baseOpenNodeReward = 0.1;
+	double reward = 0.0;
+
+	setCurrentNode(newNodeLocation);
+	
+	switch (newNodeLocation.state) {
+
+		case StateBasedNode::State::OPEN:
+
+			if (!checkIfNodeInPath(newNodeLocation)) {
+				reward = calculateOpenNodeReward(baseOpenNodeReward);
+			}
+			else {
+				reward = baseOpenNodeReward;
+			}
+			return;
 
 
+		case StateBasedNode::State::GOAL:
+			newNodeLocation.updateNodeState(StateBasedNode::State::OPEN); // Remove the goal 
+			reward = goalNodeReward;
+			return;
 
+		default:
+			return;
+		}
 
-	return 0.0;
+	addNodeToPath(newNodeLocation);
+
+	
+
+	return reward;
 }
 
 

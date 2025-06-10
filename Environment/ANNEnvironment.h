@@ -15,9 +15,14 @@ using std::tuple;
 
 class Environment {
 public:
+	vector<StateBasedNode> path = {};
+	int pathLength = 0;
+	
 
 	Environment() {};
 	~Environment() {};
+
+	double calculateOpenNodeReward(double& baseOpenNodeReward);
 
 	vector<double> getObservationDataFromEnvironment(StateBasedNode& obeservationPoint);
 	
@@ -26,7 +31,7 @@ public:
 
 	void removeGoal();
 
-	double calcualteReward();
+	double calcualteReward(StateBasedNode& newNodeLocation);
 
 	bool terminationCheck(); 
 
@@ -34,28 +39,11 @@ public:
 
 	bool checkIfNodeInPath(StateBasedNode& node);
 
+	void addNodeToPath(StateBasedNode& node);
+
 	
 	StateBasedNode& getNodeAtEnvironmentLocation(int& coordX, int& coordY);
 
-	//*
-	// @brife Helper returns current X coordinate
-	// */
-	int getCurrentXCoordinate() {
-		return get<0>(currentLocationInEnv);
-	
-	}
-
-	//*
-	// @brife Helper returns current Y coordinate
-	// */
-	int getCurrentYCoordinate() {
-		return get<1>(currentLocationInEnv);
-
-	}
-
-	void setCurrentLocationInEnv(tuple<int, int> newLoc) { 
-		currentLocationInEnv = newLoc; 
-	}
 
 	int getCurrentStep() const { 
 		return currentStep;  
@@ -85,15 +73,26 @@ public:
 		enviromentMap = envMap;
 	}
 
+	StateBasedNode getCurrentNode() {
+		return currentNode;
+	}
+
+	void setCurrentNode(StateBasedNode newNode) {
+		currentNode = newNode;
+	}
+
+	void incrementActionCount() {
+		++acctionCount;
+	}
+
 
 private:
 	int currentStep = 0;
-	vector<StateBasedNode> path = {};
+	
 	vector<vector<StateBasedNode>> enviromentMap = {};
-	size_t maxActoins = 1;
-	tuple<int, int> currentLocationInEnv;
-
-
+	int maxActoins = 1;
+	int acctionCount = 0;
+	StateBasedNode currentNode;
 
 
 };

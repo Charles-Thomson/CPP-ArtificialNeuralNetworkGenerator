@@ -37,11 +37,8 @@ protected:
 			for (size_t col = 0; col < dimensions; ++col) {
 				rowVec.emplace_back(StateBasedNode::State::OPEN, row, col, dimensions);
 			}
-			cout << "Row size : " << rowVec.size() << endl;
 			testEnvironment.emplace_back(move(rowVec));
 		}
-
-		
 		return testEnvironment;
 	}
 
