@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
-#include "../SupportingEnvironmentTestFunctions/SupportingTestFunctions.cpp"
+#include "../TestEnvironmentGeneration/StateBase2DTestEnvironmentGeneration.cpp"
 #include "Environment/EnvironmentObservtions/StateBased2DEnvironmentObservation.cpp"
+
+
 
 
 
@@ -27,6 +29,9 @@ TEST_F(EnvironmentTestFixtures, Testing2DSightLineDataCollation){
 		ASSERT_GT(val, -0.1);
 		ASSERT_LT(val, 1.1);
 	};
+
+	
+	
 	
 	ASSERT_EQ(sightLineData.size(),  24) << "Returned sightline data setis of an incorrect size" << endl;
 

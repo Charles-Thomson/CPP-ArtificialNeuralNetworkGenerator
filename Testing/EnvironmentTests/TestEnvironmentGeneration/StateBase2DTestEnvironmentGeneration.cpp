@@ -23,26 +23,24 @@ using std::find;
 class EnvironmentTestFixtures : public ::testing::Test {
 protected:
 
+	Environment testEnv;
+	vector<vector<StateBasedNode>> blankEnvironment;
+	vector<vector<StateBasedNode>> populatedEnvironment;
+	vector<StateBasedNode> dummySightLine;
 
-	Environment generateDummyEnvironment() {
+	void SetUp() override {
+		std::cout << "SetUp called" << std::endl;
 
-		Environment newEnv = Environment();
+		// Generate and store a dummy environment and related data
+		blankEnvironment = GenerateBlankTest2DEnvironmentMap(5);
+		populatedEnvironment = Populate2DTestEnvironment_Dimesnions5(blankEnvironment);
+		testEnv.setEnvironmentMap(populatedEnvironment);
 
-		vector<vector<StateBasedNode>> envMapEmpty = GenerateBlankTest2DEnvironmentMap(5);
-		vector<vector<StateBasedNode>> envMapPopulated = Populate2DTestEnvironment_Dimesnions5(envMapEmpty);
+		// Set current node to START
+		testEnv.setCurrentNode(StateBasedNode(StateBasedNode::State::START, 1, 1, 5));
 
-		StateBasedNode startLocation = StateBasedNode(StateBasedNode::State::START, 1, 1, 5); // Hard coded in line with PopulationFunction
-
-		
-		newEnv.setEnvironmentMap(envMapPopulated);
-
-		newEnv.setCurrentNode(startLocation);
-
-		cout << "New Dummy Environment Generated" << endl;
-		EnvironmentPrintHelper(envMapPopulated);
-
-		return newEnv;
-
+		// Generate dummy sight line data
+		dummySightLine = GenerateDummySightLineData();
 	}
 
 	//*

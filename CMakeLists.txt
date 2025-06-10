@@ -176,9 +176,11 @@ add_executable(weight_huristics_function_testing Testing/WeightHuristicsTests/We
 
 add_executable(generator_struct_functional_testing GeneratorStruct/Generator.cpp )
 
-add_executable(state_based_2D_Environment_testing Testing/EnvironmentTests/StateBased2D/StateBased2DTesting.cpp )
-
 add_executable(environment_observation_tools_testing Testing/EnvironmentTests/SightLineDataCollationTests/SightLineTests.cpp )
+
+add_executable(state_based_environment_testing Testing/EnvironmentTests/StateBasedEnvironmentTests/StateBased2DEnvironmentTests.cpp )
+
+
 
 # List of Test targets
 set(TEST_TARGETS
@@ -188,7 +190,7 @@ set(TEST_TARGETS
     output_layer_activation_function_testing
     weight_huristics_function_testing
     generator_struct_functional_testing
-    state_based_2D_Environment_testing
+    state_based_environment_testing
     environment_observation_tools_testing
 )
 
@@ -256,8 +258,8 @@ add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_function
 gtest_discover_tests(generator_struct_functional_testing)
 
 # Register the test
-add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_2D_Environment_testing)
-gtest_discover_tests(state_based_2D_Environment_testing)
+add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_environment_testing)
+gtest_discover_tests(state_based_environment_testing)
 
 # Register the test
 add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)

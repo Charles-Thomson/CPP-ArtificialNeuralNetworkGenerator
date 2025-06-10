@@ -1,5 +1,0 @@
-28/03/25
-
-- Test structure for Unpacking From JSON to COnfig objects 
-
-- Unpack to config objects
