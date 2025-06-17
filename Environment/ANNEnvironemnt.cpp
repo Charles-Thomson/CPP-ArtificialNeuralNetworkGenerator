@@ -134,7 +134,7 @@ tuple<StateBasedNode, double, bool> Environment::step(Direction& action) {
 	incrementActionCount();
 	addNodeToPath(newNode);
 
-	double reward = calcualteReward(newNode);
+	double reward = calculateReward(newNode);
 
 	return { newNode,reward, terminationFlag };
 
@@ -191,7 +191,7 @@ double Environment::calculateOpenNodeReward(double& baseOpenNodeReward) {
 // 
 // @param newNodeLocation - Node reward is to be calculated based on
 // */
-double Environment::calcualteReward(StateBasedNode& newNodeLocation) {
+double Environment::calculateReward(StateBasedNode& newNodeLocation) {
 
 	double goalNodeReward = 2.5;
 	double baseOpenNodeReward = 0.1;

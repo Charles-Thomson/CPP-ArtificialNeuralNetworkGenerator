@@ -29,3 +29,31 @@ TEST_F(EnvironmentTestFixtures, EnvironmentSetUpTest) {
 	traceAssertEQ(testEnv.path.size(), 0, "Environment Attribute set incorrectly -> path");
 	traceAssertEQ(testEnv.getActionCount(), 0, "Environment Attribute set incorrectly -> ActionCount");
 }
+
+void printHelp() {
+	cout << "Printed" << endl;
+	std::cerr << "Coords: " << endl;
+	std::cerr.flush();
+
+}
+
+
+//*@Brife Test the Environment reward generation*/
+TEST_F(EnvironmentTestFixtures, RewardGeneration) {
+	printHelp();
+
+	int newXCoord = 1;
+	int newYCoord = 2;
+
+	StateBasedNode newNodeLocation = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
+
+	double reward = testEnv.calculateReward(newNodeLocation);
+
+	std::cerr << "Coords: " << newNodeLocation.nodeCoordX << ", " << newNodeLocation.nodeCoordY << std::endl;
+	std::cerr.flush();
+
+	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
+	ASSERT_EQ(reward, 0.1);
+
+
+}

@@ -256,8 +256,12 @@ add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_function
 gtest_discover_tests(generator_struct_functional_testing)
 
 # Register the test
-add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_environment_testing)
-gtest_discover_tests(state_based_environment_testing)
+add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_environment_testing )
+gtest_discover_tests(
+    state_based_environment_testing
+    DISCOVERY_MODE PRE_TEST
+    EXTRA_ARGS --gtest_capture_stdout=1
+)
 
 # Register the test
 add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)

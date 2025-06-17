@@ -31,7 +31,7 @@ public:
 
 	void removeGoal(StateBasedNode& node);
 
-	double calcualteReward(StateBasedNode& newNodeLocation);
+	double calculateReward(StateBasedNode& newNodeLocation);
 
 	bool nodeTerminationCheck(StateBasedNode& ndode); 
 
@@ -74,9 +74,7 @@ public:
 		currentNode = newNode;
 	}
 
-	void incrementActionCount() {
-		++actionCount;
-	}
+	
 
 	int getActionCount() {
 		return actionCount;
