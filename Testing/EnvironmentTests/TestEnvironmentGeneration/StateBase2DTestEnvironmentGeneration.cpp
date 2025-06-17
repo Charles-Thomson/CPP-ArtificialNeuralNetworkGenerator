@@ -36,6 +36,10 @@ protected:
 		populatedEnvironment = Populate2DTestEnvironment_Dimesnions5(blankEnvironment);
 		testEnv.setEnvironmentMap(populatedEnvironment);
 
+		pair<int, int> envDimensions = { blankEnvironment.size(),blankEnvironment[0].size() };
+		testEnv.setEnviromentMapDimensions(envDimensions);
+
+
 		// Set current node to START
 		testEnv.setCurrentNode(StateBasedNode(StateBasedNode::State::START, 1, 1, 5));
 

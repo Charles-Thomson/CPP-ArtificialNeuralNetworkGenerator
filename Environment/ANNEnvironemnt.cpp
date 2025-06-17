@@ -8,9 +8,17 @@
 #include <tuple>
 #include <cassert>
 
+
 using std::string;
 using std::vector;
 using std::tuple;
+using std::out_of_range;
+
+// C++20 - compatibility issue potential
+using enum DirectionalEnum::Direction;
+
+using Direction = DirectionalEnum::Direction;
+
 
 
 
@@ -22,9 +30,72 @@ using std::tuple;
 StateBasedNode& Environment::getNodeAtEnvironmentLocation(int& coordX, int& coordY) {
 
 	vector<vector<StateBasedNode>> env = getEnvironmentMap();
+	
 	return env[coordX][coordY];
 }
 
+//*
+// @ Brief Determine if action taken results in termination
+// 
+// */
+bool Environment::nodeTerminationCheck(StateBasedNode& node) {
+
+	if (node.state == StateBasedNode::State::OBSTICAL) {
+		return true;
+	}
+
+	return false;
+}
+
+//*
+// @brife Check if given coords fall outside of acceptable range
+// Check if the given x,y coords fall within the environment, else set termination
+// flag to be true
+// 
+// @param coords - coords to be checked
+// @return true if terminating 
+// */
+bool Environment::boundryTerminationCheck(pair<int, int>& coords) {
+
+	if (coords.first > enviromentMapDimensions.first || coords.first < 0) {
+		return true;
+	}
+
+	if (coords.second > enviromentMapDimensions.second || coords.second < 0) {
+		return true;
+	}
+
+	return false;
+}
+
+//*
+// @brife Apply a given offset to a set of cooridnates
+// 
+// 
+// @param currentCoords - Coordinates to be offset
+// @param offSet - the offset to be applied
+// @ return pair<int,int> - Coordinates with offset applied
+// */
+pair<int, int> applyOffsetToCoords(pair<int, int>& currentCoords, pair<int, int>& offSet) {
+	int newX = currentCoords.first + offSet.first;
+	int newY = currentCoords.second + offSet.second;
+
+	return { newX, newY };
+}
+
+//*
+// @Breife calculate new coordinates based on direction
+// */
+pair<int, int> Environment::determineNewCoordinates(Direction& dir) {
+	pair<int, int> offSet = DirectionalEnum::getDirectionOffsef(dir);
+
+	pair<int, int> currentCoords = { currentNode.nodeCoordX,currentNode.nodeCoordY };
+
+	pair<int, int> newCoordinates = applyOffsetToCoords(currentCoords, offSet);
+
+	return newCoordinates; 
+
+}
 
 
 //*
@@ -41,14 +112,31 @@ vector<double> Environment::getObservationDataFromEnvironment(StateBasedNode& ob
 //* 
 // @ Brief Agent taks an action/step in the environment
 // 
-// @return tuple - currentCoords, terminationFlag, reward for action
+// @return tuple - New State Node, terminationFlag, reward for action
 // */
-tuple<int, double, bool> Environment::step(DirectionalEnum action) {
+tuple<StateBasedNode, double, bool> Environment::step(Direction& action) {
+	StateBasedNode newNode = currentNode;
 
-	/*double reward = calcualteReward();*/
+	bool terminationFlag = false;
 
+	pair<int, int> potantialNewNodeCoords = determineNewCoordinates(action);
 
-	return {};
+	terminationFlag = boundryTerminationCheck(potantialNewNodeCoords);
+
+	if (!terminationFlag) {
+		newNode = getNodeAtEnvironmentLocation(potantialNewNodeCoords.first, potantialNewNodeCoords.second);;
+	}
+
+	terminationFlag = nodeTerminationCheck(newNode);
+
+	currentNode = newNode;
+
+	incrementActionCount();
+	addNodeToPath(newNode);
+
+	double reward = calcualteReward(newNode);
+
+	return { newNode,reward, terminationFlag };
 
 }
 
@@ -95,12 +183,9 @@ void Environment::addNodeToPath(StateBasedNode& node){
 // @param baseOpenNodeReward - base reward given for open nodes
 // */
 double Environment::calculateOpenNodeReward(double& baseOpenNodeReward) {
-	int pathLength = path.size();
-	
-	
-
-	return pathLength * baseOpenNodeReward;
+	return actionCount * baseOpenNodeReward;
 }
+
 //*
 // @ Brief Calculate reward based on location in environment
 // 
@@ -142,23 +227,9 @@ double Environment::calcualteReward(StateBasedNode& newNodeLocation) {
 }
 
 
-//*
-// @ Brief Determine if action taken results in termination
-// 
-// */
-bool Environment::terminationCheck() {
-	return false;
-
-}
-
-//*
-// @ Brief  Calculate new location based of given action
-// 
-// */
-tuple<int, int> Environment::processAction() {
-	return {};
 
 
-}
+
+
 
 

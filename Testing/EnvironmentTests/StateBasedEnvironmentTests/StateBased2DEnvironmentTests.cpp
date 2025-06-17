@@ -26,8 +26,6 @@ TEST_F(EnvironmentTestFixtures, EnvironmentSetUpTest) {
 	StateBasedNode testNode = testEnv.getCurrentNode();
 
 	traceAssertEQ(testNode.state, StateBasedNode::State::START, "Environment Attribute set incorrectly -> StartNode");
-	traceAssertEQ(testEnv.pathLength, 0, "Environment Attribute set incorrectly -> pathLength");
 	traceAssertEQ(testEnv.path.size(), 0, "Environment Attribute set incorrectly -> path");
-	traceAssertEQ(testEnv.getCurrentStep(), 0, "Environment Attribute set incorrectly -> CurentStep");
 	traceAssertEQ(testEnv.getActionCount(), 0, "Environment Attribute set incorrectly -> ActionCount");
 }

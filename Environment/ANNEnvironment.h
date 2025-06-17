@@ -3,6 +3,7 @@
 
 #include "DirectionEnumeration/DirectionalEnum.h"
 #include "EnvironmentNodes/StateBased/StateBasedNode.h"
+#include "DirectionEnumeration/DirectionalEnum.h"
 
 #include <string>
 #include <vector>
@@ -12,13 +13,12 @@ using std::string;
 using std::vector;
 using std::tuple;
 
+using Direction = DirectionalEnum::Direction;
 
 class Environment {
 public:
 	vector<StateBasedNode> path = {};
-	int pathLength = 0;
 	
-
 	Environment() {};
 	~Environment() {};
 
@@ -27,35 +27,24 @@ public:
 	vector<double> getObservationDataFromEnvironment(StateBasedNode& obeservationPoint);
 	
 	
-	tuple<int, double, bool> step(DirectionalEnum action);
+	tuple<StateBasedNode, double, bool> step(Direction& action);
 
 	void removeGoal();
 
 	double calcualteReward(StateBasedNode& newNodeLocation);
 
-	bool terminationCheck(StateBasedNode& ndode); 
+	bool nodeTerminationCheck(StateBasedNode& ndode); 
 
-	tuple<int, int> processAction();
+	bool boundryTerminationCheck(pair<int,int>& coords);
 
 	bool checkIfNodeInPath(StateBasedNode& node);
 
 	void addNodeToPath(StateBasedNode& node);
 
+	pair<int, int> determineNewCoordinates(Direction& dir);
+
 	
 	StateBasedNode& getNodeAtEnvironmentLocation(int& coordX, int& coordY);
-
-
-	int getCurrentStep() const { 
-		return currentStep;  
-	}
-
-	void setCurrentStep(int newValue) { 
-		currentStep = newValue; 
-	}
-
-	void incrementStepCounter() {
-		++currentStep;  
-	}
 
 	size_t getMaxActions() const {
 		return maxActions;
@@ -63,6 +52,10 @@ public:
 
 	void setMaxActions(int newValue) {
 		maxActions = newValue;
+	}
+
+	void incrementActionCount() {
+		++actionCount;
 	}
 
 	vector<vector<StateBasedNode>> getEnvironmentMap() {
@@ -89,10 +82,18 @@ public:
 		return actionCount;
 	};
 
+	pair<int, int> getEnviromentMapDimensions() {
+		return enviromentMapDimensions;
+	
+	}
+
+	void setEnviromentMapDimensions(pair<int, int> dim) {
+		enviromentMapDimensions = dim;
+	}
+
 
 private:
-	int currentStep = 0;
-	
+	pair<int, int> enviromentMapDimensions;
 	vector<vector<StateBasedNode>> enviromentMap = {};
 	int maxActions = 1;
 	int actionCount = 0;
