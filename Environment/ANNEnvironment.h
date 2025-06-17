@@ -82,8 +82,12 @@ public:
 	}
 
 	void incrementActionCount() {
-		++acctionCount;
+		++actionCount;
 	}
+
+	int getActionCount() {
+		return actionCount;
+	};
 
 
 private:
@@ -91,7 +95,7 @@ private:
 	
 	vector<vector<StateBasedNode>> enviromentMap = {};
 	int maxActions = 1;
-	int acctionCount = 0;
+	int actionCount = 0;
 	StateBasedNode currentNode;
 
 

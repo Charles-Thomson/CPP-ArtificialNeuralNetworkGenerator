@@ -69,8 +69,10 @@ protected:
 	// 
 	// @param env Environment to be printed / visualized 
 	// */
-	void EnvironmentPrintHelper(vector<vector<StateBasedNode>> env) {
-		for (vector<StateBasedNode> layer : env) {
+	void EnvironmentPrintHelper() {
+
+		vector<vector<StateBasedNode>> envMap = testEnv.getEnvironmentMap();
+		for (vector<StateBasedNode> layer : envMap) {
 			for (StateBasedNode node : layer) {
 				int nodeValue = StateBasedNode::state_to_int(node.state);
 				cout << nodeValue << " , ";

@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+set(CTEST_OUTPUT_ON_FAILURE ON)
 
 #set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
@@ -180,8 +181,6 @@ add_executable(environment_observation_tools_testing Testing/EnvironmentTests/Si
 
 add_executable(state_based_environment_testing Testing/EnvironmentTests/StateBasedEnvironmentTests/StateBased2DEnvironmentTests.cpp )
 
-
-
 # List of Test targets
 set(TEST_TARGETS
     JSON_Unpacking_testing
@@ -192,6 +191,7 @@ set(TEST_TARGETS
     generator_struct_functional_testing
     state_based_environment_testing
     environment_observation_tools_testing
+    
 )
 
 #Target link libraries
@@ -199,8 +199,6 @@ foreach(target IN LISTS TEST_TARGETS)
     target_link_libraries(${target} PRIVATE gtest gtest_main CPP-ArtificialNeuralNetworkGenerator fmt::fmt)
     target_compile_features(${target} PUBLIC cxx_std_20)
 endforeach()
-
-
 
 
 #Include directories for test targets
@@ -264,6 +262,7 @@ gtest_discover_tests(state_based_environment_testing)
 # Register the test
 add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)
 gtest_discover_tests(environment_observation_tools_testing)
+
 
 
 

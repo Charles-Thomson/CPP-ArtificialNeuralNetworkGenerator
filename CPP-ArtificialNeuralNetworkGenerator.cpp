@@ -51,7 +51,6 @@ bool static PreProcessing() {
 
 	InstanceConfigObject newInstanceConfig = UnpackJSONToConfigObjects(JSONConfigData);
 
-	// Convert into a 
 
 	return false;
 }
