@@ -29,7 +29,7 @@ public:
 	
 	tuple<StateBasedNode, double, bool> step(Direction& action);
 
-	void removeGoal();
+	void removeGoal(StateBasedNode& node);
 
 	double calcualteReward(StateBasedNode& newNodeLocation);
 

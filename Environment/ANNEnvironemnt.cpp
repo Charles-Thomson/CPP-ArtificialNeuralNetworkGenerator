@@ -124,7 +124,7 @@ tuple<StateBasedNode, double, bool> Environment::step(Direction& action) {
 	terminationFlag = boundryTerminationCheck(potantialNewNodeCoords);
 
 	if (!terminationFlag) {
-		newNode = getNodeAtEnvironmentLocation(potantialNewNodeCoords.first, potantialNewNodeCoords.second);;
+		newNode = getNodeAtEnvironmentLocation(potantialNewNodeCoords.first, potantialNewNodeCoords.second);
 	}
 
 	terminationFlag = nodeTerminationCheck(newNode);
@@ -145,8 +145,8 @@ tuple<StateBasedNode, double, bool> Environment::step(Direction& action) {
 // 
 // REmove a goal from the evironment once it has been reached by an agent
 // */
-void Environment::removeGoal() {
-	
+void Environment::removeGoal(StateBasedNode& node) {
+	node.updateNodeState(StateBasedNode::State::OPEN);
 }
 
 //*
@@ -213,7 +213,7 @@ double Environment::calcualteReward(StateBasedNode& newNodeLocation) {
 
 
 		case StateBasedNode::State::GOAL:
-			newNodeLocation.updateNodeState(StateBasedNode::State::OPEN); // Remove the goal 
+			removeGoal(newNodeLocation); // Set State as OPEN			
 			reward = goalNodeReward;
 			break;
 
