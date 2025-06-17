@@ -33,7 +33,7 @@ public:
 
 	double calcualteReward(StateBasedNode& newNodeLocation);
 
-	bool terminationCheck(); 
+	bool terminationCheck(StateBasedNode& ndode); 
 
 	tuple<int, int> processAction();
 

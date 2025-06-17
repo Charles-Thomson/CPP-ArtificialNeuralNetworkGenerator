@@ -3,6 +3,7 @@
 
 #include <iostream>
 using std::invalid_argument;
+using std::pair;
 
 
 //*
@@ -38,6 +39,29 @@ struct DirectionalEnum {
 		}
 	}
 
+	//*
+	// @brife Convert Direction to offset 
+	// Provides "direction" of movement in a 2D vector/data structure
+	// 
+	// @param dir enum direction
+	// @return pair<int, int> Offset to be applied
+	// */
+	static pair<int, int> getDirectionOffsef(Direction dir) {
+		switch (dir) {
+			case Direction::UP_LEFT:    return { -1,-1};
+			case Direction::UP:		    return { -1, 0};
+			case Direction::UP_RIGHT:   return {  1,-1};
+			case Direction::LEFT:       return { -1, 0};
+			case Direction::RIGHT:      return {  1, 0};
+			case Direction::DOWN_LEFT:  return { -1, 1};
+			case Direction::DOWN:       return {  0, 1};
+			case Direction::DOWN_RIGHT: return {  1, 1};
+			default: return {0,0};
+		}
+	
+	}
+
+	
 	static int direction_to_int(Direction d) {
 		return static_cast<int>(d);
 	}
