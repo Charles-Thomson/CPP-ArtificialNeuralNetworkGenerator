@@ -29,27 +29,38 @@ protected:
 	vector<StateBasedNode> dummySightLine;
 
 	void SetUp() override {
-		std::cout << "SetUp called" << std::endl;
+		cout << "SetUp called" << endl;
 
-		// Generate and store a dummy environment and related data
-		//blankEnvironment = GenerateBlankTest2DEnvironmentMap(5);
-		//populatedEnvironment = Populate2DTestEnvironment_Dimesnions5(blankEnvironment);
-		//testEnv.setEnvironmentMap(populatedEnvironment);
+		try {
+			cout << "SetUp called" << endl;
 
-		//pair<int, int> envDimensions = { blankEnvironment.size(),blankEnvironment[0].size() };
-		//testEnv.setEnviromentMapDimensions(envDimensions);
+			//Generate and store a dummy environment and related data
+			blankEnvironment = GenerateBlankTest2DEnvironmentMap(5);
+			populatedEnvironment = Populate2DTestEnvironment_Dimesnions5(blankEnvironment);
+			testEnv.setEnvironmentMap(populatedEnvironment);
+
+			pair<int, int> envDimensions = { blankEnvironment.size(),blankEnvironment[0].size() };
+			testEnv.setEnviromentMapDimensions(envDimensions);
 
 
-		//// Set current node to START
-		//testEnv.setCurrentNode(StateBasedNode(StateBasedNode::State::START, 1, 1, 5));
+			// Set current node to START
+			testEnv.setCurrentNode(StateBasedNode(StateBasedNode::State::START, 1, 1, 5));
 
-		//// Generate dummy sight line data
-		//dummySightLine = GenerateDummySightLineData();
+			// Generate dummy sight line data
+			dummySightLine = GenerateDummySightLineData();
+			
+		}
+		catch (const std::exception& e) {
+			std::cerr << "Exception in SetUp: " << e.what() << std::endl;
+			throw;  // Rethrow so test still fails
+		}
+
+	
 	}
 
 	void TearDown() override {
 		if (HasFailure()) {
-			std::cerr << "Test failed, printing debug info..." << std::endl;
+			std::cerr << "Test failed, printing debug info..." << endl;
 		}
 	}
 

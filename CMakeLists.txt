@@ -3,7 +3,6 @@
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_SCAN_FOR_MODULES ON)
 set(CTEST_OUTPUT_ON_FAILURE ON)
 
 #set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
@@ -228,9 +227,6 @@ foreach(target IN LISTS TEST_TARGETS)
 
 endforeach()
 
-
-
-
 # Register the test
 add_test(NAME InputFileReadAndParse COMMAND read_and_parse_testing)
 gtest_discover_tests(read_and_parse_testing)
@@ -257,11 +253,7 @@ gtest_discover_tests(generator_struct_functional_testing)
 
 # Register the test
 add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_environment_testing )
-gtest_discover_tests(
-    state_based_environment_testing
-    DISCOVERY_MODE PRE_TEST
-    EXTRA_ARGS --gtest_capture_stdout=1
-)
+gtest_discover_tests(state_based_environment_testing)
 
 # Register the test
 add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)
