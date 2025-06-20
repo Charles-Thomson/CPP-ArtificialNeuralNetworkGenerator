@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/state_based_environment_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/state_based_environment_testing[1]_tests.cmake")
+else()
+  add_test(state_based_environment_testing_NOT_BUILT state_based_environment_testing_NOT_BUILT)
+endif()

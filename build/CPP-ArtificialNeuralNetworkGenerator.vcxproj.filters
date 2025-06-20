@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\CPP-ArtificialNeuralNetworkGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\GeneratorStruct\Generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\ANNEnvironemnt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\EnvironmentObservtions\StateBased2DEnvironmentObservation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\EnvironmentNodes\StateBased\StateBasedNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\DirectionEnumeration\DirectionalEnum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\PreProcessing\InputFileReadAndParse\InputFileRead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\PreProcessing\UnpackingToConfigurationObjects\UnpackToConfigObjects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\WeightHuristics\WeightHuristics_GeneratorFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\WeightHuristics\WeightHuristics_Functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\HiddenLayer\HiddenLayer_ActivationFunctionsFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\HiddenLayer\HiddenLayer_ActivationFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\OutputLayer\OutputLayer_ActivationFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\ANNConfigurationObject\ANNConfigObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\ANNConfigurationObject\ANNLayerObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\EnvironmentConfigurationObject\EnvironmentConfigObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\HyperParameterConfigurationObject\HyperParameterConfigObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\InstanceConfigurationObject\InstanceConfigObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\CPP-ArtificialNeuralNetworkGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Staging\WorkItemGeneration\WorkItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\ANNEnvironment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\EnvironmentObservtions\StateBased2DEnvironmentObservation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\EnvironmentNodes\StateBased\StateBasedNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\EnvironmentObservtions\EnvironmentObservationStructs\StateBasedObservationData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Environment\DirectionEnumeration\DirectionalEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\PreProcessing\InputFileReadAndParse\InputFileParse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\PreProcessing\InputFileReadAndParse\InputFileRead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\PreProcessing\UnpackingToConfigurationObjects\UnpackToConfigObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\WeightHuristics\WeightHuristics_GeneratorFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\WeightHuristics\WeightHuristics_Functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\HiddenLayer\HiddenLayer_ActivationFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\HiddenLayer\HiddenLayer_ActivationFunctionsFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\OutputLayer\OutputLayer_ActivationFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ActivationFunctions\OutputLayer\OutputLayer_ActivationFunctionsFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\ANNConfigurationObject\ANNConfigObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\ANNConfigurationObject\ANNLayerObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\EnvironmentConfigurationObject\EnvironmentConfigObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\HyperParameterConfigurationObject\HyperParameterConfigObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\ConfigClasses\InstanceConfigurationObject\InstanceConfigObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{FDD95F68-6B37-365A-ACED-2ED5A955F02B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BED6C361-AC7F-3F53-8450-93211F0D1767}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/generator_struct_functional_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/generator_struct_functional_testing[1]_tests.cmake")
+else()
+  add_test(generator_struct_functional_testing_NOT_BUILT generator_struct_functional_testing_NOT_BUILT)
+endif()

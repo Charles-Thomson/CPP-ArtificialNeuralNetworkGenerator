@@ -1,0 +1,3 @@
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/cpp-jsonparser-populate.dir
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/ZERO_CHECK.dir

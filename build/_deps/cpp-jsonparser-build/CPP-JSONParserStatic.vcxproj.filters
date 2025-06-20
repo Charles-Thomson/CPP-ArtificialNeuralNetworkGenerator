@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\CPP-JSONParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\Structs\JSONValueStruct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\FileReader\FileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\HelperFunctions\TypeConversions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\HelperFunctions\PrintJSON.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\Testing\TestDataPreProcessing\TestDataPreProcessing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\Testing\ParserTests\SupportingTestFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\CPP-JSONParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\Structs\JSONValueStruct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\FileReader\FileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\HelperFunctions\TypeConversions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\HelperFunctions\PrintJSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\Testing\TestDataPreProcessing\TestDataPreProcessing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\Testing\ParserTests\SupportingTestFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\ExposedFunctions\cppJSONParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\ExposedFunctions\CheckIfContainsKey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-jsonparser-src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{FDD95F68-6B37-365A-ACED-2ED5A955F02B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BED6C361-AC7F-3F53-8450-93211F0D1767}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

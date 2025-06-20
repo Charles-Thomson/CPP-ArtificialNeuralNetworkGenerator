@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/read_and_parse_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/read_and_parse_testing[1]_tests.cmake")
+else()
+  add_test(read_and_parse_testing_NOT_BUILT read_and_parse_testing_NOT_BUILT)
+endif()

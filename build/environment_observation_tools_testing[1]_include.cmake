@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/environment_observation_tools_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/environment_observation_tools_testing[1]_tests.cmake")
+else()
+  add_test(environment_observation_tools_testing_NOT_BUILT environment_observation_tools_testing_NOT_BUILT)
+endif()

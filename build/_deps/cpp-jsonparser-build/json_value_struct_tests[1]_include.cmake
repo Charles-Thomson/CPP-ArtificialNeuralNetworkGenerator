@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-build/json_value_struct_tests[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-build/json_value_struct_tests[1]_tests.cmake")
+else()
+  add_test(json_value_struct_tests_NOT_BUILT json_value_struct_tests_NOT_BUILT)
+endif()

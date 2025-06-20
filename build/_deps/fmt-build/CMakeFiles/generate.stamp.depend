@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckFlagCommonConfig.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-src/CMakeLists.txt
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-src/support/cmake/JoinPaths.cmake
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-src/support/cmake/cxx14.cmake

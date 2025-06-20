@@ -228,35 +228,35 @@ foreach(target IN LISTS TEST_TARGETS)
 endforeach()
 
 # Register the test
-add_test(NAME InputFileReadAndParse COMMAND read_and_parse_testing)
+#add_test(NAME InputFileReadAndParse COMMAND read_and_parse_testing)
 gtest_discover_tests(read_and_parse_testing)
 
 # Register the test
-add_test(NAME JSONUnpacking COMMAND JSON_Unpacking_testing)
+#add_test(NAME JSONUnpacking COMMAND JSON_Unpacking_testing)
 gtest_discover_tests(JSON_Unpacking_testing)
 
 # Register the test
-add_test(NAME HiddenLayerActivationFunctionTesting COMMAND hidden_layer_activation_function_testing)
+#add_test(NAME HiddenLayerActivationFunctionTesting COMMAND hidden_layer_activation_function_testing)
 gtest_discover_tests(hidden_layer_activation_function_testing)
 
 # Register the test
-add_test(NAME OutputLayerActivationFunctionTesting COMMAND output_layer_activation_function_testing)
+#add_test(NAME OutputLayerActivationFunctionTesting COMMAND output_layer_activation_function_testing)
 gtest_discover_tests(output_layer_activation_function_testing)
 
 # Register the test
-add_test(NAME WeightHuristicsFunctionTesting COMMAND weight_huristics_function_testing)
+#add_test(NAME WeightHuristicsFunctionTesting COMMAND weight_huristics_function_testing)
 gtest_discover_tests(weight_huristics_function_testing)
 
 # Register the test
-add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_functional_testing)
+#add_test(NAME GeneratorStructFunctionalTesting COMMAND generator_struct_functional_testing)
 gtest_discover_tests(generator_struct_functional_testing)
 
 # Register the test
-add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_environment_testing )
+#add_test(NAME StateBased2DEnvironmentTesting COMMAND state_based_environment_testing )
 gtest_discover_tests(state_based_environment_testing)
 
 # Register the test
-add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)
+#add_test(NAME EnvironmentObservationToolsTesting COMMAND environment_observation_tools_testing)
 gtest_discover_tests(environment_observation_tools_testing)
 
 

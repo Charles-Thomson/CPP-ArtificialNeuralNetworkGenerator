@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/hidden_layer_activation_function_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/hidden_layer_activation_function_testing[1]_tests.cmake")
+else()
+  add_test(hidden_layer_activation_function_testing_NOT_BUILT hidden_layer_activation_function_testing_NOT_BUILT)
+endif()

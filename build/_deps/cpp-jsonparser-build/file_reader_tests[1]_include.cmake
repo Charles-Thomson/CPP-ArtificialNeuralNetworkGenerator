@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-build/file_reader_tests[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-build/file_reader_tests[1]_tests.cmake")
+else()
+  add_test(file_reader_tests_NOT_BUILT file_reader_tests_NOT_BUILT)
+endif()

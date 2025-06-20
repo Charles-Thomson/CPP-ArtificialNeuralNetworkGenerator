@@ -1,0 +1,14 @@
+# Target labels
+ fmt-populate
+# Source files and their labels
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/fmt-populate
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/fb450892ca7184f4c3b9bdf8e573d7b5/fmt-populate.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a5fb4d1fc2e5e3841dcccbf5118be154/fmt-populate-complete.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-build.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-configure.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-download.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-install.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-mkdir.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-patch.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-test.rule
+C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/fmt-subbuild/CMakeFiles/a9cdba8b317c94ef21bbfb40f686feb7/fmt-populate-update.rule

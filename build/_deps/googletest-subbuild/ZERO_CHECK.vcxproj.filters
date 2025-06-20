@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\googletest-subbuild\CMakeFiles\8fbcc94fd2656bad065b1a2591a9698b\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BAD9017B-CC6E-34EB-BC76-02137F57674D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

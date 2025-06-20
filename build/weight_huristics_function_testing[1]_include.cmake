@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/weight_huristics_function_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/weight_huristics_function_testing[1]_tests.cmake")
+else()
+  add_test(weight_huristics_function_testing_NOT_BUILT weight_huristics_function_testing_NOT_BUILT)
+endif()

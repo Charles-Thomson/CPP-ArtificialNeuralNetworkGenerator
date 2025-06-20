@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\Testing\InputParsingTests\ReadAndParseTesting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BED6C361-AC7F-3F53-8450-93211F0D1767}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

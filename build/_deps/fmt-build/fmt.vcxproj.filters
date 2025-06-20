@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\src\format.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\src\os.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\args.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\chrono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\compile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\format.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\format-inl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\locale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\os.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\printf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\ranges.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\include\fmt\xchar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\README.rst" />
+    <None Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\fmt-src\ChangeLog.rst" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{FDD95F68-6B37-365A-ACED-2ED5A955F02B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BED6C361-AC7F-3F53-8450-93211F0D1767}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

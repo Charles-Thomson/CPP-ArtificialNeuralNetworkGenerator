@@ -1,0 +1,1 @@
+set(  generator_struct_functional_testing_TESTS)

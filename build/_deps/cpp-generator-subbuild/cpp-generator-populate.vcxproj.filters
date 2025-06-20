@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\684e70d8845de741b77951a8c975879b\cpp-generator-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\f8f35fc53ab55b36593c2fbd15656773\cpp-generator-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\4a858742cc3ed8f1b517a7cc1e5f4587\cpp-generator-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Charl\source\repos\C++\CPP-ArtificialNeuralNetworkGenerator\build\_deps\cpp-generator-subbuild\CMakeFiles\cpp-generator-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{46B791B8-7F16-3D33-AD04-420DBB0E1275}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

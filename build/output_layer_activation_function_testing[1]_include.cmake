@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/output_layer_activation_function_testing[1]_tests.cmake")
+  include("C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/output_layer_activation_function_testing[1]_tests.cmake")
+else()
+  add_test(output_layer_activation_function_testing_NOT_BUILT output_layer_activation_function_testing_NOT_BUILT)
+endif()

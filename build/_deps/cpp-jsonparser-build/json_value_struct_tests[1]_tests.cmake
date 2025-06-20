@@ -1,0 +1,3 @@
+add_test([=[JSONStructTest.GetValueFromJSONValueStruct]=]  [==[C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-build/Debug/json_value_struct_tests.exe]==] [==[--gtest_filter=JSONStructTest.GetValueFromJSONValueStruct]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[JSONStructTest.GetValueFromJSONValueStruct]=]  PROPERTIES WORKING_DIRECTORY [==[C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-build]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  json_value_struct_tests_TESTS JSONStructTest.GetValueFromJSONValueStruct)

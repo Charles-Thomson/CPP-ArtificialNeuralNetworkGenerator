@@ -21,9 +21,9 @@ TEST(BaseTest, PrintTest) {
 	EXPECT_EQ(1, 2);
 }
 
-//*
-// @brife Test generated environment variables
-// */
+////*
+//// @brife Test generated environment variables
+//// */
 //TEST_F(EnvironmentTestFixtures, EnvironmentSetUpTest) {
 //	cout << "Test Start " << endl;
 //

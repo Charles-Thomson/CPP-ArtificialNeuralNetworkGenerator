@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/cpp-jsonparser-populate"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/a8027998ffd6b85b779f1031708584d9/cpp-jsonparser-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/9c733cc746dc630be1fa453cd406df22/cpp-jsonparser-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/_deps/cpp-jsonparser-subbuild/CMakeFiles/4695c472d0ceb33815f45a8f28f7968b/cpp-jsonparser-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cpp-jsonparser-populate"
+		],
+		"name" : "cpp-jsonparser-populate"
+	}
+}

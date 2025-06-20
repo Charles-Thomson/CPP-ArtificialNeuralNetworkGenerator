@@ -1,0 +1,5 @@
+add_test([=[InputFileReadAndParse.ReadFile]=]  [==[C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/Debug/read_and_parse_testing.exe]==] [==[--gtest_filter=InputFileReadAndParse.ReadFile]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[InputFileReadAndParse.ReadFile]=]  PROPERTIES WORKING_DIRECTORY [==[C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[InputFileReadAndParse.ParseInputString]=]  [==[C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build/Debug/read_and_parse_testing.exe]==] [==[--gtest_filter=InputFileReadAndParse.ParseInputString]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[InputFileReadAndParse.ParseInputString]=]  PROPERTIES WORKING_DIRECTORY [==[C:/Users/Charl/source/repos/C++/CPP-ArtificialNeuralNetworkGenerator/build]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  read_and_parse_testing_TESTS InputFileReadAndParse.ReadFile InputFileReadAndParse.ParseInputString)
