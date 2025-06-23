@@ -44,7 +44,7 @@ public:
 	pair<int, int> determineNewCoordinates(Direction& dir);
 
 	
-	StateBasedNode& getNodeAtEnvironmentLocation(int& coordX, int& coordY);
+	StateBasedNode getNodeAtEnvironmentLocation(int& coordX, int& coordY);
 
 	size_t getMaxActions() const {
 		return maxActions;
@@ -54,9 +54,7 @@ public:
 		maxActions = newValue;
 	}
 
-	void incrementActionCount() {
-		++actionCount;
-	}
+	
 
 	vector<vector<StateBasedNode>> getEnvironmentMap() {
 		return enviromentMap;
@@ -74,11 +72,16 @@ public:
 		currentNode = newNode;
 	}
 
-	
+	void incrementActionCount() {
+		++actionCount;
+	}
 
 	int getActionCount() {
 		return actionCount;
 	};
+	void setActionCount(int val) {
+		actionCount = val;
+	}
 
 	pair<int, int> getEnviromentMapDimensions() {
 		return enviromentMapDimensions;

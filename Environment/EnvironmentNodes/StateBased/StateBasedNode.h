@@ -51,7 +51,7 @@ struct StateBasedNode {
 		return static_cast<int>(state);
 	};
 
-	static string state_to_string(State state) {
+	string state_to_string() {
 		switch (state) {
 		case State::OPEN: return "open";
 		case State::START: return "start";
