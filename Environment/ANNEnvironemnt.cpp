@@ -195,9 +195,8 @@ void Environment::addNodeToPath(StateBasedNode& node){
 // @param baseOpenNodeReward - base reward given for open nodes
 // */
 double Environment::calculateOpenNodeReward(double& baseOpenNodeReward) {
-	cout << "calculateReward -> calculateOpenNodeReward -> Start  " << endl;
 	double reward = actionCount * baseOpenNodeReward;
-	cout << "calculateReward -> calculateOpenNodeReward -> REward calculated :  "<< reward << endl;
+	
 	return reward;
 }
 
@@ -207,23 +206,18 @@ double Environment::calculateOpenNodeReward(double& baseOpenNodeReward) {
 // @param newNodeLocation - Node reward is to be calculated based on
 // */
 double Environment::calculateReward(StateBasedNode& newNodeLocation) {
-	cout << "calculateReward -> Start " << endl;
 	double goalNodeReward = 2.5;
 	double baseOpenNodeReward = 0.1;
 	double reward = 0.0;
 
 	setCurrentNode(newNodeLocation);
 
-	cout << "calculateReward -> New Node type : "<< newNodeLocation.state_to_string() << endl;
-	
 	switch (newNodeLocation.state) {
 
 		case StateBasedNode::State::OPEN:
 
 			if (!checkIfNodeInPath(newNodeLocation)) {
-				cout << "calculateReward -> nodeis OPEN" << endl;
 				reward = calculateOpenNodeReward(baseOpenNodeReward);
-				cout << "calculateReward -> Reward set :  "<< reward << endl;
 			}
 			else {
 				reward = baseOpenNodeReward;

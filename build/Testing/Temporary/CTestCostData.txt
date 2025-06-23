@@ -58,4 +58,6 @@ TypeParsingTests.TypeParcing_nested_vector_double 3 0.0243282
 GeneratorTesting.CountsUpToGivenNumber 3 0.0171975
 GeneratorTesting.AppliesAlgorithmToEachValue 3 0.0151949
 BaseTest.PrintTest 0 0
+EnvironmentTestFixtures.RewardGenerationGoal 1 0.0666121
+EnvironmentTestFixtures.RewardGenerationObstical 1 0.0459457
 ---

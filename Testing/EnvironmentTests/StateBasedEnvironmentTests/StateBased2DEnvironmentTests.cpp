@@ -44,7 +44,7 @@ TEST_F(EnvironmentTestFixtures, EnvironmentSetUpTest) {
 }
 
 
-//*@Brife Test the Environment reward generation*/
+//*@Brife Test the Environment reward generation on a OPEN state node*/
 TEST_F(EnvironmentTestFixtures, RewardGenerationOpen) {
 	
 	int newXCoord = 1;
@@ -52,18 +52,50 @@ TEST_F(EnvironmentTestFixtures, RewardGenerationOpen) {
 
 	EnvironmentPrintHelper();
 
+	testEnv.setActionCount(1); // Action caount used in reward generation algorithm
+
+	StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
+
+	double reward = testEnv.calculateReward(testNode);
+	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
+	EXPECT_EQ(reward, 0.1);
+
+
+}
+
+//*@Brife Test the Environment reward generation on a GOAL state node*/
+TEST_F(EnvironmentTestFixtures, RewardGenerationGoal) {
+
+	int newXCoord = 0;
+	int newYCoord = 4;
+
+	EnvironmentPrintHelper();
 
 	testEnv.setActionCount(1); // Action caount used in reward generation algorithm
 
 	StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
 
-	cout << format("RewardGenerationTest -> Test Node Coord X : {}  Coord Y : {}", testNode.nodeCoordX, testNode.nodeCoordY) << endl;
-	cout << testNode.state_to_string() << endl;
-
 	
 	double reward = testEnv.calculateReward(testNode);
 	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
-	EXPECT_EQ(reward, 0.1);
+	EXPECT_EQ(reward, 2.5);
 
+} 
+
+//*@Brife Test the Environment reward generation on a OBSTICAL state node*/
+TEST_F(EnvironmentTestFixtures, RewardGenerationObstical) {
+
+	int newXCoord = 0;
+	int newYCoord = 1;
+
+	EnvironmentPrintHelper();
+
+	testEnv.setActionCount(1); // Action caount used in reward generation algorithm
+
+	StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
+
+	double reward = testEnv.calculateReward(testNode);
+	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
+	EXPECT_EQ(reward, 0.0);
 
 }
