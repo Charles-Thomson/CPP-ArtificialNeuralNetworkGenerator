@@ -155,6 +155,23 @@ protected:
 
 		return returnVector;
 	}
+
+	
+	//*
+	// @brife Test reward generation for given node
+	// 
+	// Test the reward given for a given node type in the environment
+	// @param coordX - x coord of test node
+	// @param coordY - y coord of test node
+	// @param expectedReward - the expected reward generated
+	// */
+	void expectedRewardAt(int coordX, int coordY, double expectedReward) {
+		testEnv.setActionCount(1);
+		StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(coordX, coordY);
+		double reward = testEnv.calculateReward(testNode);
+		SCOPED_TRACE(format("Reward amount incorrect {}", reward));
+		EXPECT_EQ(reward, expectedReward);
+	}
 	
 };
 

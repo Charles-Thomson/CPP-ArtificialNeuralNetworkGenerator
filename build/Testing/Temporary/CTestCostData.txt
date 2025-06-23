@@ -60,4 +60,7 @@ GeneratorTesting.AppliesAlgorithmToEachValue 3 0.0151949
 BaseTest.PrintTest 0 0
 EnvironmentTestFixtures.RewardGenerationGoal 1 0.0666121
 EnvironmentTestFixtures.RewardGenerationObstical 1 0.0459457
+EnvironmentTestFixtures.RewardGenerationObsticalNode 1 0.0383581
+EnvironmentTestFixtures.RewardGenerationGoalNode 1 0.041223
+EnvironmentTestFixtures.RewardGenerationOpenNode 1 0.0440965
 ---

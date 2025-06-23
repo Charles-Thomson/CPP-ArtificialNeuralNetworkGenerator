@@ -43,59 +43,32 @@ TEST_F(EnvironmentTestFixtures, EnvironmentSetUpTest) {
 	
 }
 
-
-//*@Brife Test the Environment reward generation on a OPEN state node*/
-TEST_F(EnvironmentTestFixtures, RewardGenerationOpen) {
+//*
+// @Brife Test the Environment reward generation on a OPEN state node
+// Calls expectedRewardAt() from test Fixture 
+// */
+TEST_F(EnvironmentTestFixtures, RewardGenerationOpenNode) {
 	
-	int newXCoord = 1;
-	int newYCoord = 2;
-
 	EnvironmentPrintHelper();
-
-	testEnv.setActionCount(1); // Action caount used in reward generation algorithm
-
-	StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
-
-	double reward = testEnv.calculateReward(testNode);
-	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
-	EXPECT_EQ(reward, 0.1);
-
-
+	expectedRewardAt(1,2,0.1);
 }
 
-//*@Brife Test the Environment reward generation on a GOAL state node*/
-TEST_F(EnvironmentTestFixtures, RewardGenerationGoal) {
-
-	int newXCoord = 0;
-	int newYCoord = 4;
+//*
+// @Brife Test the Environment reward generation on a GOAL state node
+//  Calls expectedRewardAt() from test Fixture 
+// */
+TEST_F(EnvironmentTestFixtures, RewardGenerationGoalNode) {
 
 	EnvironmentPrintHelper();
-
-	testEnv.setActionCount(1); // Action caount used in reward generation algorithm
-
-	StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
-
-	
-	double reward = testEnv.calculateReward(testNode);
-	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
-	EXPECT_EQ(reward, 2.5);
-
+	expectedRewardAt(0, 4, 2.5);
 } 
 
-//*@Brife Test the Environment reward generation on a OBSTICAL state node*/
-TEST_F(EnvironmentTestFixtures, RewardGenerationObstical) {
-
-	int newXCoord = 0;
-	int newYCoord = 1;
+//*
+// @Brife Test the Environment reward generation on a OBSTICAL state node
+// Calls expectedRewardAt() from test Fixture 
+// */
+TEST_F(EnvironmentTestFixtures, RewardGenerationObsticalNode) {
 
 	EnvironmentPrintHelper();
-
-	testEnv.setActionCount(1); // Action caount used in reward generation algorithm
-
-	StateBasedNode testNode = testEnv.getNodeAtEnvironmentLocation(newXCoord, newYCoord);
-
-	double reward = testEnv.calculateReward(testNode);
-	SCOPED_TRACE(format("Reward amount incorrect {}", reward));
-	EXPECT_EQ(reward, 0.0);
-
+	expectedRewardAt(0, 1, 0.0);
 }
