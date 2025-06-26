@@ -23,6 +23,8 @@ A C++ compiler that supports C++17 or later
 
 CMake version 3.10 or higher
 
+Using CTest 
+Using Google Test
 
 Development Roadmap
 
