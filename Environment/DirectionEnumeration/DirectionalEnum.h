@@ -49,7 +49,7 @@ struct DirectionalEnum {
 	static pair<int, int> getDirectionOffsef(Direction dir) {
 		switch (dir) {
 			case Direction::UP_LEFT:    return { -1,-1};
-			case Direction::UP:		    return { -1, 0};
+			case Direction::UP:		    return {  0,-1};
 			case Direction::UP_RIGHT:   return {  1,-1};
 			case Direction::LEFT:       return { -1, 0};
 			case Direction::RIGHT:      return {  1, 0};
