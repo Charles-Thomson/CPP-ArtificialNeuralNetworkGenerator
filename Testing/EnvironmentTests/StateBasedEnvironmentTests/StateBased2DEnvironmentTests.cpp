@@ -173,11 +173,17 @@ TEST_F(EnvironmentTestFixtures, NodeTerminationCheck) {
 	int obsticalLocationX = 0;
 	int obsticalLocationY = 1;
 
+	int goalNodeLocationX = 4;
+	int goalNodeLocationY = 4;
+
+
 	StateBasedNode obsticalNode = testEnv.getNodeAtEnvironmentLocation(obsticalLocationX, obsticalLocationY);
+	StateBasedNode goalNode = testEnv.getNodeAtEnvironmentLocation(goalNodeLocationX, goalNodeLocationY);
 
-	cout << "Obstical Node State : " << obsticalNode.state_to_string() << endl;
+	bool terminationCondition_ObsticalNode = testEnv.nodeTerminationCheck(obsticalNode);
+	bool terminationCondition_GoalNode = testEnv.nodeTerminationCheck(goalNode);
 
-	FAIL();
-
+	traceAssertEQ(terminationCondition_ObsticalNode, true, "NodeTerminationCheck -> Obstical Node -> Termination flag not as expected");
+	traceAssertEQ(terminationCondition_GoalNode, false, "NodeTerminationCheck -> Goal Node -> Termination flag not as expected");
 
 }

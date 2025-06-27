@@ -70,6 +70,5 @@ EnvironmentTestFixtures.SingleStepInEnvironment 0 0
 EnvironmentTestFixtures.SingleStepInEnvironment_Direction_UP_LEFT 0 0
 EnvironmentTestFixtures.SingleStep_Direction_UP_LEFT 7 0.00833803
 EnvironmentTestFixtures.SingleStep_Direction_UP 0 0
-EnvironmentTestFixtures.NodeTerminationCheck 0 0
+EnvironmentTestFixtures.NodeTerminationCheck 1 0.0565378
 ---
-EnvironmentTestFixtures.NodeTerminationCheck
