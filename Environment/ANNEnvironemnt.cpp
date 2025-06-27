@@ -124,7 +124,7 @@ vector<double> Environment::getObservationDataFromEnvironment(StateBasedNode& ob
 // 
 // @return tuple - New State Node, terminationFlag, reward for action
 // */
-tuple<StateBasedNode, double, bool> Environment::step(Direction& action) {
+tuple<StateBasedNode, double, bool> Environment::step(Direction action) {
 	incrementActionCount();
 
 	StateBasedNode newNode = currentNode;

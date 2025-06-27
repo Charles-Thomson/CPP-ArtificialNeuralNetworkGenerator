@@ -27,7 +27,7 @@ public:
 	vector<double> getObservationDataFromEnvironment(StateBasedNode& obeservationPoint);
 	
 	
-	tuple<StateBasedNode, double, bool> step(Direction& action);
+	tuple<StateBasedNode, double, bool> step(Direction action);
 
 	void removeGoal(StateBasedNode& node);
 
@@ -92,16 +92,15 @@ public:
 		enviromentMapDimensions = dim;
 	}
 
-
 private:
 	pair<int, int> enviromentMapDimensions;
 	vector<vector<StateBasedNode>> enviromentMap = {};
 	int maxActions = 1;
 	int actionCount = 0;
 	StateBasedNode currentNode;
-
-
 };
+
+pair<int, int> applyOffsetToCoords(pair<int, int>& currentCoords, pair<int, int>& offSet);
 
 
 #endif //! ENVIRONMENT_H
