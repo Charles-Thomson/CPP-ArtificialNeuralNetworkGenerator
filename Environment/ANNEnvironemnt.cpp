@@ -40,8 +40,9 @@ StateBasedNode Environment::getNodeAtEnvironmentLocation(int& coordX, int& coord
 
 	StateBasedNode testNode = env[coordX][coordY];
 	cout << format("getNodeAtEnvironmentLocation -> Test Node Coord X : {}  Coord Y : {}", testNode.nodeCoordX , testNode.nodeCoordY) << endl;
-
-	return env[coordX][coordY];
+	 
+	// Inverted on return as the maze is generated from top left 
+	return env[coordY][coordX];
 }
 
 //*
@@ -68,13 +69,15 @@ bool Environment::nodeTerminationCheck(StateBasedNode& node) {
 bool Environment::boundryTerminationCheck(pair<int, int>& coords) {
 
 	if (coords.first > enviromentMapDimensions.first || coords.first < 0) {
+		cout << "boundryTerminationCheck -> Terminting " << endl;
 		return true;
 	}
 
 	if (coords.second > enviromentMapDimensions.second || coords.second < 0) {
+		cout << "boundryTerminationCheck -> Terminting " << endl;
 		return true;
 	}
-
+	
 	return false;
 }
 
@@ -133,6 +136,8 @@ tuple<StateBasedNode, double, bool> Environment::step(Direction action) {
 
 	pair<int, int> potantialNewNodeCoords = determineNewCoordinates(action);
 
+	cout << "Potential node coords : " << potantialNewNodeCoords.first << potantialNewNodeCoords.second << endl;
+
 	terminationFlag = boundryTerminationCheck(potantialNewNodeCoords);
 
 	if (!terminationFlag) {
@@ -141,14 +146,13 @@ tuple<StateBasedNode, double, bool> Environment::step(Direction action) {
 
 	terminationFlag = nodeTerminationCheck(newNode);
 
-	currentNode = newNode;
+	currentNode = newNode; // Update the current node in the env
 
-	
 	addNodeToPath(newNode);
 
 	double reward = calculateReward(newNode);
 
-	return { newNode,reward, terminationFlag };
+	return { newNode, reward, terminationFlag };
 
 }
 
@@ -213,7 +217,7 @@ double Environment::calculateReward(StateBasedNode& newNodeLocation) {
 	setCurrentNode(newNodeLocation);
 
 	switch (newNodeLocation.state) {
-
+		cout << "New node state : " << newNodeLocation.state_to_string() << endl;
 		case StateBasedNode::State::OPEN:
 
 			if (!checkIfNodeInPath(newNodeLocation)) {

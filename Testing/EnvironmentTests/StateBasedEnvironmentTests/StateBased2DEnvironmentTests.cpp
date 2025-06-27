@@ -76,7 +76,7 @@ TEST_F(EnvironmentTestFixtures, RewardGenerationObsticalNode) {
 
 
 pair<int, int> generateExpectedCoords(StateBasedNode& currentNode, Direction action) {
-	pair<int, int> offSet = DirectionalEnum::getDirectionOffsef(UP_LEFT);
+	pair<int, int> offSet = DirectionalEnum::getDirectionOffsef(action);
 
 	pair<int, int> currentCoords = make_pair(currentNode.nodeCoordX, currentNode.nodeCoordY);
 
@@ -131,41 +131,26 @@ TEST_F(EnvironmentTestFixtures, SingleStep_Direction_UP) {
 
 	tuple<StateBasedNode, double, bool> results = testEnv.step(action);
 
-	cout << "New X coord " << get<0>(results).nodeCoordX << endl;
-	cout << "New Y coord " << get<0>(results).nodeCoordY << endl;
+	cout << get<0>(results).state_to_string() << endl;
 
-	cout << "New X coord " << get<0>(results).nodeCoordX << endl;
-	cout << "New Y coord " << get<0>(results).nodeCoordY << endl;
-	
+	cout << "NEw x Coord " << get<0>(results).nodeCoordX << endl;
+	cout << "NEw y Coord " << get<0>(results).nodeCoordY << endl;
 
 	traceAssertEQ(get<0>(results).nodeCoordX, expectedNewCoords.first, "SingleStepInEnvironment_Direction_UP -> X Coord after step not as expected");
-	traceAssertEQ(get<0>(results).nodeCoordY, expectedNewCoords.second, "SingleStepInEnvironment_Direction_UP -> X Coord after step not as expected");
+	traceAssertEQ(get<0>(results).nodeCoordY, expectedNewCoords.second, "SingleStepInEnvironment_Direction_UP -> Y Coord after step not as expected");
 
 	traceAssertEQ(get<1>(results), 0, "SingleStepInEnvironment_Direction_UP -> Reward not as expected");
 
 	traceAssertEQ(get<2>(results), true, "SingleStepInEnvironment_Direction_UP -> Termination flag not as expected");
 }
 
-// *
-// Need to build out
-// */
-TEST_F(EnvironmentTestFixtures, ApplyOffsetToCoords) {
-	
-	pair<int, int> offSet_UP_LEFT = DirectionalEnum::getDirectionOffsef(UP_LEFT);
-	pair<int, int> offSet_UP = DirectionalEnum::getDirectionOffsef(UP);
-	pair<int, int> offSet_UP_RIGHT = DirectionalEnum::getDirectionOffsef(UP_RIGHT);
-	pair<int, int> offSet_LEFT = DirectionalEnum::getDirectionOffsef(LEFT);
-	pair<int, int> offSet_RIGHT = DirectionalEnum::getDirectionOffsef(RIGHT);
-	pair<int, int> offSet_DOWN_LEFT = DirectionalEnum::getDirectionOffsef(DOWN_LEFT);
-	pair<int, int> offSet_DOWN = DirectionalEnum::getDirectionOffsef(DOWN);
-	pair<int, int> offSet_DOWN_RIGHT = DirectionalEnum::getDirectionOffsef(DOWN_RIGHT);
-}
 
 
 //*
 // @ Brife Test if termination is given on obstical nodes
 // Expected reslt -> 
 // - Returns true on node with state = OBSTICAL
+// - Returns false on node with state = GOAL / OPEN
 // - else returns false
 // */
 TEST_F(EnvironmentTestFixtures, NodeTerminationCheck) {
