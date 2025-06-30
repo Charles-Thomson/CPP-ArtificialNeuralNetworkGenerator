@@ -172,3 +172,28 @@ TEST_F(EnvironmentTestFixtures, NodeTerminationCheck) {
 	traceAssertEQ(terminationCondition_GoalNode, false, "NodeTerminationCheck -> Goal Node -> Termination flag not as expected");
 
 }
+
+//*
+// @brife Testing if the getNodeAtEnvironmentLocation returns as expected
+// Expected Result ->
+// - REturns the node at the given x,y coordinates
+// */
+TEST_F(EnvironmentTestFixtures, EnvironmentGetAtCoords) {
+	EnvironmentPrintHelper();
+
+	StateBasedNode nodeA = testEnv.getNodeAtEnvironmentLocation(0, 0);
+
+	StateBasedNode nodeB = testEnv.getNodeAtEnvironmentLocation(1, 0);
+
+	StateBasedNode nodeC = testEnv.getNodeAtEnvironmentLocation(0, 1);
+
+	StateBasedNode nodeD = testEnv.getNodeAtEnvironmentLocation(1, 1);
+
+	StateBasedNode nodeE = testEnv.getNodeAtEnvironmentLocation(0, 4);
+
+	traceAssertEQ(nodeA.state, StateBasedNode::State::OPEN, "EnvironmentGetAtCoords -> Node State not as expected");
+	traceAssertEQ(nodeB.state, StateBasedNode::State::OBSTICAL, "EnvironmentGetAtCoords -> Node State not as expected");
+	traceAssertEQ(nodeC.state, StateBasedNode::State::OPEN, "EnvironmentGetAtCoords -> Node State not as expected");
+	traceAssertEQ(nodeD.state, StateBasedNode::State::START, "EnvironmentGetAtCoords -> Node State not as expected");
+	traceAssertEQ(nodeE.state, StateBasedNode::State::GOAL, "EnvironmentGetAtCoords -> Node State not as expected");
+}

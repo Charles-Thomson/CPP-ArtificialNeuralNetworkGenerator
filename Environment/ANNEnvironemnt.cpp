@@ -24,26 +24,22 @@ using enum DirectionalEnum::Direction;
 
 using Direction = DirectionalEnum::Direction;
 
-
-
-
 //*
-// @ Brief Get the value at the curent location in the environment
-// Includes a termination condition ?
-// 
+// @ Brife Get the value at the curent location in the environment
+// @ param int coordX - x coordinate 
+// @ param int coordY - y coordinate 
+// @ return StateBasedNode - node at location coordY,coordX (inverted)  
 // */
-StateBasedNode Environment::getNodeAtEnvironmentLocation(int& coordX, int& coordY) {
+StateBasedNode Environment::getNodeAtEnvironmentLocation(int coordX, int coordY) {
 
 	vector<vector<StateBasedNode>> env = getEnvironmentMap();
-	cout << format("getNodeAtEnvironmentLocation -> Coord X : {}  Coord Y : {}",coordX, coordY) << endl;
 
-
-	StateBasedNode testNode = env[coordX][coordY];
-	cout << format("getNodeAtEnvironmentLocation -> Test Node Coord X : {}  Coord Y : {}", testNode.nodeCoordX , testNode.nodeCoordY) << endl;
-	 
 	// Inverted on return as the maze is generated from top left 
 	return env[coordY][coordX];
 }
+
+
+
 
 //*
 // @ Brief Determine if action taken results in termination

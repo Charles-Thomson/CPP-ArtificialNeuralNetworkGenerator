@@ -6,6 +6,7 @@
 
 using std::string;
 using std::cout;
+using std::endl;
 using std::invalid_argument;
 
 
@@ -81,6 +82,18 @@ struct StateBasedNode {
 			nodeCoordY == other.nodeCoordY &&
 			environmentDimension == other.environmentDimension;
 	};
+
+
+	//*
+	// @Brife Node attributes print helper
+	// 
+	// */
+	void printHelper_StateBasedNode() {
+		cout << "***********" << endl;
+		cout << "Node State : " << state_to_string() << endl;
+		cout << "Node Coord X : " << nodeCoordX << " Node Coord Y : " << nodeCoordY << endl;
+		cout << "***********" << endl;
+	}
 
 };
 

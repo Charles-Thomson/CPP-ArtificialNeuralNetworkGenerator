@@ -44,7 +44,8 @@ public:
 	pair<int, int> determineNewCoordinates(Direction& dir);
 
 	
-	StateBasedNode getNodeAtEnvironmentLocation(int& coordX, int& coordY);
+
+	StateBasedNode getNodeAtEnvironmentLocation(int coordX, int coordY);
 
 	size_t getMaxActions() const {
 		return maxActions;
