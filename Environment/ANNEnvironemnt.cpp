@@ -35,7 +35,7 @@ StateBasedNode Environment::getNodeAtEnvironmentLocation(int coordX, int coordY)
 	vector<vector<StateBasedNode>> env = getEnvironmentMap();
 
 	// Inverted on return as the maze is generated from top left 
-	return env[coordY][coordX];
+	return env[coordX][coordY];
 }
 
 
@@ -132,7 +132,7 @@ tuple<StateBasedNode, double, bool> Environment::step(Direction action) {
 
 	pair<int, int> potantialNewNodeCoords = determineNewCoordinates(action);
 
-	cout << "Potential node coords : " << potantialNewNodeCoords.first << potantialNewNodeCoords.second << endl;
+	cout << "Potential node coords : " << potantialNewNodeCoords.first << "-" << potantialNewNodeCoords.second << endl;
 
 	terminationFlag = boundryTerminationCheck(potantialNewNodeCoords);
 

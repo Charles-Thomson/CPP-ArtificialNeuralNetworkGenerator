@@ -68,8 +68,9 @@ EnvironmentTestFixtures.CalculateAccumulativeInputDataAlongSightline_FunctionTes
 EnvironmentTestFixtures.UpdateMinAndMaxValues_FunctionTest 4 0.0121579
 EnvironmentTestFixtures.SingleStepInEnvironment 0 0
 EnvironmentTestFixtures.SingleStepInEnvironment_Direction_UP_LEFT 0 0
-EnvironmentTestFixtures.SingleStep_Direction_UP_LEFT 17 0.00210118
+EnvironmentTestFixtures.SingleStep_Direction_UP_LEFT 18 0.00345707
 EnvironmentTestFixtures.SingleStep_Direction_UP 0 0
 EnvironmentTestFixtures.NodeTerminationCheck 1 0
-EnvironmentTestFixtures.EnvironmentGetAtCoords 1 0.0593818
+EnvironmentTestFixtures.EnvironmentGetAtCoords 2 0
 ---
+EnvironmentTestFixtures.EnvironmentGetAtCoords

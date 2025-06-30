@@ -36,7 +36,7 @@ struct StateBasedNode {
 	// Default constructor
 	StateBasedNode() : state(State::OPEN), nodeCoordX(0), nodeCoordY(0), environmentDimension(0) {}
 
-	StateBasedNode(State s, size_t nodeCoordX, size_t nodeCoordY, size_t environmentDimension) : state(s), nodeCoordX(nodeCoordX), nodeCoordY(nodeCoordY) ,environmentDimension (environmentDimension){}
+	StateBasedNode(State s, int nodeCoordX, int nodeCoordY, int environmentDimension) : state(s), nodeCoordX(nodeCoordX), nodeCoordY(nodeCoordY) ,environmentDimension (environmentDimension){}
 
 	static State state_from_int(int value) {
 		switch (value) {

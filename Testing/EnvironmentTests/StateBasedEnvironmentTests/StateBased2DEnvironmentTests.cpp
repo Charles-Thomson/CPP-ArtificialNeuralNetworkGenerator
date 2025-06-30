@@ -118,7 +118,7 @@ TEST_F(EnvironmentTestFixtures, SingleStep_Direction_UP_LEFT ) {
 // Test the process of takign a single "Step" in a 2D environment
 // Expcted result -> 
 // - Agent moves to a new Node
-// - New node, Reward and Termination condition returned
+// - New node, Reward and Termination condition returnedImp
 // */
 TEST_F(EnvironmentTestFixtures, SingleStep_Direction_UP) {
 	EnvironmentPrintHelper();
@@ -133,8 +133,8 @@ TEST_F(EnvironmentTestFixtures, SingleStep_Direction_UP) {
 
 	cout << get<0>(results).state_to_string() << endl;
 
-	cout << "NEw x Coord " << get<0>(results).nodeCoordX << endl;
-	cout << "NEw y Coord " << get<0>(results).nodeCoordY << endl;
+	cout << "New x Coord " << get<0>(results).nodeCoordX << endl;
+	cout << "New y Coord " << get<0>(results).nodeCoordY << endl;
 
 	traceAssertEQ(get<0>(results).nodeCoordX, expectedNewCoords.first, "SingleStepInEnvironment_Direction_UP -> X Coord after step not as expected");
 	traceAssertEQ(get<0>(results).nodeCoordY, expectedNewCoords.second, "SingleStepInEnvironment_Direction_UP -> Y Coord after step not as expected");
@@ -160,7 +160,7 @@ TEST_F(EnvironmentTestFixtures, NodeTerminationCheck) {
 
 	int goalNodeLocationX = 4;
 	int goalNodeLocationY = 4;
-
+	
 
 	StateBasedNode obsticalNode = testEnv.getNodeAtEnvironmentLocation(obsticalLocationX, obsticalLocationY);
 	StateBasedNode goalNode = testEnv.getNodeAtEnvironmentLocation(goalNodeLocationX, goalNodeLocationY);

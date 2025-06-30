@@ -88,7 +88,7 @@ protected:
 	// 
 	// @param env Environment to be printed / visualized 
 	// */
-	void EnvironmentPrintHelper() {
+	void EnvironmentPrintHelper_old() {
 
 		vector<vector<StateBasedNode>> envMap = testEnv.getEnvironmentMap();
 		for (vector<StateBasedNode> layer : envMap) {
@@ -99,6 +99,50 @@ protected:
 			cout << endl;
 		}
 		cout << endl;
+	}
+
+	//*
+// @ Brief Helper function for environment visualization
+// 
+// @param env Environment to be printed / visualized 
+// */
+	void EnvironmentPrintHelper() {
+
+		vector<vector<StateBasedNode>> envMap = testEnv.getEnvironmentMap();
+
+		while (envMap.size() > 0) {
+			vector<StateBasedNode> layer = envMap.back();
+			for (StateBasedNode node : layer) {
+
+				int nodeValue = StateBasedNode::state_to_int(node.state);
+				cout << nodeValue << " , ";
+			
+			}
+			cout << endl;
+			envMap.pop_back();
+		}
+		cout << endl;
+		
+
+		/*for (int y = yLayerSize; y > 0; --y) {
+			for (int x = xLayerSize; x > 0; --x) {
+				StateBasedNode node = envMap[x][y];
+				int nodeValue = StateBasedNode::state_to_int(node.state);
+				cout << nodeValue << " , ";
+			};
+			cout << endl;
+		
+		}
+		cout << endl;*/
+
+		/*for (vector<StateBasedNode> layer : envMap) {
+			for (StateBasedNode node : layer) {
+				int nodeValue = StateBasedNode::state_to_int(node.state);
+				cout << nodeValue << " , ";
+			};
+			cout << endl;
+		}
+		cout << endl;*/
 	}
 
 	//*
