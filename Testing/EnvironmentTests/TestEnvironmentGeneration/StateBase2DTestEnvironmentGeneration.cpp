@@ -122,27 +122,7 @@ protected:
 			envMap.pop_back();
 		}
 		cout << endl;
-		
-
-		/*for (int y = yLayerSize; y > 0; --y) {
-			for (int x = xLayerSize; x > 0; --x) {
-				StateBasedNode node = envMap[x][y];
-				int nodeValue = StateBasedNode::state_to_int(node.state);
-				cout << nodeValue << " , ";
-			};
-			cout << endl;
-		
-		}
-		cout << endl;*/
-
-		/*for (vector<StateBasedNode> layer : envMap) {
-			for (StateBasedNode node : layer) {
-				int nodeValue = StateBasedNode::state_to_int(node.state);
-				cout << nodeValue << " , ";
-			};
-			cout << endl;
-		}
-		cout << endl;*/
+	
 	}
 
 	//*
